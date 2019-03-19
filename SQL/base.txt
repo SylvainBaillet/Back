@@ -1,0 +1,99 @@
+--- Connexion a la BDD ---
+mysql -u root -p 
+
+--- Afficher les BDD ---
+SHOW DATABASES;
+
+--- Creer une BDD ---
+CREATE DATABASE nom_de_la_BDD;
+
+--- Selectionner une BDD ---
+USE nom_de_le_BDD;
+  
+--- Création d'une TABLE dans la BDD ---
+-- Type de donnée( INT, VARCHAR, TEXT, FLOAT ...)
+CREATE TABLE fruit (id_fruit INT(3), nom VARCHAR(60), origine VARCHAR(50), calibre INT(1),  prix FLOAT, categorie VARCHAR(20));
+
+--- Auto incrémentation ---
+CREATE TABLE nom_de_la_table (id INT(3) PRIMARY KEY AUTO_INCREMENT NOT NULL) 
+
+--- Afficher toutes les tables ---
+SHOW TABLES
+
+--- Insertion dans la BDD ---
+INSERT INTO nom_de_la_TABLE ('1', 'pomme', 'France', '5', '12.50' , 'Golden');
+   
+--- Selectionner toutes les données d'une table ---
+SELECT * FROM nom_de_la_table;
+
+---Selectionner les données d'une ou plusieurs colonnes specifiques d'une table ---
+SELECT nom_de_la_colonne, nom_de_la_colonne FROM nom_de_la_table;
+
+--- Supprimer une ligne de la table avec une condition ---
+DELETE FROM nom_de_la_table WHERE 'condition'; 
+
+--- Supprimer tout le contenu d'une table ---
+DELETE FROM nom_de_la_table; :!\ si vous faite ça vous effacerez tout le contenu de la table /!\
+
+--- Mettre a jour une colonne d'une table --- 
+UPDATE nom_de_la_table SET nom_colonne 'condition';
+ ex: UPDATE fruit SET calibre = '4' WHERE id_fruit = '2';
+
+--- Mettre a jour plusieurs colonnes d'une table ---
+UPDATE nom_de_la_table SET nom_colonne , nom_de_la_colonne WHERE 'condition';
+ ex: UPDATE fruit SET origine= 'Espagne', calibre ='4', prix ='3.99' WHERE id_fruit= '2';
+
+--- Ajouter une colonne a une table ---
+ALTER TABLE nom_de_la_table ADD nom_de_la_colonne; 
+
+--- Operateur de comparaison ---
+= :Egale
+<> :Pas Egale
+!= :Pas Egale
+> :Superieur
+< :Inferieur
+>= :Superieur ou égale à
+<= :Inferieur ou égale à
+IN :Liste de plusieur valeurs possibles
+BEETWEEN : recherche des valeurs comprises dans un interval donné (utile pour les nombres ou dates) 
+LIKE : recherche en specifiant le debut, le milieu ou la fin d'un mot
+IS NULL :valeur est nulle
+IS NOT NULL : valeur n'est pas nulle
+
+--- Selectionner des données entre (BETWEEN) un interval (fonctionne dans une requete utilisant WHERE) ---
+SELECT * FROM nom-de-la-table WHERE nom_de_la_colonne BETWEEN valeur AND valeur;
+ex: SELECT * FROM bonbons WHERE id_bonbon BETWEEN 2 AND 6;
+
+---selectionner des données qui ne sont pas comprises entre (NOT BETWEEN) un interval ---
+SELECT * FROM nom_de_la_table WHERE nom_de_la_colonne NOT BETWEEN valeur AND valeur;
+ex: SELECT * FROM bonbons WHERE id_bonbon NOT BETWEEN 3 AND 6;
+
+--- Afficher les données par rapport a une valeur ---
+SELECT nom_colonne FROM nom_de_la_table WHERE nom_colonne = 'valeur';
+ex: SELECT prenom FROM stagiaires WHERE yeux = 'marron';
+
+--- Afficher les données dans un ordres defini ---
+SELECT * FROM stagiaires WHERE yeux = 'marron' ORDER BY prenom;
+
+--- Afficher les données dans l'ordre décroissant ---
+SELECT * FROM stagiaires WHERE yeux = 'marron' ORDER BY prenom DESC;
+
+--- Afficher les prenoms dont le prenom commence par la lettre "l" ---
+SELECT * FROM stagiaires WHERE prenom LIKE 'l%';
+                                 --- se temine par la lettre "n" ---
+SELECT * FROM stagiaires WHERE prenom LIKE '%n';
+                                 --- contient la lettre "a" ---
+SELECT * FROM stagiaires WHERE prenom LIKE '%a%';
+                                 --- commence pa la lettre "j" contient "a" et se termine pas "n"------
+SELECT * FROM stagiaires WHERE prenom LIKE 'j%a%n';                                                                  
+
+
+--- Afficher les prenoms dont le prenom commence par la lettre "l" et dont le genre est feminin ---
+SELECT prenom FROM stagiaires WHERE prenom LIKE 'l%' AND genres='f';
+
+--- Afficher un nombre limité de données ---
+SELECT * FROM satagiaires LIMIT 2; 
+
+--- Afficher un nombre limité de données en sautant des lignes
+SELECT * FROM stagiaires LIMIT 1,2;
+(le premier chiffre apres LIMIT represente l'offset donc le nombr ede ligne sautées, le second chiffre correspond au nombre de données a afficher)
