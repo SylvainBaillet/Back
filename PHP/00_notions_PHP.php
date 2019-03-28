@@ -7,7 +7,7 @@ echo '<h2>  --- Les balises PHP --- </h2>';
 //---------------------------------
 ?>
 <?php
-// Pour ouvrire un passage en PHP on utilise la balise précédente.
+// Pour ouvrir un passage en PHP on utilise la balise précédente.
 // Pour fermer un passage en PHP, on utilise la balise suivante.
 ?>
 <p>Bonjour</p> <!--En dehors des balises d'ouverture et de fermeture du PHP, nous pouvons écrire du HTML quand on est dans un fichier ayant l'extension .php -->
@@ -52,7 +52,7 @@ $x = ' Bonjour ';
 $y = 'tout le monde';
 echo $x . $y . '<br>'; // le point de concaténation peut être traduit par 'suivi de'.
 // Remarque sur echo : 
-echo $x, $y, '<br>'; //Dans l'instruction echo, on peut séparer les élémznt affiché par une virgule. Cette syntaxe est spécifique au echo et ne marche pas avec print.
+echo $x, $y, '<br>'; //Dans l'instruction echo, on peut séparer les élément affiché par une virgule. Cette syntaxe est spécifique au echo et ne marche pas avec print.
 //-------
 // Concaténation lors de l'affectation :
 $prenom1 = 'Bruno';
@@ -68,9 +68,9 @@ $message = "Aujourd'hui";
 // ou bien
 $message = 'Aujourd\'hui'; // on échappe les apostrophe dans les quotes simple avec \ (alt gr + 8).
 $txt = 'Bonjour';
-echo "$txt tout le monde <br>";// Dans les guillemets, la variable est évalué : c'est sont contenu qui est affiché 'ici bonjour).
+echo "$txt tout le monde <br>";// Dans les guillemets, la variable est évaluée : c'est son contenu qui est affiché 'ici bonjour).
 echo '$txt tout le monde <br>'; // Dans les quotes simple, la variable n'est pas évalué : elle est traité comme du texte brute (affiche $txt). 
-Réduire
+
 
 
 
