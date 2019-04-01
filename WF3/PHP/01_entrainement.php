@@ -343,8 +343,189 @@ function affichagePays()
 }
 echo affichagePays();
 
+echo '<hr><h2 class="display-4 text-center">Structure Itérative: boucle</h2><hr>';
 
+// Boucle while
+// exo: ne pas avoir de tirets a la fin: 0---1---2---3---4
+$i = 0;
+while($i < 5)
+{
+    if($i == 4)
+    echo "$i";
+    else
+    echo "$i---";
+    $i++;// equivaut à $i = si + 1
+}
+echo '<br>';
+// autre methode avec !== defferent de
+$i = 0;
+while($i < 5)
+{
+    if($i !== 4)
+    echo "$i---";
+    else
+    echo "$i";
+    
+    $i++;// equivaut à $i = si + 1
+}
+echo '<br>';
+
+// boucle for
+for ($j = 0; $j < 16 ; $j++) // initialisation / condition d'entrée / incrementation
+{
+    echo $j;
+}
+echo '<br>';
+
+// exo : afficher un selecteur de 30 options via une boucle
+echo '<select>';
+for ($k=0; $k < 31 ; $k++)
+{
+    echo "<option>$k</option>";
+}
+echo '</select>' ;// on affiche une balise html <select> ouvrante dans laquelle on crée une boucle for, on fera afficher dans la boucle chaque option dans la balise option, puis echo </select> (balise fermante)
+echo '<br>';
+
+// exo : faites une boucle quio affiche de 0 à 9 sur la meme ligne soit 10 tours
+for ($l=0; $l<10 ; $l++)
+{
+    echo $l;
+}
+echo '<br>';
+// exo: faites une boucle qui affiche de 0 à 9 sur la même ligne dans un tableau HTML
+echo '<table class="table table-bordered text-center"><tr>';
+for ($m=0; $m < 10 ; $m++)
+{
+    echo "<td>$m</td>";//on créé une option par tour de boucle avec la valeur de $m dans chaque cellule
+}
+echo '</tr></table>';
+echo '<br>';
+
+//--------------------------------------------------------------------------
+//exo: faites la meme chose en allant de 0 à 99 sur plusieurs ligne sans faire 10 boucles
+
+$compteur = 0; /* La premiere boucle FOR tourne 10 fois parce qu'il y'a 10 lignes, la deuxieme boucle for (imbriquée) tourne 10 fois également et créé une cellule. la variable $compteur permet d'avoir une variable qui ne se ré initialise jamais à zéro, elle augmente de 1 quelque soit le tour de boucle.*/ 
+echo '<table class="table table-bordered text-center"><tr>';
+for ($ligne=0; $ligne <10; $ligne++)
+{
+    echo '<tr>';
+    for ($cell=0; $cell <10 ; $cell++)
+{
+    echo "<td>$compteur</td>";
+    $compteur++;
+}
+echo '</tr>';
+}
+echo '</table>';
+echo '<br>';
+
+//--------------------------------------------------------------
+echo '<hr><h2 class="display-4 text-center">Tableau de données ARRAY</h2><hr>';
+// un tableau array est declaré un peu comme une variable ameliorée, car on ne conserve pas qu'une valeur mais un ensemble de valeur.
+
+$liste = array("Gregory", "Aziz", "Nassim", "Sylvain", "Nelson");
+// print $liste; /!\  erreur!! on ne peut pas afficher un tableau ARRAY en passant par un simple 'echo'
+echo '<pre>'; var_dump($liste);echo '</pre>';//plus detaillé
+echo '<pre>'; print_r($liste);echo '</pre>';//moins detaillé
+//  '<pre>' est une balise qui permet de formater la sortie du print_r ou var_dump
+// ces instruction d'affichage ameliorées permettent de consulter et d'afficher les données d'un tableau, d'une variable, d'un objet etc...
+
+//exo: tenter de sortir "Aziz" en passant par le tableau de données ARRAY sans faire un echo Aziz
+echo $liste[1];// on va crocheter à l'indice 1 du tableau ARRAY pour extraire la valeur (ici => Aziz)
+
+echo '<hr><h2 class="display-4 text-center">boucle foreach pour les tableaux de données ARRAY</h2><hr>';
+
+$tab[] = "France";
+$tab[] = "Angleterre";
+$tab[] = "Espagne";
+$tab[] = "Italie";
+$tab[] = "Portugal";
+
+//echo $tab, ne marche pas, pour afficher le tableau, par contre:
+echo '<pre>' ; print_r($tab); echo '</pre>';
+
+/* Lorqu'il n'y a qu'une seule variable,$value parcours la colonne de valeur du tableau de donnée ARRAY, la boucle  foreach est un moyen simple de passer en revue un tableau de données ARRAY (et aussi les objets: prochain chapitre */
+foreach($tab as $value)// 'as' fait partie du langage et est obligatoire. je declare la var $Value qui va receptionner les valeurs du tableau par tour de boucle.
+{
+    echo "$value<br>";// on affiche successivement les éléments du tableau
+}
+// foreach: indice + valeur
+// lorsqu'il y'a deux variables, la premiere parcours la colonne des indices ($key) et l'autre la colonne des valeurs ($value)
+foreach($tab as $key => $value)// la fleche fait partie du language et est obligatoire
+{
+    echo "$key => $value<br>";
+}
 ?>
+<hr>
+
+<?php
+// 2eme possiblilité d'ecriture du php
+foreach($tab as $key => $value): ?>
+   <?= $key; ?> => <?= $value; ?> <br>
+<?php endforeach; ?>
+
+
+<?php
+// il est possible de definir ses propres indices
+$perso = array("m" => "Mario", "i" => "Luigi", "z" => "Aziz", "n" => "Nassim");
+echo '<pre>'; print_r($perso); echo '</pre>';
+
+echo "taille du tableau:" .count($perso) . '<br>';
+echo "taille du tableau:" .sizeof($perso) . '<br>';
+
+// implode() est une fonction predefinie qui permet d'extraire les éléments d'un tableau en une chaine (separée par un symbole). L'inverse c'est 'explode'
+echo implode(" - " , $perso) . '<br>';
+
+echo '<hr><h2 class="display-4 text-center">Tableau ARRAY multidimentionnels</h2><hr>';
+/* Nous parlons de tableaux multidimentionnels  quand un tableau est contenu dans un autre tableau */
+
+$tab_multi = array(
+    0 => array("nom" => "Macron", "salaire" => 1 ),
+    1 => array("nom" => "Lacroix", "salaire" => 15000)
+);
+
+echo '<pre>'; print_r($tab_multi); echo '</pre>';
+
+//exo : tenter de sortir 'macron' en passant par le tableau multi dimentionnel representé par $tab_multi sans faire un 'echo macron'
+echo $tab_multi[0]['nom'];
+echo '<br>';
+
+//exo : afficher l'ensemble du tableau multidimentionnel a l'aide de boucles imbriquée foreach
+foreach($tab_multi as $tab){
+    echo '<div class="col-md-2 offset-md-5 alert alert-succes text-dark mx-auto text-center">';
+        // Lecture de chaque tableau de chaque ligne
+	foreach($tab as $key=>$valeur){
+                // Affichage des deux élements
+		echo $key.': '.$valeur.'<br>';
+    }
+    echo '</div>';
+} 
+//autre methode pour faire l'exo
+
+/* La boucle for permet de tourner autant de fois qu'il y'a de lignes dans le tableau multi, donc 2 tours de boucle dans notre cas */
+for($i = 0; $i < count($tab_multi); $i++)
+{
+    echo '<div class="col-md-2 offset-md-5 alert alert-info text-dark mx-auto text-center">';
+        // Lecture de chaque tableau de chaque ligne
+    foreach($tab_multi[$i] as $key=>$valeur)// on se sert de la variable $i de la boucle for pour aller crocheter a chaque indice du tableau multi et parcourir les données
+    {
+                // Affichage des deux élements
+		echo $key.': '.$valeur.'<br>';
+    }
+    echo '</div>'; 
+}
+?>
+
+
+
+
+
+
+
+
+ 
+
+
 </div> 
 </body>
 </html>
