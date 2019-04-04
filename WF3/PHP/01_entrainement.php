@@ -473,7 +473,7 @@ echo '<pre>'; print_r($perso); echo '</pre>';
 echo "taille du tableau:" .count($perso) . '<br>';
 echo "taille du tableau:" .sizeof($perso) . '<br>';
 
-// implode() est une fonction predefinie qui permet d'extraire les éléments d'un tableau en une chaine (separée par un symbole). L'inverse c'est 'explode'
+// implode() est une fonction predefinie qui permet d'extraire les éléments d'un tableau en une chaine (separée par un symbole). L'inverse c'est 'explode()'
 echo implode(" - " , $perso) . '<br>';
 
 echo '<hr><h2 class="display-4 text-center">Tableau ARRAY multidimentionnels</h2><hr>';
@@ -503,7 +503,7 @@ foreach($tab_multi as $tab){
 //autre methode pour faire l'exo
 
 /* La boucle for permet de tourner autant de fois qu'il y'a de lignes dans le tableau multi, donc 2 tours de boucle dans notre cas */
-for($i = 0; $i < count($tab_multi); $i++)
+for($i = 0; $i < count($tab_multi); $i++)// count renvoie le nombre de lignes qu'il y'a dans mon tableau multidimentionnel.
 {
     echo '<div class="col-md-2 offset-md-5 alert alert-info text-dark mx-auto text-center">';
         // Lecture de chaque tableau de chaque ligne
@@ -514,6 +514,20 @@ for($i = 0; $i < count($tab_multi); $i++)
     }
     echo '</div>'; 
 }
+echo '<hr><h2 class="display-4 text-center">Superglobales</h2><hr>';
+
+/* les superglobales sont des variables de type ARRAY, elles sont accessibles de partout, c'est a la fois dans l'espace global et local. elle permettent de vehiculer des données */
+/* 
+    $_SERVER : vehicule les données liées au serveur
+    $_GET    : vehicule les données transmisent dans une URL
+    $_POST   : vehicule les données d'un formulaire
+    $_FILES  : vehicule les données d'un fichier uploadé
+    $_COOKIE : vehicule les données d'un fichier cookie
+    $_SESSION: vehicule les données d'une session en cours
+
+    elle s'appellent toujours pas le signe '$' suivi d'un '_' et toujours en majuscule
+*/
+echo '<pre>'; print_r($_SERVER); echo '</pre>';
 ?>
 
 
