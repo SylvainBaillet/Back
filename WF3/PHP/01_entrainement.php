@@ -366,7 +366,7 @@ while($i < 5)
     else
     echo "$i";
     
-    $i++;// equivaut à $i = si + 1
+    $i++;// equivaut à $i = $i + 1
 }
 echo '<br>';
 
@@ -529,6 +529,7 @@ echo '<hr><h2 class="display-4 text-center">Superglobales</h2><hr>';
 */
 echo '<pre>'; print_r($_SERVER); echo '</pre>';
 ?>
+
 
 
 

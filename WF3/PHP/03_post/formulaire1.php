@@ -14,7 +14,7 @@
 
     //exo : afficher les données saisis dans le formulaire en passant par la superglobale $_POST.
 
-    foreach($_POST as $key => $value)// On parcours la superglobale $_POST dce type ARRAY avec la boucle foreach 
+    foreach($_POST as $key => $value)// On parcours la superglobale $_POST de type ARRAY avec la boucle foreach 
 {
     echo "$key => $value<br>";
 }
