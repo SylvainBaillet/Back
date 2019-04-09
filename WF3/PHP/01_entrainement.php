@@ -528,6 +528,29 @@ echo '<hr><h2 class="display-4 text-center">Superglobales</h2><hr>';
     elle s'appellent toujours pas le signe '$' suivi d'un '_' et toujours en majuscule
 */
 echo '<pre>'; print_r($_SERVER); echo '</pre>';
+
+echo '<hr><h2 class="display-4 text-center">Classe et objet</h2><hr>';
+/* Un objet est un autre type de donnée: Un peu a la maniere d'un ARRAY. il permet de regrouper des informations.
+des variables (appelée: attribut ou proprieté) mais aussi des fonctions (appelées: methodes) */
+
+class Etudiant//une class est un peu comme un plan de construction qui regroupe des données. par convention le nom de la class s'ecrit toujours avec la premiere lettre en majuscule
+{
+    public $prenom = 'Sylvain';//public est le niveau de visibilité. il permet de preciser que l'élément sera accessible de partout (il y'a aussi protected et private)
+    public $age = 39;
+    public function pays()
+    {
+        return 'france';
+    }
+}
+/* new permet d'instancier la class Etudiant et d'en faire un objet. $objet, est un enfant de la class Etudiant, un exemplaire. Pour exploiter les données déclarées dans la class, il faut créer une instance / un objet de la class. */
+$objet = new Etudiant;
+echo '<pre>'; var_dump($objet); echo'</pre>';/* var-dump permet d'observer que l'on a bien un objet issu de la class Etudiant à l'identifiant 1 et on observe aussi les propriétés (variables) déclarées dans la class */
+echo '<pre>'; var_dump(get_class_methods($objet)); echo'</pre>';/* get_class_methods() permet d'afficher toutes les methodes (fonctions) issue de la class Etudiant*/
+
+// on pioche dans un objet avec la fleche '->' , losqu'on se servait des crochets avec un array
+echo "je m'appelle " . $objet->prenom . '<hr>';/* en piochant dans l'objet, cela nous permet d'atteindre la propriété $prenom déclarée dans la class. */
+echo "mon age est " . $objet->age ." ans" . '<hr>';
+echo "j'habite en: " . $objet->pays() . "<hr>"; 
 ?>
 
 

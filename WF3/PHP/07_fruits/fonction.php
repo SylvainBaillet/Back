@@ -12,7 +12,7 @@ function calcul($fruit, $poids)
     }
 
 $resultat = round(($poids*$prix_kg/1000),2);// round est une fonction predefinie qui permet d'arrondir un chiffre, ici 2 decimales apres la virgule
-return "les $fruit coutent $resultat Euros pour $poids kg<br>";
+return "les $fruit coutent $resultat Euros pour $poids grammes<br>";
 }
 // echo calcul('bananes', 500);
 

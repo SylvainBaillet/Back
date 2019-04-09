@@ -29,7 +29,7 @@ else
 
 //-----------------------
 // Création fichier cookie
-$un_an = 365*24*3600; // correspond à une année en secondes, ce sera la durée de notre cookie
+$un_an = 365*24*3600; // correspond à une année en secondes, ce sera la durée de notre cookie, il n'y a pas de fonction permettant de détruire un cookie, c'est sa durée de vie qui fera qu'il sera detruit
 
 setcookie("pays", $pays, time()+$un_an);/* permet de créer un fichier cookie qui est conservé coté client, c'est a dire sur l'ordinateur de l'internaute. 3 arguments: nom du cookie / valeur du cookie / durée de vie */
 echo '<pre>'; print_r($_COOKIE); echo '</pre>';
