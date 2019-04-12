@@ -1,0 +1,39 @@
+body{
+    background-color: #a9f0d1;
+    
+}
+i{
+    color: #6c9986;
+}
+
+.container{
+    background-image: url(/img/bg.jpg);
+    
+}
+footer{
+    background-image: url(/img/bg.jpg);
+}
+
+h1, h2, h5{
+    font-family: 'Srisakdi', cursive;
+}
+header{
+    background-image: url('../img/bg.jpg');
+    padding: 2rem;
+}
+h1{
+    margin: 2rem;   
+}
+main{
+    background-image: url('../img/bg.jpg');
+}
+.card{
+    margin-top: 1rem; 
+}
+#textBas{
+    float: right;
+}
+.card-title{
+    background-color: #a9f0d1;
+}
+

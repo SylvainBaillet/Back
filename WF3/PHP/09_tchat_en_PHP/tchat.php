@@ -26,6 +26,13 @@
 
  
 <?php
+foreach($_POST as $key =>$value)
+            {
+                $_POST[$key] = strip_tags(trim($value));
+                // on passe en revue le formulaire en executant la fonction strip_tag sur chaque valeur saisie dans le formulaire
+                // trim est une fonction predefinie qui supprime les espaces en debut et fin de chaine.
+            }
+
 echo '<hr><h2 class="display-4 text-center">TCHAT</h2><hr>';
 
 $pdo = new PDO('mysql:host=localhost;dbname=tchat','root', '', array(PDO:: ATTR_ERRMODE => PDO :: ERRMODE_WARNING, PDO :: MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));   
@@ -35,24 +42,24 @@ $pdo = new PDO('mysql:host=localhost;dbname=tchat','root', '', array(PDO:: ATTR_
 
 echo '<pre>'; print_r($_POST); echo '</pre>'; 
 
+
+
 extract($_POST);
 if($_POST)
 {
-    foreach($_POST as $key => $value)
-{
-    $_POST[$key] = strip_tags($values);
-}
-// $rec = "INSERT INTO commentaire (pseudo, dateEnregistrement, message) VALUES ('$pseudo', NOW(), '$message')";
+   
+$req = "INSERT INTO commentaire (pseudo, dateEnregistrement, message) VALUES ('$pseudo', NOW(), '$message')";
 
 // $resultat = $pdo->exec();    
 // echo "nombre d'enregistrements : $resultat";
 
-// echo $req;
 
-$resultat = $pdo->prepare("INSERT INTO commentaire (pseudo, dateEnregistrement, message) VALUES (:pseudo, NOW(), :message)");
+$resultat = $pdo->prepare($req);
 $resultat->bindValue(':pseudo',$pseudo, PDO::PARAM_STR);
 $resultat->bindValue(':message',$message, PDO::PARAM_STR);
 $resultat->execute();
+
+echo $req;
 
 /* INJECTION SQL: 
 ok'); DELETE FROM commentaire;(
