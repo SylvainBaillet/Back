@@ -1,12 +1,21 @@
 <?php
 require_once('include/init.php');
 extract($_POST);
+
+if(internauteEstConnecte())/* Si l'internaute est connecté,; il n'a rien a faire dans la page inscription, on le redirige vers sa page profil */
+{
+    header("location: profil.php");
+}
+
+
 //---2
-echo '<pre>'; print_r($_POST);echo '</pre>';
+// echo '<pre>'; print_r($_POST);echo '</pre>';
 
 //---3 controle
 if($_POST)
 {
+
+
     /* On selectionne tout dans la bdd a condition que la colonne 'pseudo' de la table 'membre' soit égale à la donnée saisie dans le champ pseudo du formulaire */
     $verifpseudo = $bdd->prepare("SELECT * FROM membres WHERE pseudo = :pseudo"); 
     $verifpseudo->bindValue(":pseudo" , $pseudo, PDO::PARAM_STR);
@@ -23,8 +32,11 @@ if($_POST)
     {   
     $error .='<div class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">Les deux champs mot de passe doivent être identiques</div> ';    
     }
-    if(empty($error))
+    if(!$error)
     {
+      //$_POST['mdp']=password_hash($_POST['mdp'], PASSWORD_DEFAULT);// on ne conserve jamais en clair un mdp dans la BDD, password_hash permet de créer une clé de hashage
+
+
         $data_insert = $bdd->prepare("INSERT INTO membres (pseudo, mdp, nom, prenom, email, civilite, ville, code_postal, adresse) VALUES (:pseudo, :mdp ,:nom , :prenom , :email, :civilite, :ville , :code_postal, :adresse)");
         
         foreach($_POST as $key => $value)
@@ -38,7 +50,7 @@ if($_POST)
     }
     header("location: connexion.php?action=validate"); /* header() -> fonction predefinie qui permet d'effectuer une redirection de page / URL. */
     
-        echo '<div class="col-md-4 offset-md-4 alert alert-success text-center text-dark">Bravo vous avez réussi</div> ';
+        //echo '<div class="col-md-4 offset-md-4 alert alert-success text-center text-dark">Bravo vous avez réussi</div> ';
     
 }// FIN IF($_POST)
 
@@ -104,7 +116,7 @@ require_once('include/header.php');
     <label for="Adresse">Adresse</label>
     <input type="text" class="form-control col-md-12" id="adresse" name="adresse" placeholder="Adresse">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Envoyer</button><!-- pour pouvoir voir le boutton caché par la nav fixe, dans le css, on ajoute un margin-bottom sur la class du button dans le css-->
 </form>
 
 
