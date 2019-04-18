@@ -33,7 +33,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 if($_POST)
 {
     $photo_bdd='';
-  if(isset($_GET['action']) && $_GET['action'] =='modification')
+  if(isset($_GET['action']) && $_GET['action'] == 'modification')
   {
     $photo_bdd = $photo_actuelle; /* Si on souhaite conserver la meme photo en cas de modification, on affecte la valeur du chanp photo 'hidden' , c'est a dire a l'URL de la photo selectionnée en BDD */
   }
@@ -57,10 +57,22 @@ if($_POST)
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
         $data_insert = $bdd->prepare("INSERT INTO produit (reference, categorie, titre, description, couleur, taille, public, photo, prix, stock ) VALUES (:reference, :categorie, :titre, :description, :couleur, :taille, :public, :photo, :prix, :stock)");
+
+        $_GET['action'] = 'affichage';// $_GET 'action' = 'affichage' permet d'etre redirigé vers la page 'affichage'
+
+        //affichage du message a l'ajout, avec le numero de reference
+        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit n° : <strong>$reference</strong> à bien été modifrié </div>";
+
     }
     else
     {
-        $data_modif = $bdd->prepare("UPDATE produits SET $_POST")
+
+        $data_insert = $bdd->prepare("UPDATE produit SET reference = :reference, categorie = :categorie , titre = :titre , description = :description, couleur = :couleur, taille = :taille, public = :public , photo = :photo, prix = :prix, stock = :stock WHERE id_produit = $id_produit");
+
+        $_GET['action'] = 'affichage';// $_GET 'action' = 'affichage' permet d'etre redirigé vers la page 'affichage'
+
+        //affichage du message a la modification, avec le numero de l'id_produit
+        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit n° : <strong>$id_produit</strong> à bien été modifrié </div>";
     }  
 
         foreach($_POST as $key => $value)
@@ -94,7 +106,7 @@ $produit = $data->fetchAll(PDO::FETCH_ASSOC);
 <!-- FIN LIENS PRODUITS -->
 
 
-<!-- AFIICHAGE PRODUITS -->
+<!-- AFFICHAGE PRODUITS -->
 <?= $validate?>
 <?php  if(isset($_GET['action']) && $_GET['action'] == 'affichage'):?>
 
@@ -114,7 +126,7 @@ $produit = $data->fetchAll(PDO::FETCH_ASSOC);
             <td><img src="<?= $value ?>" alt="<?= $tab['titre'] ?>" class="card-img-top" ></td>
         <?php else: ?>
             <td><?= $value ?></td>
-        <?php endif; ?>
+<?php endif; ?>    
         <!-- fin de la condition if -->
 
     <?php endforeach; ?>
@@ -133,9 +145,10 @@ if(isset($_GET['id_produit']))
   $resultat->bindValue(':id_produit', $id_produit, PDO::PARAM_INT);
   $resultat->execute();
 
-  $produit_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
+  $produit_actuel = $resultat->fetch(PDO::FETCH_ASSOC);// $produit_actuel
   // echo '<pre'; print_r($produit_actuel); echo'</pre>';
 }
+
 
 $reference = (isset($produit_actuel['reference'])) ? $produit_actuel['reference']: '';
 $categorie = (isset($produit_actuel['categorie'])) ? $produit_actuel['categorie']: '';
@@ -154,13 +167,13 @@ $stock = (isset($produit_actuel['stock'])) ? $produit_actuel['stock']: '';
 
 <!-- Fin tableau d'affichage -->
 
- <hr><h1 class="display-4 text-center"> <?= $action ?> </h1><hr>
+ 
 <!-- 
 1- Realiser un formulaire permettant d'inserer un produit dans la table 'produit' (sauf le champ id_produit)  
  -->
 
  <?php  if(isset($_GET['action']) && ($_GET['action'] == 'ajout' || $_GET['action'] == 'modification')):?> 
-
+   <hr><h1 class="display-4 text-center"> <?= $action ?> </h1><hr>
 
  <!-- je fais un echo ici de ma vaiable '$error' pour que toutes mes erreurs s'affichent entre mon titre et le debut de mon formulaire -->
 <form class="col-md-6 offset-md-3" method="post" action="" enctype="multipart/form-data" ><!-- enctype: obligatoire en PHP pour recolter les informations d'un fichier uploadé -->

@@ -9,7 +9,7 @@ if(internauteEstConnecte())/* Si l'internaute est connecté,; il n'a rien a fair
 
 
 //---2
-// echo '<pre>'; print_r($_POST);echo '</pre>';
+// 
 
 //---3 controle
 if($_POST)

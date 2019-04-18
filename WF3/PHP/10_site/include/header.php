@@ -56,6 +56,7 @@
 
     <?php endif;?>
 
+  <!-- acces utilisateur connecté en tant qu'admin -->
   <?php if(internauteEstConnecteEtAdmin()):?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BACK OFFICE</a>
