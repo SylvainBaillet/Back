@@ -1,0 +1,12 @@
+
+
+.d-block{
+    height: 50rem;
+}
+.navhead{
+    background: transparent;
+}
+.footer{
+    background: #75c9c8;
+    position: fixed; bottom: 0;
+}

@@ -1,0 +1,42 @@
+/*   
+Theme Name: Portfolio
+Theme URI: http://localhost/portfolio/wp-content/thems/portfolio
+Description: Portfolio developpeur web
+Author: Sylvain Baillet
+Author URI: http://localhost/portfolio
+Version: 1.0
+.
+Commentaires généraux / Information de licences si applicable.
+.
+*/
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+body{
+    background-color: #cedbef;
+}
+li{
+    list-style: none;
+}
+h1, h2{
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 1rem;
+}
+a{
+    text-decoration: none !important;
+}
+.menu_header ul li{
+    display: inline-flex;
+    justify-content: space-around;
+}
+.menu_header ul li a{
+    color: aliceblue;
+}
+.hauteur{
+    min-height: 150px;
+}
+.h-entetes{
+    min-height: 200px;
+}
+.ma-section{
+    min-height: 600px;
+}

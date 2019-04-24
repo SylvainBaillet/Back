@@ -35,7 +35,7 @@ if($_POST)
     $photo_bdd='';
   if(isset($_GET['action']) && $_GET['action'] == 'modification')
   {
-    $photo_bdd = $photo_actuelle; /* Si on souhaite conserver la meme photo en cas de modification, on affecte la valeur du chanp photo 'hidden' , c'est a dire a l'URL de la photo selectionnée en BDD */
+    $photo_bdd = $photo_actuelle; /* Si on souhaite conserver la meme photo en cas de modification, on affecte la valeur du champ photo 'hidden' , c'est a dire a l'URL de la photo selectionnée en BDD */
   }
 
     if(!empty($_FILES['photo']['name']))/* on verifie que l'indice 'name' dans la superglobale $_FILES n'est pas vide, cela veut dire que l'on a bien uploadé une photo */
@@ -108,7 +108,7 @@ $produit = $data->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- AFFICHAGE PRODUITS -->
 <?= $validate?>
-<?php  if(isset($_GET['action']) && $_GET['action'] == 'affichage'):?>
+
 
 <hr><h1 class="display-4 text-center">Liste des produits</h1><hr>
 <table class="table table-bordered text-center tab1">

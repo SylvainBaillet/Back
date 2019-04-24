@@ -57,7 +57,7 @@
 
     2- controler en PHP que l'on receptionne bien toutes les données du formulaire
 
-    3- Faites en sorte d'informaer l'internaute si le pseudo n'est pas compris entre 2 et 20 caracteres
+    3- Faites en sorte d'informer l'internaute si le pseudo n'est pas compris entre 2 et 20 caracteres
 
     4- faites en sorte d'informer l'internaute si les mdp ne sont pas identiques
 
