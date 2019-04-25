@@ -20,8 +20,9 @@ li{
 h1, h2{
     font-family: 'Orbitron', sans-serif;
     margin-top: 1rem;
+    text-shadow: 1px 2px 2px black;   
 }
-a{
+ a{
     text-decoration: none !important;
 }
 .menu_header ul li{
@@ -39,4 +40,26 @@ a{
 }
 .ma-section{
     min-height: 600px;
+}
+
+.contact{
+    padding-top: 2rem;
+}
+.contact i{
+    margin-right: 1rem;
+    color: #ff3d0c;
+}
+
+.menu2{
+    padding-top: 2rem;
+}
+.menu2 a{
+    margin-top: 1rem;
+}
+
+.reseaux{
+
+}
+.map{
+    padding-top: 1rem;
 }
