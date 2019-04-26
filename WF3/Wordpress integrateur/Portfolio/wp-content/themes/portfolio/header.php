@@ -46,7 +46,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExample04">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto d-flex">
           <!-- wp_nav_menu() est une fonction worpess qui permet d'importer le menu principal que l'on a créé dans le fichier fonction.php
 'container_class' => 'menu_header : le menu aura comme class 'menu_header'
 'theme_location' => 'primary' permet de precider que c'est le menu principal    

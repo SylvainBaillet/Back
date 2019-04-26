@@ -33,3 +33,33 @@ Commentaires généraux / Information de licences si applicable.
 9- 
 
 
+
+
+
+
+
+12- templates dans wp-content -> theme -> portfolio, je copie-colle le fichier index.php que je renomme FRONT-PAGE.php ( le nom est precis ), pour tester que cela marche bien j'ecris une phrase au hasard sur le html de FRONT-PAGE.php pour etre sur que cela fonctionne. Je copie-colle 
+
+je copie colle a nouveau index.php et le renomme SINGLE.php , tous les articles feront appel a la page SINGLE.php
+
+
+*extensions pratiques:
+
+-Elementor:
+
+-widget option:
+
+-shortcodes ultimates:
+
+-widget css class:
+
+-show current template (afficher le modele courant):
+permet d'afficher le ou les fichiers auquel fait appel wordpress pour ouvrir une page (ce dont wordpress a besoin)
+
+
+-----------------------------------------------------------------
+Theme enfant:
+
+on fait l'installation classique d'un wp, puis une fois les dossiers du wordpress mis dans mon dossier, dans wp-content, je copie colle le dossier de mon theme, et j'y ajoute -child, (c'est dans ce dossier que je ferais toutes mes modifications)
+
+                                                                                                                                                                                                                                                                                                                                    

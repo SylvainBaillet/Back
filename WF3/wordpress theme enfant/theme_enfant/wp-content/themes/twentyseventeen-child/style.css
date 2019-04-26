@@ -1,0 +1,17 @@
+/*
+ Theme Name:   Twenty Seventeen Child
+ Theme URI:    http://localhost/theme_enfant/wp-content/theme/twentyseventeen-child
+ Description:  Twenty Seventeen Child Theme
+ Author:       Sylvain
+ Author URI:   http://localhost/theme_enfant
+ Template:     twentyseventeen
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://localhost/theme_enfant
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twenty-seventeen-child
+*/
+
+a{
+    color: red;
+}

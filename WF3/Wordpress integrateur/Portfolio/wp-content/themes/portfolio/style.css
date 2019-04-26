@@ -12,7 +12,7 @@ Commentaires généraux / Information de licences si applicable.
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
 body{
-    background-color: #cedbef;
+    background-image: linear-gradient(to left bottom, #64b5ff, #72bdfd, #82c5fc, #91cdfa, #a1d4f8, #95c5eb, #89b6dd, #7da8d0, #5781b3, #365a95, #1a3676, #001255) !important ;
 }
 li{
     list-style: none;
@@ -22,14 +22,26 @@ h1, h2{
     margin-top: 1rem;
     text-shadow: 1px 2px 2px black;   
 }
- a{
+i{
+    color: firebrick;
+    text-shadow: 1px 2px 2px black;
+}
+.home h1 a{
     text-decoration: none !important;
+    color: aliceblue;
+}
+ a{
+
+    text-decoration: none !important;
+    color: darkslategray;
+    
 }
 .menu_header ul li{
     display: inline-flex;
     justify-content: space-around;
 }
 .menu_header ul li a{
+    padding-right: 1rem;
     color: aliceblue;
 }
 .hauteur{
@@ -47,9 +59,12 @@ h1, h2{
 }
 .contact i{
     margin-right: 1rem;
-    color: #ff3d0c;
+    color: firebrick;
+    text-shadow: 1px 2px 2px black;
 }
-
+.su-custom-gallery{
+    padding-left: 2rem;
+}
 .menu2{
     padding-top: 2rem;
 }
