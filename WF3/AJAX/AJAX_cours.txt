@@ -1,0 +1,7 @@
+AJAX (asyncronous javaScript and XML) mais on devrait plutot l'appeller AJAJ 
+
+    1- dossier 01_ajax_get
+        1 fichier ajax_info.txt
+        1 fichier index.html
+
+    2- creer un dossier 02_AJAX_INSERT    

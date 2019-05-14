@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>01 AJAX GET</title>
+</head>
+
+<body>
+
+    <div class="container"></div>
+    <h1 class="display-4 text-center">01 AJAX GET</h1>
+
+    <div id="demo" class="col-md-8 offset-md-2 alert alert-success"></div>
+
+    <button type="button" id="action" class="col-md-6 offset-md-3 btn btn-dark">Charger fichier texte</button>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+    <!-- on à été chercher la derniere version de jquery en version "minified", dans la version slim, il peut manquer des fonctionalités -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        /*on receptionne le DOM auquel on associe la fonction 'ready' qui executera la fonction une fois que le DOM sera chargé completement.*/ 
+    $(document).ready(function(){
+        /* On selectionne le bouton id 'action' auquel on associe l'evenement 'click', pour chaque click, on associe la fonction anonyme*/ 
+        $('#action').click(function(){
+            /*'ajax' est une methode jquery qui permet d'envoyer des requetes AJAX en HTTP grace à l'objet JavaScript XMLHttpRequest (objet permettant les requetes HTTP)*/ 
+            $.ajax({
+                url : "ajax_info.txt",// URL de destination de la requete
+                dataType: "text",// type de donnée attendu
+                // en cas de succes la fonction anonyme s'execute:
+                // il y'a toujours 2 requetes AJAX,  l'une allée et une retour
+                // Le resultat de la requete retour se trouve dans l'objet representé ici par 'data'
+                success : function(data){ // ici data est un objet qui va contenir le resultat de ce qu'on a receptionner de ma requete, le nom peut etre celui que l'on veut
+                    $('#demo').html(data);
+                    /* on selectionne la div id 'demo' auquel on accroche le resultat de la requete AJAX, donc du contenu du fichier 'ajax_info.txt' */ 
+                }
+            });
+        });
+    });
+        
+    </script> 
+        
+</body>
+
+</html>
