@@ -22,11 +22,12 @@ extract($_POST);
     <div class="container">
         <h1 class="display-4 text-center">Supprimer un employé</h1>
 
+        <div id="messSuppr"></div><!--cette div receptionne le message de validation apres la suppression d'un employé  -->
+
         <form method="post" action="" class="col-md-6 offset-md-3 text-center">
             
-          
-
         <div id="employes">
+            
         <?php  
         $result = $bdd->query("SELECT * FROM employes");
 
@@ -40,7 +41,6 @@ extract($_POST);
         echo '</select>';
         echo'</div>';
         ?>
-        
         
         </div>
     <input type="submit" class="col-md-6 offset-md-3 btn btn-dark" id="submit" value="supprimer" placeholder="employé a supprimer">

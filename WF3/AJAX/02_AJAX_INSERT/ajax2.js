@@ -2,8 +2,7 @@
 $(document).ready(function(){ 
     /* on selectionne le boutton 'submit' auquel on associe l'evenement 'click'. 'event' correspond a l'évenement 'click' */ 
     $('#submit').click(function(event){
-        event.preventDefault(); 
-        /* PrevenDefault est une fonction predefinie qui permet d'annuler le comportement du bouton 'submit' qui a pour role de recharger la code / la page. */ 
+        event.preventDefault(); /* PrevenDefault est une fonction predefinie qui permet d'annuler le comportement du bouton 'submit' qui a pour role de recharger la code / la page. */ 
         ajax(); // fonction utilisateur executée ci dessous , le nome n'est pas defini, j'aurais pu mettre ce que je veux
     });
 
@@ -21,9 +20,9 @@ $(document).ready(function(){
         2 - les parametres a fournir a la requete
         3 - En cas de succes, function(data) Recupere les données de la Requete 'retour, tout se trouve dans 'data'
         4 - type de transport de données: JSON*/
-        $.post("ajax2.php", parameters, function(data){
+        $.post("ajax2.php", parameters, function(data){//post est une requete 
             $('#resultat').html(data.resultat);/* on selectionne la div id 'resultat'et on accroche le message d'erreur ou de validation à l'intérieur. 
-            'data.resultat' --> reultat correspondant a l'indice 'resultat' du tablau array $tab['resultat'] du fichier ajax2.php*/
+            'data.resultat' --> resultat correspondant a l'indice 'resultat' du tablau array $tab['resultat'] du fichier ajax2.php*/
             $('#personne').val(''); // permet de vider le champs input une fois le formulaire validé
         },'json');
     }
