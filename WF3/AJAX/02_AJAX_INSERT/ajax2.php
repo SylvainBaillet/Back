@@ -16,7 +16,7 @@ if(!empty($personne))
 }
 else
 {
-    $tab['resultat'] = "<div class='col-md-6 offset-md-3 alert alert-danger text-center'>Merci de saisir un prénom</div>";
+    
 }
 
 echo json_encode($tab); /* Pour pouvoir faire vehiculer des données en HTTP via une requete, nous devons encoder les données en JSON, c'est un format leger. C'est la réponse de la requete 'retour' AJAX que l'on retrouve dans function(data) dans le fichier ajax2.js */
