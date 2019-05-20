@@ -1,0 +1,72 @@
+// ORIENTE OBJET:
+
+-------- ICONVENIENTS:
+
+- techniquement, on ne peut rien faire de plus avec l'orienté objet qu'avec le php procédural.
+
+- En general, l'approche  orientée objet est moins intuitive que l'approche precedurale pour l'esprit humain.
+
+- Legere perte de performance(pouvant etre amelioré par divers moyens d'optimisation).
+
+------- AVANTAGES:
+
+-Modulariser afin d'avoir un code évolutif.
+
+-Encourager le travail collaboratif
+
+-Masquer la complexité du code grace au principe d'encapsulation.
+
+-Ré-utilisation du code, ne pas repartir de zéro, effectuer un code type (generique) pouvant etre repris sur d'autres projets. 
+(c'est ce que donnent des modules sur wordpress, et aussi comme ça que sont nés les framework).
+
+-Simplifier la maintenance, la mise a jour.
+
+-assouplir, factoriser le code., meilleur conceptualisation.
+
+-Plus d'options dans le langage (heritage, surcharge, abstraction, finalisation etc...).
+
+-Cela vous permettra de passer plus facilement sur l'aprehansion d'autres technologies, java, .net, c#, c++ etc...
+
+------- CONCLUSION:
+
+Vous n'aurez pas besoin d'orienté objet, pour un site de petite en vergure (le site e-commerce qu'on a réalisé en procédural), mais pour tous les projets de grande envergure, avec des équipes de développement, mise a jour régulierement.
+
+-une class est un regroupement d'informations, de données que l'on peut comparer à un plan de construction.
+ex:
+
+class Membre
+{
+    $pseudo, $mdp; 
+    public function seConnecter(){};
+    public function sInscrire(){};
+}
+
+class Panier 
+{
+    $nbProduit, $prix;
+    public function ajouterArticleDansPanier(){};
+    public function retirerArticle(){}
+}
+
+class PDO
+{
+
+}
+
+- Pour pouvoir utiliser les données déclarées dans la class, nous devons instancier la class 'Panier afin d'en créer un objet, c'est a dire un exemplaire de la class. L'objet permet d'atteindre et d'utiliser des fonctionnalités déclarées dans la class
+ex: 
+
+$panier1 = new Panier;
+$panier1_>ajouterArticleDansPanier();
+
+--------- VOCABULAIRE
+
+variable = proprieté = attribut
+fonction = methode 
+instance = objet
+
+Une class permet de contenir des variables avec des informations ainsi que des methodes comportant des traitements.
+Une class est un regroupement  d'informations (C'est comme un plan, un modele)
+Un objet est l'application du plan
+
+--------- En pratique, nous allons faire un CRUD (create, read, update, delete) comme le site eboutique en php.

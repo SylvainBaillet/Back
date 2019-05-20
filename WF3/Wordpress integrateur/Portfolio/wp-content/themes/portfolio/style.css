@@ -1,9 +1,9 @@
 /*   
 Theme Name: Portfolio
-Theme URI: http://localhost/portfolio/wp-content/thems/portfolio
+Theme URI: http://localhost//portfolio/wp-content/theme/portfolio
 Description: Portfolio developpeur web
 Author: Sylvain Baillet
-Author URI: http://localhost/portfolio
+Author URI: http://localhost/
 Version: 1.0
 .
 Commentaires généraux / Information de licences si applicable.
@@ -12,7 +12,7 @@ Commentaires généraux / Information de licences si applicable.
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
 body{
-    background-image: linear-gradient(to left bottom, #64b5ff, #72bdfd, #82c5fc, #91cdfa, #a1d4f8, #95c5eb, #89b6dd, #7da8d0, #5781b3, #365a95, #1a3676, #001255) !important ;
+      background-image: linear-gradient(to right bottom, #076467, #3c7d85, #6397a2, #8ab1bf, #b0ccda, #b1cbdc, #b2cadd, #b3c9de, #92abc7, #738eb1, #56729b, #3b5685) !important ;
 }
 li{
     list-style: none;
@@ -41,7 +41,7 @@ i{
     justify-content: space-around;
 }
 .menu_header ul li a{
-    padding-right: 1rem;
+    padding-right: 2rem;
     color: aliceblue;
 }
 .hauteur{

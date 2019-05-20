@@ -1,0 +1,170 @@
+----------------------------------------------------------------
+                   WordPress Développeur
+----------------------------------------------------------------
+
+_________________________________
+---------------------------------
+--1-- Installer WordPress
+_________________________________
+---------------------------------
+
+On installe un WP dans le dossier appelé /wp_eprojet/
+
+Nom de la BDD : eprojet
+Titre du site : Mes petites annonces
+
+site de téléchargement : https://fr.wordpress.org/download/
+
+
+_________________________________
+---------------------------------
+--2-- Créer un thème enfant
+_________________________________
+---------------------------------
+
+Grâce aux thèmes enfants, vous pouvez modifier un thème existant tout en conservant le bénéfice des mises à jour du thème parent.
+
+Un thème enfant vous permet de modifier les STYLES et les fichiers TEMPLATES d'un thème existant, ainsi que d'ajouter ou supprimer des FONCTIONNALITES. Vous pouvez donc adapter le thème enfant aux besoins de votre client.
+
+
+---------------------------------------------------------
+--2.1-- Création d'un thème enfant de "twentyseventeen" :
+---------------------------------------------------------
+
+--1--   On créé un dossier /twentyseventeen-child/ dans le dossier de WordPress /wp-content/themes. On nomme le dossier enfant de          cette façon comme le veut la bonne pratique : /htdocs/wp_eprojet/wp-content/themes/twentyseventeen-child/
+
+--2--   Créer le dossier enfant, un fichier style.css : /htdocs/wp_eprojet/wp-content/themes/twentyseventeen-child/style.css
+       :boum: style.css au singulier :boum:
+       Le code CSS du fichier style.css enfant écrase le code CSS du parent car il est exécuté APRES est exécuté après celui du parent (principe de la cascade CSS).
+
+       On ouvre ce fichier style.css et y mettre le code suivant :
+       :boum: la casse est importante à respecter car WP comme d'autres CMS interprète les commentaires pour y chercher certaines étiquettes
+
+               /*
+               Theme Name: twentyseventeen-child
+               Template: twentyseventeen
+               */
+               @import url('../twentyseventeen/style.css'); /* pour importer le CSS du parent */
+
+       /* :boum: ne pas séparer les ":" du nom des étiquettes "Theme Name" et "Template" par un espace ! */
+
+--3--   Activer le thème enfant dans le back-office de WordPress, puis on peut modifier son CSS.
+
+--4--   Modifier un template (ou modèle en français) de page :
+       Il suffit de copier le fichier parent que l'on veut modifier dans le thème enfant. Le fichier du TEMPLATE de l'enfant remplace celui du parent.
+
+               Exemple : on customise le template footer.php, en le copiant depuis le parent dans le thème enfant.
+               - on supprime tout le passage PHP dans ce fichier
+               - et on le remplace par : <p>Notre thème enfant - &copy; 2018</p>
+
+--5--   Le fichier functions.php :
+       :boum: functions.php avec un "s" contrairement au fichier style.css
+       Ce fichier functions.php fonctionne différemment : il n'écrase pas celui du dossier parent mais il est chargé avant le fichier functions.php du parent. Ainsi les fonctions de l'enfant prévalent sur celles du parent.
+
+       Il faut donc partir d'un fichier functions.php vierge dans lequel on ajoute en "surcharge" les fonctions propres au thème enfant (nous verrons le fichier functions.php un peu plus tard).
+
+
+Explication détaillée de la hiérarchie :
+
+   - index.php : point d'entrée du site. C'est le fichier principal qui est utilisé si aucun des autres templates n'existent.
+
+   - archive.php : affiche la liste des articles par auteur ou catégorie ou étiquettes (tag) ou date quand les fichiers spécifiques n'existent pas (à savoir author.php, ou category.php ou tag.php ou date.php => ils sont en vert et à gauche du fichier archive.php sur le PNG représentant la hiérarchie WP)
+
+   - single.php : affiche un article créé dans le back-office
+
+   - page.php : affiche une page créée dans le back-office
+
+   - home.php : affiche la page d'accueil prioritaire sur l'index.php
+
+   - 404.php : page affichée quand un contenu ou une page n'est pas trouvé
+
+   - search.php : page qui affiche les résultats des reccherches sous forme de liste
+
+
+:tête_de_renard: La boucle de WordPress - The Loop
+
+Dans WP on met toujours une boucle, même s'il n'y a qu'un seul contenu à afficher.
+
+   - have_posts() : renvoie un booléen pour savoir s'il y a des objets à afficher sur la page. Par exemple, lorsque l'on cherche à afficher des articles (ou des annonces, ou des produits ...), la fonction renvoie true tant que tous les articles (ou annonces ou produits ...) récupérés dans la base de données n'auront pas été affichés.
+
+   - the_post() : à l'INTERIEUR de la boucle (car dépend du while()), the_post() récupère les données du post (article, ou annonce ou produit ... ). Puis un curseur interne à WordPress sélectionne le post suivant dans la liste de ceux que l'on a récupérés de la requête en BDD. Lorsque le curseur arrive sur le dernier post, alors la fonction have_posts() retourne false, et la boucle while() s'arrête.
+
+   - the_content() : affiche le contenu d'un post (le texte, les images... )
+
+   - the_title() : affiche le titre
+
+   - the_permalink() : affiche le lien du contenu
+
+   - the_excerpt() : affiche l'extrait ou résumé du contenu
+
+   - the_field() : affiche un champ personnalisé dont on donne le slug en argument
+
+   - the_ID() : affiche l'id du contenu
+
+
+-----------------------------------
+--4.5-- Création d'un type de contenu "annonces" avec des champs personnalisés
+-----------------------------------
+
+:tête_de_renard: Type de contenu personnalisé "Annonces" = Custom Post Type
+
+Problématique : nous souhaitons créer des annonces de véhicules, et nous ne pouvons ajouter que des articles ou des pages. Nous avons donc besoin de créer un nouveau type de contenur (Custom Post Type) appelé "Annonces".
+
+Pour celui on installe le plugin : CUSTOM POST TYPE UI par WebDevStudio (CPT UI)
+
+
+Utilisation du plugin :
+   CPT UI > Add/Edit Post Types >
+           Post Type Slug* : annonce
+           Plural label* : Annonces
+           Singular label* : Annonce
+       > Settings > cocher Catégories (WP Core) pour activer la possibilité de mettre des catégories sur nos annonces.
+
+       > Cliquer sur "Add post type" pour enregister.
+
+
+Utilisation du plugin :
+   ACF > Groupe de champs > Ajouter >
+           titre = "champs pour annonce"
+
+           nous créons 6 champs :
+               1- > +Ajouter   > Titre du champ    : photo
+                               > Nom du champ      : photo (il s'agit du slug du champ)
+                               > Type de champ     : image
+                               > Requis            : oui
+                               > Valeur affichée dans le template  : URL de l'image
+
+               2- > +Ajouter   > Titre du champ    : marque
+                               > Nom du champ      : marque (il s'agit du slug du champ)
+                               > Type de champ     : texte
+                               > Requis            : oui
+
+               3- > +Ajouter   > Titre du champ    : modèle
+                               > Nom du champ      : modele (il s'agit du slug du champ)
+                               > Type de champ     : texte
+                               > Requis            : oui
+
+               4- > +Ajouter   > Titre du champ    : km
+                               > Nom du champ      : km (il s'agit du slug du champ)
+                               > Type de champ     : nombre
+                               > Requis            : oui
+
+               5- > +Ajouter   > Titre du champ    : carburant
+                               > Nom du champ      : carburant (il s'agit du slug du champ)
+                               > Type de champ     : Sélection
+                               > Requis            : oui
+                               > Choix             : Essence
+                                                     Diesel
+                                                     Hybride
+                                                     Electrique
+
+               6- > +Ajouter   > Titre du champ    : prix
+                               > Nom du champ      : prix (il s'agit du slug du champ)
+                               > Type de champ     : Nombre
+                               > Requis            : oui
+                               > Valeur affichée après le champ : €
+
+               Ne pas oublier :
+                   ACF > Assigner ce groupe de champs > Montrer ce champs quand "Type de publication" > "est égal à" > "annonce".
+
+                   Enfin, publier.

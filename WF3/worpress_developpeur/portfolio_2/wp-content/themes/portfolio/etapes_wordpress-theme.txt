@@ -1,0 +1,65 @@
+1-installation wordrpress
+
+(aller sur creation theme wordpress codex - les étapes sont indiquées pas a pas)
+
+2-creer un dossier 'portfolio' dans wp-content -> theme
+
+3- creer un fichier SCREENSHOT (extention png, jpg, jpeg etc... et l'enregistrer a la racine du dossier 'portfolio, ce sera l'aperçu dans le backoffice de worpress-> apparence-> theme) le nom 'screenshot est obligatoire.
+
+4- inserer les commentaires dans le fichier style.css:
+
+/*   
+Theme Name: Portfolio
+Theme URI: http://localhost/portfolio/wp-content/thems/portfolio
+Description: Portfolio developpeur web
+Author: Sylvain Baillet
+Author URI: http://localhost/portfolio
+Version: 1.0
+.
+Commentaires généraux / Information de licences si applicable.
+.
+*/
+
+(version prise sur wp codex puis adaptée a mon site adresse localhost etc, nom etc...)
+
+5- création de plusieurs fichiers: index.php, header.php, footer.php (toujours dans wp-content -> theme)
+
+6- on rapatrie le header et le footer sur la page index.php avec la fonction wordpress: get_header() puis pareil pour le footer avec get_footer()
+
+7- sur boucle wordpress codex, on va chercher des éléments de la boucle en exemple sur le site: if, while, else. dans lesquels on incorpore des éléments, h2, div, p...
+
+8- Creer les differentes regions dans le header et le footer et creer du zonning, ces regions en zoning permettront de placer des widget(logo, slogan, barre de recherche ...etc)
+
+9- 
+
+
+
+
+
+
+
+12- templates dans wp-content -> theme -> portfolio, je copie-colle le fichier index.php que je renomme FRONT-PAGE.php ( le nom est precis ), pour tester que cela marche bien j'ecris une phrase au hasard sur le html de FRONT-PAGE.php pour etre sur que cela fonctionne. Je copie-colle 
+
+je copie colle a nouveau index.php et le renomme SINGLE.php , tous les articles feront appel a la page SINGLE.php
+
+
+*extensions pratiques:
+
+-Elementor:
+
+-widget option:
+
+-shortcodes ultimates:
+
+-widget css class:
+
+-show current template (afficher le modele courant):
+permet d'afficher le ou les fichiers auquel fait appel wordpress pour ouvrir une page (ce dont wordpress a besoin)
+
+
+-----------------------------------------------------------------
+Theme enfant:
+
+on fait l'installation classique d'un wp, puis une fois les dossiers du wordpress mis dans mon dossier, dans wp-content, je copie colle le dossier de mon theme, et j'y ajoute -child, (c'est dans ce dossier que je ferais toutes mes modifications)
+
+                                                                                                                                                                                                                                                                                                                                    
