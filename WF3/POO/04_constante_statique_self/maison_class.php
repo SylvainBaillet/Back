@@ -19,7 +19,6 @@
 
         }
 
- 
 // afficher le nombre de pieces de la maison
 //Lorsqu'une methode est 'static' cela veut dire qu'elle appartient, a la class, et non a l'objet, on l'appelle directement via la class, comme ici 'Maison::getNbPiece()'
 echo "nombre de pieces de la maison : <strong>" . Maison::getNbPiece() . "</strong><hr>";
@@ -34,6 +33,11 @@ echo "la hauteur de la maison est de : <strong>" . Maison::HAUTEUR . "</strong><
 $maison = new Maison;   
 echo "la couleur de la maison est : <strong>" . $maison->$couleur . "</strong><hr>";
 //afficher le nombre de porte de la maison. 
-echo "la couleur de la maison est : <strong>" . $maison->getNbPorte() . "</strong><hr>";
+echo "le nombre de portes est : <strong>" . $maison->getNbPorte() . "</strong><hr>";
 
+// echo $maison->espaceTerrain . '<hr>';  /* /!\ erreur, il n'est pas possible d'acceder a une proprieté static via l'objet */
+
+echo $maison->getNbPiece() . '<hr>'; // /!\ ici cela fonctionne mais ce n'est pas logique, la proprieté etant 'static' on ne devrait pas pouvoir la lire via l'objet: bonne ecriture: Maison::getNbPiece()
+
+// echo Maison::$couleur; // erreur, on ne doit pas appeller une proprieté 'public' par la class
 ?>

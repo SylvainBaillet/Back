@@ -29,7 +29,7 @@
 
 ------- CONCLUSION:
 
-Vous n'aurez pas besoin d'orienté objet, pour un site de petite en vergure (le site e-commerce qu'on a réalisé en procédural), mais pour tous les projets de grande envergure, avec des équipes de développement, mise a jour régulierement.
+Vous n'aurez pas besoin d'orienté objet, pour un site de petite envergure (le site e-commerce qu'on a réalisé en procédural), mais pour tous les projets de grande envergure, avec des équipes de développement, mise a jour régulierement.
 
 -une class est un regroupement d'informations, de données que l'on peut comparer à un plan de construction.
 ex:

@@ -48,8 +48,8 @@ $etudiant->__construct('sylvain') . "<hr>";
 // echo $etudiant2->getError() . '<hr>';
 
 /*
-    -setter: permet de controlerles données
-    -getter: permet de voir, / exploiterles données finales
+    -setter: permet de controler les données
+    -getter: permet de voir, / exploiter les données finales
     -private $prenom : la proprieté est privée afin que l'on ne puisse pas la remplir de l'exterieurde la class. sans avoir fair de controles au prealable.c'est a dire sans etre passé par les gettuer/ setteur
 
     si nous avons un formulaire avec 10  champs , nous aurons 10 setteur et 10 getteur --> 

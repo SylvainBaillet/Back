@@ -17,6 +17,8 @@ class Panier
     }
 }
 
+
+//on instancie un objet '$panier' , on créé donc un exemplaire de la class
 $panier1 = new Panier;
 echo '<pre>'; var_dump($panier1);  echo'</pre>';// on observe un objet issu de la class 'Panier' à l'identifiant '#1' (reference de l'objet). Il peut y avoir plusieurs objets conservés en RAM, ils auront tous un identifiant different
 
@@ -48,7 +50,7 @@ echo '<pre>'; var_dump($panier2);  echo'</pre>';
 /* 
     Niveau de visibilité: - public: accessible de partout
                           - protected : accessible dans la class mere et heritieres
-                          - private : accessible uniquement dan sla class mere    
+                          - private : accessible uniquement dans la class mere    
                           
     'new' est un mot cle permettant d'effectuer une instanciation (creer un objet) 
     Une class peut produire plusieurs objets
