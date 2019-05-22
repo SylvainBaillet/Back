@@ -15,6 +15,7 @@ Pour redefinir des methodes abstraites, il est necessaire que la class qui les c
             abstract public function Devise();
 
         }
+        // pour declarer des methodes abstraites, , ma class doit etre obligatoirement abstraite.
 //-------------------------------
 
 // $test= new Joueur; /!\ erreur, une class abstraite n'est pas instanciable 

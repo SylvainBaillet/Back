@@ -1,6 +1,7 @@
 <?php
 
 /* Si la class B herite de A, et que la class C herite de B, alrs la class C herite de tout */
+/* si une proprieté est privées dans A par exemple, je ne pourrais pas m'en servir par heritage */
 class A 
     {
         public function test1()

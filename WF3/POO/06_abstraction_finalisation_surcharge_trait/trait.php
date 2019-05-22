@@ -1,6 +1,6 @@
 <?php
 
-/* Les Traits ont été inventés pour repousser les limites de l'heritage, il est possible pour une class d'heriter de plusieurs trait en meme temps.
+/* Les Traits ont été inventés pour repousser les limites de l'heritage, il est possible pour une class d'heriter de plusieurs trait en meme temps. Par convention, on l'appelle toujours par un 'T' en premier.
 Un trait est un regroupement de methodes et de proprietés pouvant etre importées dans une class */ 
 trait TPanier
     {
