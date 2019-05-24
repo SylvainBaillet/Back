@@ -20,14 +20,10 @@ if($_POST)
         copy($_FILES['photo']['tmp_name'], $photo_dossier);/* la fonction predefinie copy() permet de copier la photo dans le dossier photo: arguments: nom temporaire de la photo, chemin de destination */
             }
 
-  $loc_insert = $bdd->prepare("INSERT INTO maisons (titre, photo, reference, chambres, couchage , ville, adresse, prix) VALUES (:titre, :photo, :reference, :chambres, :couchage, :ville, :adresse, :prix)");
+  $loc_insert = $bdd->prepare("INSERT INTO maisons (titre, taille, chambres, couchage , ville, adresse, prix) VALUES (:titre, :taille, :chambres, :couchage, :ville, :adresse, :prix)");
   foreach($_POST as $key => $value)
-  {  
-    if($key != 'photo_actuelle')
-                            {
-                                $loc_insert->bindValue(":$key", $value, PDO::PARAM_STR);
-                            }
-     $loc_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);     
+  {                        
+      $loc_insert->bindValue(":$key", $value, PDO::PARAM_STR);
   }                
   $loc_insert->execute();
 }
@@ -69,11 +65,7 @@ if($_POST)
     <label for="Categorie">Titre</label>
     <input type="text" class="form-control col-md-12" id="titre" name="titre" placeholder="titre" >
   </div>  
-  <div class="form-group">
-    <label for="photo">Photo</label>
-    <input type="file" class="form-control-file" name="photo" id="photo">
-  </div>
-  <input type="hidden" id=photo_actuelle name="photo_actuelle">
+  
   <div class="form-group">
     <label for="taille">taille</label>
     <input type="text" class="form-control col-md-12" id="taille" name="taille" placeholder="taille" >

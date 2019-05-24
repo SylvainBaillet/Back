@@ -3,7 +3,7 @@ $(document).ready(function(){
     /* on selectionne le boutton 'submit' auquel on associe l'evenement 'click'. 'event' correspond a l'évenement 'click' */ 
     $('#submit').click(function(event){
         event.preventDefault(); /* PrevenDefault est une fonction predefinie qui permet d'annuler le comportement du bouton 'submit' qui a pour role de recharger la code / la page. */ 
-        ajax(); // fonction utilisateur executée ci dessous , le nome n'est pas defini, j'aurais pu mettre ce que je veux
+        ajax(); // fonction utilisateur executée ci dessous , le nom n'est pas defini, j'aurais pu mettre ce que je veux
     });
 
     function ajax()
@@ -26,4 +26,3 @@ $(document).ready(function(){
             $('#personne').val(''); // permet de vider le champs input une fois le formulaire validé
         },'json');
     }
-});

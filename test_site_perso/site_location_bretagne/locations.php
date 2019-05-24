@@ -44,21 +44,21 @@ $maison = $data->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div><!-- fin jumbotron -->
 
-  <table class="table col-md-8 mx-auto table-bordered text-center tab1">
+  <?php while($maison = $data->fetch(PDO::FETCH_ASSOC)): ?>
 
-  <?php foreach($maison as $key => $tab): ?>
-    <tr class="bg-light">
-    <?php foreach($tab as $key2 => $value): ?>
+      <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title"><?= $maison['title'] ?></h5>
+    <h4 class="card-title">Taille : <?= $maison['taille'] ?></h4>
+    <h4 class="card-title">Card title</h4>
+      <p class="card-text">Description : <?= $maison['description'] ?></p>
+      <p class="card-text">Prix : <?= $maison['prix'] ?></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
 
-    <?php if($key2 == 'photo'): ?>
-    <td><img src="<?= $value ?>" alt="<?= $tab['titre'] ?>" class="img-thumbnail" ></td>
-    <?php else: ?>
-    <td><?= $value ?></td>
-    <?php endif; ?>   
-     <?php endforeach; ?>
-    </tr>
-  <?php endforeach; ?>
-  </table>
+  <?php endwhile; ?>
 
 <button class="btn btn-primary color-white col-md-4 offset-md-4"><a href="gestion_loc.php" action="">Retour au formulaire d'insersion</button> </a>  
 

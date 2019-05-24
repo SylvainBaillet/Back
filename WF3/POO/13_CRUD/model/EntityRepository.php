@@ -42,9 +42,28 @@ nameSpace Model;
                     $r = $q->fetchAll(\PDO::FETCH_ASSOC);
                     return $r;
                 }
-            
+                //etape 7
+            public function getFields()
+                {
+                    $q = $this->getDb()->query("DESC " . $this->table); // DESC pour  description de la table
+                    $r = $q->fetchAll(\PDO::FETCH_ASSOC);
+                    //etape 9
+                    return array_splice($r,1); // array_splice() permet de retirer ici le premier champ id_employe dans le formulaire. 
+                }
+
+            public function save()// fonction nous permettant l'insertion en base de donnée
+                {
+                    $id = isset($_GET['id']) ? $_GET['id'] : 'NULL';// structure ternaire
+
+                    /* ici ma requete, c'est comme si j'avais ecrit: 
+                     $q = $this->getDB()->query ("REPLACE INTO employe (idEmploye, prenom, noml, sexe, service, date_embauche, salaire) Values (' . $id . ', '$_POST['prenom'], '$_POST['nom'], etc... )
+                    */
+                    $q = $this->getDB()->query('REPLACE INTO ' . $this->table . '(id' . ucfirst($this->table) . ',' . implode(',', array_keys($_POST)) . ') VALUES (' . $id . ',' . "'" . implode("','", $_POST) . "'" . ')');
+                    // $this->table retourne la table employe, si je change le nom de la table dans config.xml, cela la changera automatiquement
+                    // implode(',', array_keys($_POST)) permet d'extraire chaque indice du formulaire afin de les appeller comme nom de champ dans la requete
+                }    
         }
 
-$e = new EntityRepository;  
+$e = new EntityRepository; 
 $e->getDb();
 

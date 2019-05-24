@@ -5,7 +5,7 @@ $(document).ready(function (){
 
     function ajax(){
 
-        var service = $("#service").val();// on selectionne le selecteur id 'prenom' afin de recuperer l'id de l'employé selectionné
+        var service = $("#service").val();// on selectionne le selecteur id 'service' afin de recuperer l'id du service selectionné
         console.log(service);
 
         var parameters = "service=" + service;/* on definie les parametres envoyés a la requete AJAX 'aller' qui sera transmise a la requete de selection PHP dans le fichier ajax7.php 'service' correspond a $service dans la requete de selection dans ajax7.php*/

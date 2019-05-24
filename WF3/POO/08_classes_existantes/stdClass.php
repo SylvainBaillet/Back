@@ -6,7 +6,7 @@ $tab = array('Mario', 'Yoshi' , 'Toad' , 'Bowser');
 $objet = (object) $tab; // cast : transformation 
 echo '<pre>'; var_dump($objet); echo'</pre>'; /*Un objet fait parti de la class 'STDCLASS' (classe stadart en PHP)  lorsque celui-ci est orphelin et n'a pas été instancié par un 'new', l'objet n'est issu d'aucune class en particulier  */
 
-//Exo: aficher Yoshi en passant par l'objet StdClass '$objet'
+//Exo: afficher Yoshi en passant par l'objet StdClass '$objet'
 
 // lorsque l'on veut afficher un élément de l'objet, donc pointer vers l'indice d'un array, il faut mettre l'indice entre des accolades
 echo $objet->{1};
