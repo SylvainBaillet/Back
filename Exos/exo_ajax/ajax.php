@@ -13,7 +13,7 @@ $tab['resultat']= '<table class="table">';
 $tab['resultat'].= '<tr>';
     for($i =0; $i< $result->columnCount(); $i++)
         {
-            $colonne = $result->getColumnMeta($i);
+            $colonne = $result->getColumnMeta($i);    
             $tab['resultat'].= "<th>$colonne[name]</th>";
         }
         $tab['resultat'].= '</tr>';

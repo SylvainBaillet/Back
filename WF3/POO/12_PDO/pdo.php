@@ -155,7 +155,7 @@ echo"</table>";
 //--------------------------------------
 echo "<hr><h2 class='display-4 text-center alert alert-success'>exemple n°9  FETCH_CLASS</h2><hr> ";
 
-// la constante FETCH_CLASS permet de prendre les ressultats de la requete et d'affecter les propietes de l'objet. Chaque valeur va etre re-associée aux differents proprietés de la class (il faut pour cela que l'orthographe des noms des champs SQL correspondent au  proprietés de l'objet, comme ci dessous: public $prenom; etc...)
+// la constante FETCH_CLASS permet de prendre les resultats de la requete et d'affecter les proprietes de l'objet. Chaque valeur va etre re-associée aux differents proprietés de la class (il faut pour cela que l'orthographe des noms des champs SQL correspondent au  proprietés de l'objet, comme ci dessous: public $prenom; etc...)
 class Employes
       {
         public $id_employes;

@@ -18,7 +18,7 @@ class Panier
 }
 
 
-//on instancie un objet '$panier' , on créé donc un exemplaire de la class
+//on instancie un objet '$panier1' , on créé donc un exemplaire de la class
 $panier1 = new Panier;
 echo '<pre>'; var_dump($panier1);  echo'</pre>';// on observe un objet issu de la class 'Panier' à l'identifiant '#1' (reference de l'objet). Il peut y avoir plusieurs objets conservés en RAM, ils auront tous un identifiant different
 

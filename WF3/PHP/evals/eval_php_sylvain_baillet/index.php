@@ -46,17 +46,17 @@ if($_POST)// condition permettant d'eviter les messages d'erreurs s'affichant to
             }
 
             //message error titre
-        if(empty($titre) || (iconv_strlen($titre) < 3 && iconv_strlen($titre) > 30))
+        if(empty($titre) || (iconv_strlen($titre) > 3 && iconv_strlen($titre) < 30))
             {
                  $errorTitre .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir un titre compris entre 3 et 30 caracteres</small>';
             }
             //message error adresse
-        if(empty($adresse) || (iconv_strlen($adresse) < 3 && iconv_strlen($adresse) > 30))
+        if(empty($adresse) || (iconv_strlen($adresse) > 3 && iconv_strlen($adresse) < 30))
             {
                  $errorAddr .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir une adresse comprise entre 3 et 30 caracteres</small>';
             }
             //message error ville
-        if(empty($ville) || (iconv_strlen($ville) < 3 && iconv_strlen($ville) > 30))
+        if(empty($ville) || (iconv_strlen($ville) > 3 && iconv_strlen($ville) < 30))
             {
                  $errorVille .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir une ville comprise entre 3 et 30 caracteres</small>';
             }
@@ -66,7 +66,7 @@ if($_POST)// condition permettant d'eviter les messages d'erreurs s'affichant to
                  $errorCp .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir un code postal valide à 5 chiffres</small>';
             }
             //message error surface
-        if(empty($surface) || !is_numeric($surface) || (iconv_strlen($ville) < 1 && iconv_strlen($ville) > 3))
+        if(empty($surface) || !is_numeric($surface) || (iconv_strlen($surface) < 1 && iconv_strlen($surface) > 3))
             {
                  $errorSurf .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir une surface en chiffre comprise entre 1 et 3 caractères</small>';
             }    
@@ -76,7 +76,7 @@ if($_POST)// condition permettant d'eviter les messages d'erreurs s'affichant to
                  $errorPrix .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir un prix en chiffres</small>';
             }    
             //message error type
-        if(empty($type) || (iconv_strlen($type) < 3 && iconv_strlen($type) > 30))
+        if(empty($type) || (iconv_strlen($type) > 3 && iconv_strlen($type) < 30))
             {
                  $errorType .='<small class="col-md-4 offset-md-4 alert alert-danger text-center text-dark">veuillez saisir un type existant</small>';
             }    
