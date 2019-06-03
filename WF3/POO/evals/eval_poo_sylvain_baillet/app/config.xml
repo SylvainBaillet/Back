@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <host>localhost</host>
+    <user>root</user>
+    <password></password>
+    <db>vtc</db>
+    <table>conducteur</table>
+    <table>association_conducteur_vehicule</table>
+    <table>vehicule</table>
+</config>

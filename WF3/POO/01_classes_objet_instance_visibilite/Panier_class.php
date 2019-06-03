@@ -26,11 +26,11 @@ echo '<pre>'; var_dump(get_class_methods($panier1));  echo'</pre>';// permet d'o
 
 //exo, affecter la valeur de '5' à la proprieté publique 'nbPoduits'.
 
-$panier1->nbProduits = 5;// pour affecter une valeur a unre proprieté public, on ne met pas le signe '$' devant, ici notre objet '$panier1' pointe '->' sur la propriete 'nbProduits pour lui affecter une valeur
+$panier1->nbProduits = 5;// pour affecter une valeur a une proprieté public, on ne met pas le signe '$' devant, ici notre objet '$panier1' pointe '->' sur la propriete 'nbProduits pour lui affecter une valeur
 echo '<pre>'; var_dump($panier1);  echo'</pre>';
 
 echo "Nombre de produit dans le panier :" . $panier1->nbProduits . "<hr>";
-echo "Panier 1 >" . $panier1->ajouterArticle() . "<hr>";// ici on pioche une methode de la class à travers l'objet, toujours des parntheses car on fait appel a une methode (fonction) / methode public s'affiche bien
+echo "Panier 1 >" . $panier1->ajouterArticle() . "<hr>";// ici on pioche une methode de la class à travers l'objet, toujours des parentheses car on fait appel a une methode (fonction) / methode public s'affiche bien
 
 // echo "Panier 1 >" . $panier1->retirerArticle() . "<hr>";
 /* /!\ erreur: l'echo ci dessus a generé une erreur car, la methode protected 'retirerArticle()' est accessible dans la class ou cela a été affecté (class mère) ainsi que dans les classes heritieres    */
@@ -41,7 +41,7 @@ echo "Panier 1 >" . $panier1->ajouterArticle() . "<hr>";// ici on pioche une met
 /* Les niveaux de visibilités permettent de proteger des données, par ex les données saisies d'un formulaire ne pourront pas etre attribuées a n'importe quelle propriete declarée. elles passeront par des methodes qui permettront  de controler ces données*/
 
 $panier2 = new Panier;// on créé un nouvel exemplaire  / objet issu de la class 'Panier' 
-echo '<pre>'; var_dump($panier2);  echo'</pre>'; /* on peut observer un objet issu de la class 'Pnier' à l'identifiant '#2' */
+echo '<pre>'; var_dump($panier2);  echo'</pre>'; /* on peut observer un objet issu de la class 'Panier' à l'identifiant '#2' */
 
 //exo: affecter 3 produits a la proprieté '$nbProduits' et afficher le nombre de produits
 $panier2->nbProduits = 3; //affectation de la valeur 3 à la proprieté '$nbProduits'

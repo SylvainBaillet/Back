@@ -5,7 +5,7 @@
 
 <table class="table table-bordered text-center">
 <!-- etape 8 -->
-<!-- $donnees correspond a l'indicer 'donnes declaré dans la methode render() dans controller.php' -->
+<!-- $donnees correspond a l'indicer 'donnees' declaré dans la methode render() dans controller.php' -->
 <div><a href="?op=add" class="btn btn-large btn-info mb-2"><i class="fas fa-plus"></i>  Ajouter une nouvelle donnée</a></div>
 
 <thead><tr>
@@ -25,7 +25,7 @@
     <tr>
         <td> <?= implode('</td><td>', $value) ?></td>
         <td> <a href="?op=select&id=<?=$value[$id]?>" class="text-dark"><i class="fas fa-eye"></i></a> </td>
-        <td> <a href="?op=update&id=<?=$value[$id]?>" class="text-dark"><i class="fas fa-trash-alt"></i></a></td>
+        <td> <a href="?op=update&id=<?=$value[$id]?>" class="text-dark"><i class="fas fa-edit"></i></a></td>
         <td> <a href="?op=delete&id=<?=$value[$id]?>" class="text-dark"><i class="fas fa-trash-alt"></i></a> </td>
     </tr>
 <?php endforeach; ?>

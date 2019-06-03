@@ -6,7 +6,7 @@ class Autoload
             {
                 require __DIR__ . '/' . str_replace('\\' , '/' , $className . '.php');
                 // str_replace permet de remplacer les antislash '\' (nous avons 2 antislash sinon l'interpreteur avec un seul le prend pour un caractere d'echappement)
-                echo "require " . __DIR__ . '/' . str_replace('\\','/', $className . '.php' );
+               // echo "require " . __DIR__ . '/' . str_replace('\\','/', $className . '.php' );
             }
     }
 

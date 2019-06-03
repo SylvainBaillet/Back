@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// nous avons réorganisé le code pour ne pas avoir à cliquer 2 fois sur "vider le panier", nous remontons donc la seconde condition if, au dessur du premier if
+// nous avons réorganisé le code pour ne pas avoir à cliquer 2 fois sur "vider le panier", nous remontons donc la seconde condition if, au dessus du premier if
 if(isset($_GET['action']) && $_GET['action'] =='vider')
     {
         unset(($_SESSION)['panier']);

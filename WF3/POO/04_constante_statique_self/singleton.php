@@ -1,5 +1,5 @@
 <!-- création d'un pattern Singleton -->
-<!-- Un pattern Singleton permet de trouver une solution simple a un probleme recurent, par exemple si plusieurs personnes travaillent sur le meme projet, le attern servira pour que tous se connecte a la bdd par le meme objet 'Singleton' -->
+<!-- Un pattern Singleton permet de trouver une solution simple a un probleme recurent, par exemple si plusieurs personnes travaillent sur le meme projet, le pattern servira pour que tous se connecte a la bdd par le meme objet 'Singleton' -->
 
 <?php
     class Singleton 

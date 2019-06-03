@@ -26,7 +26,7 @@ nameSpace Model;
                                     die("Probleme de connexion à la bdd");
                                 }
                             }
-                        /* sans l'antislash, il genere une erreur!! l'inbterpreteur va chercher si la methode StdClass() est declarée dans le namespace 'general. Donc pour revenir dans l'espace global de php, nous devons mettre un antislash devant la class*/
+                        /* sans l'antislash, il genere une erreur!! l'interpreteur va chercher si la methode StdClass() est declarée dans le namespace 'general'. Donc pour revenir dans l'espace global de php, nous devons mettre un antislash devant la class*/
                         catch(\PDOException $e)
                             {
                                 die("Probleme de fichier XML manquant");
@@ -51,6 +51,13 @@ nameSpace Model;
                     return array_splice($r,1); // array_splice() permet de retirer ici le premier champ id_employe dans le formulaire. 
                 }
 
+            public function select($id) //Nous créons une methode select() en developpent un code le plus generique possible pour pouvoir le reutiliser sur nimporte quelle table de la bdd 
+                {                                                           //ce passage, avec ucfirst permet de dire la premiere lettre en majuscule, donc ici idEmploye
+                    $q = $this->getDB()->query("SELECT * FROM " . $this->table . ' WHERE id' . ucfirst($this->table) . "=" . (int) $id);
+                    $r = $q->fetch(\PDO::FETCH_ASSOC);
+                    return $r;
+                }    
+
             public function save()// fonction nous permettant l'insertion en base de donnée
                 {
                     $id = isset($_GET['id']) ? $_GET['id'] : 'NULL';// structure ternaire
@@ -61,6 +68,10 @@ nameSpace Model;
                     $q = $this->getDB()->query('REPLACE INTO ' . $this->table . '(id' . ucfirst($this->table) . ',' . implode(',', array_keys($_POST)) . ') VALUES (' . $id . ',' . "'" . implode("','", $_POST) . "'" . ')');
                     // $this->table retourne la table employe, si je change le nom de la table dans config.xml, cela la changera automatiquement
                     // implode(',', array_keys($_POST)) permet d'extraire chaque indice du formulaire afin de les appeller comme nom de champ dans la requete
+                }    
+            public function delete($id)
+                {                                                                                                          //(int) c'est du typage php7, on dit qu'on attend un integer, mais ce n'est pas obligé, cela fonctionnerait quand meme
+                    $q = $this->getDb()->query("DELETE FROM " . $this->table . " WHERE id" . ucfirst($this->table) . '=' . (int)$id); 
                 }    
         }
 

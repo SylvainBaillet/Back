@@ -1,0 +1,102 @@
+
+------------
+SYMFONY
+------------
+
+Yakine HAMIDA
+yakine.hamida@evogue.fr 
+
+-------------
+
+notions:
+MVC = model view controller , model pour la base de donnée, view pour les pages , 
+
+-------------
+
+1/ Révisions PHP OO :
+
+Visibilité - Autoload - Namespace - Interface
+
+(par default, une proprieté sans precision sur sa visibilité sera considerée public)
+
+-------------
+2/
+SYMPHONY:
+
+-intro: qu'est-ce que SYMFONY
+étape 1 : installation de symfony 3.4
+étape 2 : les bundles
+étape 3 : les routes et mles controllers
+étape 4 : Crééer la boutique sur SYMFONY
+étape 5 : TWIG (moteur de template)
+étape 6 : les assets
+étape 7 : Entités
+étape 8 : Doctrine
+étape 9 : les formulaires
+étape 10 : validation des données
+étape 11 : Association Mapping
+étape 12 : sécurité des utilisateurs
+étape 13 : installation et boutique sur SF 4.3
+BONUS : Mise en ligne
+BONUS : Formulaire de contact
+
+-----------------
+
+-----------------------------
+intro: qu'est-ce que SYMFONY
+-----------------------------
+
+Framework php créé par Sensiolabs en 2005
+
+a - quel est l'interet d'utiliser un framework:
+    1- une organisation optimisée
+    2- Fonctionnalité communes a tous les projets
+    3- Services disponibles (Routing, Securité, BDD, Moteur de template, formulaire...)
+    4- Communauté 
+
+b - choix du Framework
+    1- propre framework (pedagogie)
+    2- Les framework fullstack(Symfony, Zend, Laravel, Cake)
+    3- Les mini framework (Silex, Slim, CodeIgniter, Lumen...)
+
+c - Symfony 
+    -->Framework français créé par Sensiolabs
+    -->versions: 
+        LTS (long time support): 
+            v 2.8
+            v 3.4 : 2.8 mais plus souple, avec des fonctionnalités
+            v 4.4 : 3.4 Bundleless, Flex, Ecore (webpack), maker, php 7.1
+
+--------------------------------------
+étape 1 - Installation de Symfony 3.4           
+--------------------------------------
+
+1 - installer Composer
+2 - installer sf3.4
+3 - Arborescence des dossiers et fichiers
+4 - Lancement de l'settings_applications
+
+-------->
+
+1- Composer est un outil de dépendance, il permet de telecharger et de mettre a jour tous les outils, (services, composants, dependances..) dont on a bluetooth_searching
+telecharger composer: http://getcomposer.org/download/composer-setup.exe 
+installer puis suivre les étapes
+
+2- installer symfony 3.4
+On va dans le dossier Symfony, 'maj' + 'clic droit' puis ouvrir l'invite de commande (powershell, ou git bash here) ici.
+
+en ligne de commandes: composer create-project symfony/framework-standart-edition test
+
+3- Arbrescence des dossiers et fichiers
+        dossiers:
+        - app/               : contient toutes la configuration de l'app (BDD, securité, routes...)
+        - bin/               : les executables de l'app (donc de sf)                   
+        - src/               : Le dossier dans lequel nous allons coder notre MVC (c'est ici que l'on va coder 99% du temps)
+        - var/               : les fichiers écrits par sf au fur et a mesure (cache, logs)
+        - tests/             : Les tests unitaires.
+        - web/               : repertoire web (app.php ou app_dev.php, equivalent de index.php pour symfony)
+        - vendor/            : Le coeur de Symfony, (les fichiers codés par les sensio labs)
+        
+        fichiers:  
+        - composer.json      : Contient la liste de toutes les dependances dont on a besoin.
+
