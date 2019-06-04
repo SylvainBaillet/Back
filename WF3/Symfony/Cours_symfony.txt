@@ -27,7 +27,7 @@ SYMPHONY:
 étape 1 : installation de symfony 3.4
 étape 2 : les bundles
 étape 3 : les routes et mles controllers
-étape 4 : Crééer la boutique sur SYMFONY
+étape 4 : Créer la boutique sur SYMFONY
 étape 5 : TWIG (moteur de template)
 étape 6 : les assets
 étape 7 : Entités
@@ -42,9 +42,9 @@ BONUS : Formulaire de contact
 
 -----------------
 
------------------------------
-intro: qu'est-ce que SYMFONY
------------------------------
+                                                                                -----------------------------
+                                                                                intro: qu'est-ce que SYMFONY
+                                                                                -----------------------------
 
 Framework php créé par Sensiolabs en 2005
 
@@ -67,9 +67,9 @@ c - Symfony
             v 3.4 : 2.8 mais plus souple, avec des fonctionnalités
             v 4.4 : 3.4 Bundleless, Flex, Ecore (webpack), maker, php 7.1
 
---------------------------------------
-étape 1 - Installation de Symfony 3.4           
---------------------------------------
+                                                                         --------------------------------------
+                                                                         étape 1 - Installation de Symfony 3.4           
+                                                                         --------------------------------------
 
 1 - installer Composer
 2 - installer sf3.4
@@ -100,3 +100,174 @@ en ligne de commandes: composer create-project symfony/framework-standart-editio
         fichiers:  
         - composer.json      : Contient la liste de toutes les dependances dont on a besoin.
 
+4 - Lancement de l'application
+
+        methode 1 :
+        Localhost/back/wf3/symfony/test/web/app.php
+        Localhost/back/wf3/symfony/test/web/app_dev.php (affiche une petite barre de develkoppement en bas)
+
+        methode 2 :
+        on va dans le dossier test/ et en ligne de commande:
+        php bin/console server:run
+
+        puis dans le navigateur,    localhost:8000  (par defaut on est en mode dev, avec la barre de dev en bas)
+
+        -nous allons travailler en mode dev, avant de passer en mode prod
+        - à ce stade notre application affiche la page de bienvenue sur Symfony, cela signifie que tout va bien 
+
+                                                                --------------------------------------------
+                                                                          étape 2 : les bundles
+                                                                --------------------------------------------     
+
+1/ Le concept des bundles
+
+   - Les bundles sont des briques de notre application (des modules)
+
+   par exemple: 
+                Userbundle:
+                        UserController (C)
+                        UserModel (M)
+                        View : inscription/connexion/profil...
+
+  Avec la nouvelle version de Symfony (4), on considere qu'il est préferable de créer un seul bundle (AppBundle) , auparavant on fonctionnait par bundle, un dossier par brique et nos fichiers mvc a l'interieur
+  Nous allons créer un bundle: POLES/TestBundle
+
+        en ligne de commandes, on va taper (au choix soit dans notre dossier de projet, soit dans le terminal de VCstudio) 
+  <cmd>     
+        - php bin/console generate:bundle     
+        - Are you planning on sharing this bundle across multiple applications? [no]: on met yes ou 'y' pour creer un bundle    
+        - nous créerons un bundle POLES/TestBundle (donc un nameSpace)
+        - le creer dans les dossier src? on tape enter
+        - configuration format: on va choisir: annotation
+        (notre bundle a été créé mais il faut l'enregistrer dans composer.json)
+        - on ouvre dans notre ide, le fichier composer.json, puis dans psr-4 on rajoute une virgule apres appBundle, puis: "POLES\\":"src/POLES"
+        - puis dans le terminal: composer update   
+
+A present notre bundle existe dans src/POLES/TestBundle
+        il est composé de 4 dossiers: -controller : tous les controller du bundle 
+                                      -DependencyInjection : injection de dependances 
+                                      -Resources : Vues et Routes (YML) et eventuellement JS 
+                                      -Test : test liés aux fonctionnalitésdu bundle
+
+A ce stade le bundle est fonctionnel, mais il y'a une petite erreur, qu'on va corriger:
+        nous allons dans : src/POLES/TestBundle/Controller/DefaultController.php
+        puis a la ligne: return $this->render('POLESTestBundle:Default:index.html.twig'); 
+        on la réécrit comme ceci:  return $this->render('@POLESTest/Default/index.html.twig');    
+
+        apres avoir corriger la syntaxe, on voit apparaitre la page d'accueil 'Hello World'.                                 
+
+                                                                -----------------------------------------------------
+                                                                     étape 3 : les routes et mles controllers
+                                                                -----------------------------------------------------
+
+1/ création de routes
+
+        ("/") -> route simple homepage
+        ("/bonjour/") -> route echo (erreur)
+        ("/bonjour2/") -> route response
+        ("/hello/{prenom}") -> route response + param URL
+        ("/hola/{prenom}") -> route render de vue (html.twig) + param URL
+        ("/ciao/{prenom}/{age}") -> route render de vue + 2 params URL
+        ("/redirect/") -> route avec redirection (RedirectResponse)
+        ("/redirect2/") -> route avec redirection (redirectToRoute())
+        ("/message/") -> route avec redirect et message en session
+
+
+
+2/ L'objet Request
+
+        L'objet Request correspond a la partie request d'une requete http        
+
+        <code>
+              use Symfony\Component\HttpFoundation\Request;
+              correspond a la partie 'requete' d'une requete http
+
+        <ex code>
+        $session $$request->getSession();
+        recupere la session ($_SESSION)
+
+        Autres exemples: 
+
+        $session->set('prenom', 'Sylvain');
+        echo $session->get('prenom');
+
+        $request->session->set('prenom', 'Sylvain');
+
+        Autre utilité de $request: 
+
+        $request ->query->get('argument_url');
+        $request ->request->get('champs_form');
+        $request ->cookies->get('cookie');
+        $request ->server->get('infos_serveur');
+
+3/ L'objet Response
+
+        L'objet Response correspond a la partie reponse d'une requete http
+
+        <code>
+                use Symfony\Comonent\HttpFoundation\Response;
+
+                Toute action (fonction) doit avoir une réponse.
+
+                return new Response('toto');
+
+                meme la fonction render() est une réponse.
+
+                <code>
+                return $this->render();
+                return $this-> getTemplateting->renderResponse(); 
+                cette derniere ligne fait la meme chose que celle juste au dessus
+
+4/ Redirection
+
+        <code> premiere methode :
+        Use Symfony\Component\HttpFoudation\RedirectResponse;
+
+        cf route "/redirect/" et "/redirect2/"
+
+        /!\ A ce stade toutes nos routes doivent avoir un name
+
+5/ Message
+
+        <code>
+
+        $session->getFlashBag()->add;
+
+        permet d'enregistrer des messages qui seront disponibles dans d'autres pages (messages de felicitation , ou d'erreurs)
+
+        app.session : qui nous permet en twig de recuperer les infos en session
+
+        app.user : qui nous permet en twig de recuperer les infos de l'utilisateur actuellement connectés
+
+
+                                                                -----------------------------------------------
+                                                                    étape 4 : Créer la boutique sur SYMFONY
+                                                                -----------------------------------------------   
+
+1/ Créaion du projet   
+
+        -dans le dossier symfony
+        <cmd>
+                composer create-project symfony/framework-sandard-edition Boutique3
+                cd boutique3
+                php bin/console server:run
+
+        Test : localhost:8000        
+
+2/Reorganiser le AppBundle
+
+        A ce stade, on a créé 3 routes dans ProduitController:
+                localhost/                  ---> index.html.twig
+                localhost/categorie/pull    ---> index.html.twig
+                localhost/produit/12        ---> show.html.twig
+
+exercice:
+        AdminController :
+
+        localhost/admin/produit/list/       ---> admin/list_produit.html.twig
+                                            ---> afficher: 'Je suis dans la page qui liste les produits'   
+        
+        localhost/admin/produit/add/       ---> admin/form_produit.html.twig
+                                            ---> afficher: 'Je suis dans le formulaire produit'   
+
+        bit.do/poles-v

@@ -1,0 +1,13 @@
+{# ceci est un var_dump en twig
+{{dump(app.session)}}
+ #}
+
+{% for message in app.session.flashbag.get('success')%}
+    {{message}}<br/>
+{% endfor %} 
+
+{% for message in app.session.flashbag.get('error')%}
+    {{message}}<br/>
+{% endfor %}    
+
+Hello World!
