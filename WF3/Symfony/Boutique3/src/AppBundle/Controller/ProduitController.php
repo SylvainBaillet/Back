@@ -12,10 +12,11 @@ class ProduitController extends Controller
      * @Route("/", name="homepage")
      */
     public function indexAction()
-        {
-            $params = array();
-            return $this->render('@App/Produit/index.html.twig', $params);
-        }
+    {
+        $params = array();
+        return $this->render('@App/Produit/index.html.twig', $params);
+    }
+
 
     /** 
      * @Route("/produit/{id}/", name="produit")
@@ -29,7 +30,7 @@ class ProduitController extends Controller
         }
 
     /** 
-     * @Route("/categorie/{cat}", name="produit")
+     * @Route("/categorie/{cat}", name="categorie")
      */    
     public function categorieAction($cat)
         {

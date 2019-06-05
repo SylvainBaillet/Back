@@ -223,7 +223,7 @@ A ce stade le bundle est fonctionnel, mais il y'a une petite erreur, qu'on va co
         <code> premiere methode :
         Use Symfony\Component\HttpFoudation\RedirectResponse;
 
-        cf route "/redirect/" et "/redirect2/"
+        se referer à: route "/redirect/" et "/redirect2/"
 
         /!\ A ce stade toutes nos routes doivent avoir un name
 
@@ -261,13 +261,101 @@ A ce stade le bundle est fonctionnel, mais il y'a une petite erreur, qu'on va co
                 localhost/categorie/pull    ---> index.html.twig
                 localhost/produit/12        ---> show.html.twig
 
-exercice:
-        AdminController :
+        -> creation de nos controllers:
+                AdminController
+                MembreController
+                CommandeController
+                ProduitController
 
-        localhost/admin/produit/list/       ---> admin/list_produit.html.twig
-                                            ---> afficher: 'Je suis dans la page qui liste les produits'   
+        -> création de nos vues 
+                Admin/ (list_produit, form_produit etc...)
+                Membre/ (connection, inscription, profil ...)
+                Commande/ (panier, transport, livraison, paiement...)
+                Produit/ (home, categorie, boutique, fiche_produit...)
+
+3/ création des premieres routes
+
+        --> ProduitController: "/", "/produit/{id}/" etc...
+        --> AdminController : "/admin/produit/", "/admin/membre/" etc...
+
+                                                               ----------------------------------------------
+                                                                     étape 5 : TWIG (moteur de template)
+                                                               ----------------------------------------------     
+
+Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Twig, blade...) permet d'afficher du php dans les vues HTML de maniere plus simple
+        exemple : au lieu d'afficher du php comme ceci <?= $membre['prenom']?>, en twig cela donnera {{membre.prenom}} 
+       
+1/ creation du layout 
+
+        un Layout est une structure de page, dans laquelle on peut ajouter des éléments/ du contenu. Le concept des layout permet d'avoir plusieurs structures de pages dans notre site: exemple front et backoffice. pourtant c'est le meme site.
+
+    - dans SF 3.4 , on a un endroit specifique ou il faut mettre le layout (dans app/Resources/views)
+
+       chemin(pour notre projet): Boutique3/app/Resources/views/layout.html.twig
+
+2/ L'heritage twig 
+
+        Avec Twig, on parle d'heritage, cela signifie que nos vue heritent (extends) d'un layout. et peuvent contenir de l'HTML à l'interieur des blocks disponibles (créés dans le layout).
+
+        De maniere generale, il faut voir le fonctionnement de Twig et de la methode render comme un chargement de contenude maniere "empilée" (analogie de la poupée russe...)
+        . Render temporise (mémoire tampon) le contenu et affiche en meme temps l layout, la vue et les params.
+
+3/ modification de nos vues
+
+        <code>
+        {% extends 'layout.html.twig %}
+        {% block content %}
+        Contenu HTML de la page
+        {% endblock %}
+
+        /!\ Attention, quand on utilise l'heritage Twig, nos vues ne peuvent contenir de l'html qu'a l'interieur des blocks prevus pour
+
+
+4/ Documentation twig
+
+        https://twig.symfony.com/doc/2.x/
+
+        Dans les twigs référence, on trouve dans les filtres ce qui permet de formater l'ecriture, les dates, majuscules, conditions, securités... dont on se servira dans nos projets.
+
+------> A ce stade, notre application permet d'afficher les pages, accueil, inscription, connexion, profil, botique, produit, categorie, gestion membre, gestion produit, gestion commande. 
+
+------> Par contre nous ne sommes pas encore en mesure d'echenger avec la base de donnée (ajouter du contenu, et afficher ce contenu). Il faut voir les entités et Doctrine.
+
+
+                                                                        -------------------------------
+                                                                                étape 6 : ASSETS
+                                                                        -------------------------------
+
+
+
+                                                                        -------------------------------
+                                                                                étape 7 : ENTITES
+                                                                        -------------------------------
+
+1/ Doctrine ORM et le concept des Entités (Entity)
+
+        -D'une certaine maniere, les entités correspondent a la partie model de notre MVC, c'est la relation avec la bdd, mais en PHP et non en SQL.
+        Theoriquement, nous n'aurions plus besoin du SQL a partir de maintenant.
+
+        -ORM: Object Relation Mapping 
+
+        -Nous allons créer nos entités sous forme de class PHP (POPO : Plain Old PHO Object) qui vont permettre à Doctrine de comprendre notre base de donnée et de la manipuler.
+
+        -Par exemple : pour faire INSERT INTO Produit, on fera $produit = new Produit;
+                                                               persist($produit);  pour ajouter, si on voulait supprimmer, ce seraitremove a la place de persist
         
-        localhost/admin/produit/add/       ---> admin/form_produit.html.twig
-                                            ---> afficher: 'Je suis dans le formulaire produit'   
+        Pour que tout cela soit possible il faut expliquer a Doctrine quelle relation il existe entre la BDD et nos Entity
 
-        bit.do/poles-v
+2/ Créer Entité produit
+
+        a- Creer le dossier Entity dans src/AppBundle/
+
+        b- Creer le fichier Produit.php : src/AppBundle/Entity/Produit.php
+
+        c- Creer notre class Produit et nos proprietés
+
+3/ Annotations (mapping)
+4/ Mettre a jour la BDD
+5/ Generer les Entités en ligne de commande
+6/ Generer mes Entités via les Entités
+7/ Generer les Entités depuis la BDD            
