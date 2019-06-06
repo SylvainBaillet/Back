@@ -1,5 +1,58 @@
 {% extends 'layout.html.twig' %}
 
+{# exo : mettre le titre en majuscule, mettre le prix comme ceci: 19,00, puis mettre homme si le public est m #}
 {% block content %}
-<h1>Je suis dans la page n° :{{id}}</h1> 
+<h1>Je suis dans la page n° :{{id}} </h1> 
+
+
+
+<h1 class="display-4 text-center mt-4"><strong class="text-info">{{produit.titre|upper}}</strong></h1>
+	<div class="col-lg-6 col-md-12 mx-auto form1">
+	<div class="card h-100">
+	   
+		<a href=""><img class="card-img-top" src="" alt=""></a>
+	   
+		<div class="card-body text-center">
+		<h4 class="card-title text-center">
+			<a href="" class="alert-link text-info">{{produit.titre}}</a>
+		</h4><hr>
+        {# le number format, attends 3 arguments, le nombre de chiffre apres la virgule, ensuite le signe, soit virgule ou point, puis ce qui marque le chiffre au miliers par exemple l'espace #}
+		<h5 class="text-center">{{produit.prix |number_format(2, ',', ' ')}} €</h5><hr> 
+		<p class="card-text text-center">{{produit.description}} </p><hr>
+		<p class="card-text text-center">{{produit.taille}}</p><hr>
+		<p class="card-text text-center">
+        {% if produit.public == 'm' %}
+            Homme
+        {% elseif produit.public == 'f' %}
+            Femme
+        {% else %}
+            Mixte
+        {% endif %}
+        </p><hr>
+		<p class="card-text text-center">{{produit.couleur}}</p><hr>
+		<a href=">" class="alert-link text-dark card-text"><i class="fas fa-angle-double-left"></i>&nbsp;&nbsp;retour vers la categorie :{{produit.categorie}}</a>
+		</div>
+		<div class="card-footer text-center">
+
+        {# ici on fait une condition lui isant, que si le stock (produit.stock) est au dessus de 0, on affiche le selecteur, sinon, le message rouge disant qu'il n'y a plus de stock #}
+        {% if produit.stock > 0 %}
+        <div class="form-group">
+        <select class="form-control">
+
+            {# ici au lieu de faire un selecteur avec une option par chiffre, on fait une boucle pour lui dire de faire une option par boucle de 1 à 5 (1..5) et si 'i' <= au chiffre dans produit.stock il n'affichera que ce qu'il y'a en stock #}
+            {% for i in 1..5 if i <= produit.stock %}
+            <option>{{i}}</otpion>
+            {% endfor %}
+
+        </select>
+        </div>
+			<button type="button" class="col-md-12 btn btn-dark">Ajouter au panier</button>
+        {% else %}
+        <i style="color:red">Produit en rupture de stock</i>
+        {% endif %}
+		</div>
+		
+	</div>
+	</div>  
+    
 {% endblock %}
