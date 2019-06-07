@@ -326,6 +326,48 @@ Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Tw
                                                                                 étape 6 : ASSETS
                                                                         -------------------------------
 
+        Le composant assets de symfony permet de gerer les ressources dans le dossier web(photo, img, js, fonts, css...) et de les appeller de maniere absolue,la fonction asset redirige toujours vers notre dossier web
+
+1/ Modification du fichier composer.json
+
+        <code> (dans composer.json)
+        "require": ("symfony/asset" : "^3.4")         le "^3.4" signifie sert toi au minimum de la version 3.4, pas en dessous 
+        
+2/ Mise a jour de l'app
+
+        <cmd>
+        composer update
+
+3/ Dossier web/ (photos, css, js...)
+
+        boutique3/web/
+                photo/ (creer ces 3 dossiers)
+                css/
+                js/
+
+
+4/ Modifications des vues
+
+        En php procedural, notre lien css, nous le mettions comme ceci
+        href="../../css/style.css"
+
+        avec la fonction asset() , nous procederons comme ceci: 
+        href="{{ asset('css/style.css') }}"
+
+        avec la fonction path(), nous ferons un lien vers une page: path('nomderoute')
+
+        -----
+        Liens dynamiques: 
+
+        En procedural, nous aurions fait pour nos photos:
+        src="../../photo/<?= $pdt['photo'] ?>"
+
+        en symfony:
+        src="{{ asset('photo/' ~ pdt.photo) }}"
+
+
+        href="{{ path('produit', {'id':pdt.id} ) }}"
+
 
 
                                                                         -------------------------------
@@ -491,9 +533,78 @@ Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Tw
         $em =$this->getDoctrine()->getManager();
         $produit = $em->find(Produit::class, $id);
 
+
 5/Requetes SELECT * FROM ... WHERE ... = ...
+
+        La fonction findBy() va nous permettre de recuperer des données de maniere plus ciblée.
+        <code>
+        $repo =$this->getDoctrine()->getRepository(Produit::class);
+        $produit = $repo->findBy(array('categorie'=>$cat));
+        $produit = $repo->findBy(array('taille'=>'1'));
+
+        SELECT * FROM produit WHERE taille = '1' AND categorie = 'tshirt'
+
+        -pour selectionner les produits de couleur rouge, par prix decroissant, affichant les resultats de 1 à 10 (pour la pagination, par exemple page 2 ce serait 'DESC'], 20,10):
+        $produit = $repo->findBy(['couleur' => 'rouge' ] , ['prix' -> 'DESC'], 0,10);
+        SELECT * FROM produit WHERE couleur = 'rouge' ORDER BY prix DESC LIMIT 0, 10
+
+        -pour sectionner le premier des produits:
+        $produit = $repo->findOneBy(array('taille'=>'1'));
+        SELECT * FROM produit WHERE taille = '1' LIMIT 0,1
+
+
 6/Requetes INSERT / update
+
+        Avec Doctrine on manipule des objets de notre class Entity. 
+        On preferera passer via le Manager pour faire les requetes, car persist et flush ne fonctionne pas avec EntityRepository, mais avec le Manager.
+
+        -Enregistrement: on créé un objet vide, 
+                        on hydrate (normalement via le formuaire), 
+                        puis on persiste et on flush (on enregistre et on envoie la requete)
+
+                        <code>
+                        $produit = new Produit;
+                        $produit->setTitre('dsfbqdbqdb');
+                        $produit->setReference('sdfgdfg');
+
+                        $em->persist($produit);
+                        $em->flush();
+
+        -Modification:
+                        Pour update une Entité, c'est le meme processus que pur add, a ceci pres que l'objet n'est vide a la base, on doit donc d'abbord recuperer l'objet a modifier avec la fonction find()   
+                              
+
 7/Requete delete
+
+        Avec Doctrine on manipule des objets de notre class Entity., donc on va d'abord recuperer l'objet avec la fonction find()
+
+        <code> 
+        $em->remove($produit);
+        $em->flush();
+
+
 8/Create Query et Query Builder
+
+        Pour effectuer des requetes specifiques, nous avons 2 possibilités :
+
+        -Create Query (SQL)
+        -Query Builder
+
+        ---> voir ProduitRepository
+
+        /!\ Dans l'objectif de "factoriser" le code, nous créons nos requetes specifiques dans le Repository, afin de les utiliser de maniere simple dans les controller.
+
+        ---> voir le ProduitController,  route "/categorie/" et la fonction getAllCategories() declarée dans le ProduitRepository:
+
+        Liens:
+
+        Create Query : 
+	https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/dql-doctrine-query-language.html
+
+        Query Builder:
+        https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/query-builder.html
+	
+	
+	
 
 

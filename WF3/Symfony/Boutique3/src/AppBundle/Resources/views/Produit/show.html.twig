@@ -10,7 +10,7 @@
 	<div class="col-lg-6 col-md-12 mx-auto form1">
 	<div class="card h-100">
 	   
-		<a href=""><img class="card-img-top" src="" alt=""></a>
+		<a href="{{ path('produit', {'id':produit.id} ) }}"><img class="card-img-top" src="{{ asset('photo/' ~ produit.photo) }}" alt=""></a>
 	   
 		<div class="card-body text-center">
 		<h4 class="card-title text-center">
@@ -30,7 +30,7 @@
         {% endif %}
         </p><hr>
 		<p class="card-text text-center">{{produit.couleur}}</p><hr>
-		<a href=">" class="alert-link text-dark card-text"><i class="fas fa-angle-double-left"></i>&nbsp;&nbsp;retour vers la categorie :{{produit.categorie}}</a>
+		<a href="{{ path('categorie', { 'cat' : produit.categorie } ) }}" class="alert-link text-dark card-text"><i class="fas fa-angle-double-left"></i>&nbsp;&nbsp;retour vers la categorie :{{produit.categorie}}</a>
 		</div>
 		<div class="card-footer text-center">
 

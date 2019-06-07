@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Lien de notre fichier style CSS -->
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <title>{% block title %} Boutique {% endblock %}</title>
   </head>
@@ -24,16 +24,19 @@
 
     <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav mr-auto">
-
+        {# pour faire un lien vers une page, on utilise la fonction path #}
         <li class="nav-item">
             <a class="nav-link" href="{{ path ('homepage') }}">Boutique</a>
         </li>
+        {# a nouveau la fonction path #}
         <li class="nav-item">
             <a class="nav-link" href="{{ path ('membre_inscription')}}">Inscription</a>
         </li>
+        {# a nouveau la fonction path #}
         <li class="nav-item">
             <a class="nav-link" href="{{ path ('membre_connexion') }}">Connexion</a>
         </li>
+        {# a nouveau la fonction path #}
         <li class="nav-item">
             <a class="nav-link" href="{{ path ('membre_profil')}}">Profil</a>
         </li>
