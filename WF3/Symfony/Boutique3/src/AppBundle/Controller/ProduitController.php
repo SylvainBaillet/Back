@@ -78,7 +78,7 @@ class ProduitController extends Controller
         {
             //1 - recuperer les infos
             $repo = $this->getDoctrine()->getRepository(Produit::class);
-            $produits = $repo->findBy(array('categorie' => $cat));
+            $produits = $repo->findBy(array('categorie' => $cat));//findBy nous permet de recuperer les données par un champ, ici par la categorie par exemple 
 
             $categories =$repo->getAllCategories();
 

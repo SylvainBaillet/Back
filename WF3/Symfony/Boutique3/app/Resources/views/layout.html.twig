@@ -13,6 +13,8 @@
     <!-- Lien de notre fichier style CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+
+
     <title>{% block title %} Boutique {% endblock %}</title>
   </head>
   <body>
@@ -72,7 +74,18 @@
     <section class="container mon-conteneur">
 		<div class="row form1">
 		
-			
+			{# ici nous affichons nos messages de succes ou d'erreurs en cas d'ajout, de modification, suppression... #}
+            {% for message in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}    
+            {% for message in app.session.flashbag.get('errors') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}    
+
 			{% block content %}
 			{% endblock %}
 

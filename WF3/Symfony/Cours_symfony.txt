@@ -605,6 +605,106 @@ Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Tw
         https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/query-builder.html
 	
 	
-	
+                                                                        ----------------------------------
+                                                                            étape 9 : Les formulaires
+                                                                        ----------------------------------
 
+
+1/ Le fonctionnement des formulaires
+
+        De la meme maniere qu'on ne manipule pas des enregistrements en bdd, mais bien des objets (entity) chaque formulaire va etre lié à une entités
+
+        Ainsi un formulaire est lié à un objet...
+
+        Inscription ==========> Objet membre
+        Ajout de produit======> Objet Produit
+        Modif de produit======> Objet Produit
+        ajout d'une commande==> Objet Commande
+
+        Un formulaire est generé grace à une class (type --> ProduitType)
+        Chaque champ d'un formulaire correspond à une class, service de SF, cela permet de generer tous les controles sur les formulaires.
+
+2/ Generer les formulaires
+
+        <cmd>
+                php bin/console generate:doctrine:form AppBundle:Produit 
+
+        ---> cela créé un dossier Form dans notre Bundle, et un fichier ProduitType.php, qui contient la construction du formulaire.        
+
+
+3/ Recuperer les données du formulaire (Traitement du formulaire)
+
+        A- Generer le formulaire dans la route
+
+                <code>
+                use AppBundle\Form\ProduitType
+                $form = $this->createForm(ProduitType::class, $produit);     
+
+        B- Afficher le formulaire dans la vue
+
+                -on envoi le formulaire à la vue via les params:
+
+                <code>
+                $params = array('produitForm' -> $form -> createView())
+
+                - on affiche le formulaire:
+                <code>
+                {{form_label(produitForm.reference)}}---->affiche le label
+                {{form_widget(produitForm.reference)}}---->affiche le champ
+                {{form_errors(produitForm.reference)}}---->affiche les erreurs
+
+                /!\ Si on affiche les champs un par un, il ne faut pas oublier:
+                        {{ form_start(produitForm) }}
+                        {{ form_end(produitForm) }}
+
+
+
+        C- Recuperer les données saisies
+
+                $form->handleRequest($request);
+                /!\ Cette ligne est tres importante pour pouvoir recuperer les données en POST
+
+        D- Checker la validité du form et traiter les données (enregistrement)
+
+                <code>
+                if($form->isSubmitted() && $form-> isValid())
+                {
+                        //persist
+                        //flush
+                        //message de validation
+                        //   
+                }       
+
+4/ Personnaliser un formlaire avec Bootstrap
+
+        -Dans: app/Config/config.yml
+        <code>
+        (rajouter dans les parametres twig:
+                form_themes:
+                        - 'bootstrap_4_layout.html.twig
+
+5/ Update un Enregistrement
+
+        Pour update un enregistrement avec le systeme des formulaires sur SF, rien de plus simple. Lorsqu'on créé le formulaire dans la route, on precise un objet deja existant (voir route admin/produit/update/{id})
+
+        ----> On dit qu'on hydrate le formulaire
+
+6/ Validation des données
+
+
+
+7/ Champs file
+
+
+
+a faire:  inscription
+
+1/ entity Membre
+2/ Controller 
+3/ Formulaire (MembreType) ---> via la console
+4/ Route: Creer le formulaire et sa vue
+5/ La vue, Afficher le formulaire
+7/ Route: Recuperer les infos du formulaire et enregistrer le membre.
+
+Attention: Etant donné que le champ Statut existe dans notre BDD, le formulaire va etre creer avec un champ Statut, hors ce n'est pas au membre de choisir son statut
 

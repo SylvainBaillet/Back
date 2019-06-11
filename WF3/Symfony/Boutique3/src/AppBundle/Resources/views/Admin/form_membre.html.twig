@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<h1>Je suis dans la page d'admin qui permet d'ajouter des membres</h1>
+<h1>{{ title }}</h1>
+{# ci dessous, la fonction form nous permet de recuperer l'ensemble d'un formulaire, ici notre formulaire 'produitForm' #}
+{{ form(membreForm) }}
 {% endblock %}

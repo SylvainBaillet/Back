@@ -17,7 +17,7 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
                 $em = $this->getEntityManager();
                 $query = $em->createQuery("SELECT DISTINCT(p.categorie) FROM AppBundle\Entity\Produit p ORDER BY p.categorie ASC");// avec la methode createQuery, on a fait une requete SQL legerement modifiée, ce qu'on appelle du DQL (Doctrine Query Language)
                 $categories=$query->getResult();// getResult est l'equivalent d'un fetch
-                //Query builder:
+                //Query builder: 
 
                 // SELECT DISTINCT(categorie) FROM produit ORDER BY categorie ASC
                 $query = $em->createQueryBuilder();
