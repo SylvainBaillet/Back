@@ -35,16 +35,44 @@ class MembreType extends AbstractType
                     'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
                 )),
             )
+        ))
         ->add('password', PasswordType::class, array(
             'required' => false
+
         ))
         ->add('nom', TextType::class, array(
             'required' => false
+                
+                
         ))
         ->add('prenom', TextType::class, array(
-            'required' => false
+            'required' => false,
+            new Assert\NotBlank(array(
+                    'message' => 'Attention, veuillez renseigner ce champs !'
+                )),
+                new Assert\Length(array(
+                    'min'=> 3,
+                    'minMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                    'max' => 20,
+                    'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                )),
+            
         ))
-        ->add('email', EmailType::class )
+        ->add('email', EmailType::class, array(
+            'required' => false,
+            new Assert\NotBlank(array(
+                    'message' => 'Attention, veuillez renseigner ce champs !'
+                )),
+                new Assert\Length(array(
+                    'min'=> 3,
+                    'minMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                    'max' => 20,
+                    'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                )),
+            
+
+        ))
+
         ->add('civilite', ChoiceType::class, array(
             'choices'=> array(
                 'Homme' => 'm',
@@ -52,14 +80,34 @@ class MembreType extends AbstractType
             )
         ))
         ->add('ville', TextType::class, array(
-            'required' => false
+            'required' => false,
+            new Assert\NotBlank(array(
+                    'message' => 'Attention, veuillez renseigner ce champs !'
+                )),
+                new Assert\Length(array(
+                    'min'=> 3,
+                    'minMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                    'max' => 20,
+                    'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                )),
+            
         ))
-        ->add('codepostal', )
+        ->add('codepostal', IntegerType::class)
         ->add('adresse', TextType::class, array(
-            'required' => false
+            'required' => false,
+            new Assert\NotBlank(array(
+                    'message' => 'Attention, veuillez renseigner ce champs !'
+                )),
+                new Assert\Length(array(
+                    'min'=> 3,
+                    'minMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                    'max' => 20,
+                    'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
+                )),
+            
         ))
-        ->add('statut', IntegerType::class, )
-        ->add('enregistrer', submitType::class);
+        ->add('statut', IntegerType::class, array())
+        ->add('enregistrer', SubmitType::class);
     }/**
      * {@inheritdoc}
      */

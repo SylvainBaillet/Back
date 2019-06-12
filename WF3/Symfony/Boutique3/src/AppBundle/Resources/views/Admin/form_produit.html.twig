@@ -3,6 +3,13 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
+{# is defined correspond en phph a 'isset' #}
+{# cette condition permet d'afficher l'image si elle existe en bdd, 'is defined' donc #}
+{% if photo is defined %} 
+<img src"{{ asset('photo/' ~ photo ) }}" height="">
+{% endif %}
+
+
 {# ci dessous, la fonction form nous permet de recuperer l'ensemble d'un formulaire, ici notre formulaire 'produitForm' #}
 {{ form(produitForm) }}
 

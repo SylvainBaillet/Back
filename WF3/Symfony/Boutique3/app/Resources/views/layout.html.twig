@@ -26,9 +26,29 @@
 
     <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav mr-auto">
+
+        {# si le visiteur est connecté (peu importe le niveau de role) #}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    
         {# pour faire un lien vers une page, on utilise la fonction path #}
         <li class="nav-item">
             <a class="nav-link" href="{{ path ('homepage') }}">Boutique</a>
+        </li>
+        {# a nouveau la fonction path #}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path ('membre_profil')}}">Profil</a>
+        </li>
+        {# a nouveau la fonction path #}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path ('deconnexion') }}">Deconnexion</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">panier</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="">Boutique</a>
         </li>
         {# a nouveau la fonction path #}
         <li class="nav-item">
@@ -36,22 +56,15 @@
         </li>
         {# a nouveau la fonction path #}
         <li class="nav-item">
-            <a class="nav-link" href="{{ path ('membre_connexion') }}">Connexion</a>
-        </li>
-        {# a nouveau la fonction path #}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path ('membre_profil')}}">Profil</a>
+            <a class="nav-link" href="{{ path ('connexion') }}">Connexion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Panier</a>
+            <a class="nav-link" href="">panier</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">Deconnexion</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">Boutique</a>
-        </li>
+        {% endif %}
         
+        {# seul ceux qui ont le 'ROLE' admin  quand ils sont connectés, auront acces a cette partie de la nav #}
+        {% if is_granted('ROLE_ADMIN') %}
         	<li class="dropdown">	
 			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Admin
@@ -62,7 +75,7 @@
 				<li><a class="dropdown-item" href="{{ path ('admin_commande') }}"><i class="fas fa-shopping-cart"></i>&nbsp;Gestion Commande</a></li>
 			</ul>
 		</li> 
-       
+       {% endif %}
 
         </ul>
         <form class="form-inline my-2 my-md-0">
@@ -94,7 +107,7 @@
 		<!-- /.row -->
 	</section>
 
-    <footer class="bg-dark text-white text-center p-3 fixed-bottom">
+    <footer class="bg-dark text-white text-center p-3">
         &copy; 2019 - GL - Pas touche c'est mon site à moi !!! 
     </footer>
 

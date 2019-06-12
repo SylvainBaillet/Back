@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;// pour pouvoir utiliser une propriété file pour uploader mes photos, je dois faire un use de UploadedFile au préalable
 
 /**
  * Produit
@@ -75,7 +76,10 @@ class Produit
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=false)
      */
-    private $photo;
+    private $photo = 'default.png';
+
+    // on ne mappe pas cette proprieté ($file) car elle n'est pas liée à la base de donnée. elle va simplement nous permettre de manipuler la (les) photo d'un produit avant de l'enregistrer
+    private $file;
 
     /**
      * @var float
@@ -342,4 +346,73 @@ class Produit
     {
         return $this->stock;
     }
+
+
+    /**
+     * Set file
+     *
+     * @param object UploadedFile
+     *
+     * l'objet UploadedFile de symfony, nous permet de gerer tout ce qui est lié a un fichier uploadé, l'equivalent php de la superglobale ($_FILES ===> nop, taille, type, code erreur, emplacement temporaire)
+     * 
+     * @return Produit
+     */
+    public function setFile(UploadedFile $file = NULL)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return object UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    //en plus de file, on va rajouter des fonction permettant d'enregistrer et de renommer la photo avant de l'enregistrer dans son dossier definitif: 
+
+
+    public function uploadPhoto()
+        {
+            //ici on créé la condition suivante: s'il n'y a pas de fichier chargé dans l'objet alors on sort de la fonction, (return sans rien nous fait juste sortir de la fonction) 
+            if(!$this->file){
+                return;
+            }
+            // puis on recupere le nom original de la photo pour la renommer
+            $name = $this->renameFile($this->file->getClientOriginalName());
+
+            // on enregistre en BDD le nouveau nom de la photo
+            $this->photo = $name;
+
+            // enfin il faut deplacer la photodans son dossier definitif
+            $this->file->move($this->photoDir(), $name);
+
+        }
+    
+    // notre fonction renameFile() nous permettra de changer le nom de la photo    
+    public function renameFile($nom)// on rajoute la variable $nom dans notre fonction renamFile()
+        {
+            return 'file_' . time() . '_' .rand(1,9999) .$nom; 
+        }  
+    
+    // notre fonction photoDir    
+    public function photoDir()
+        {
+            return __DIR__. '/../../../web/photo'; //comme nous somme dans le dossier Entity, on crée le chemin en sortant 3 fois dans notre architecture, puis en indiquant le bon chemin
+
+        }   
+    
+     //notre fonction removePhoto() nous permet de supprimer la photo   
+    public function removePhoto()
+        {
+            if(file_exists($this->photoDir() . '/' . $this->photo) && $this->photo != 'default.png' ){  //file_exist() est une fonction php permettant de verifier si un fichier existe bien
+                    unlink($this->photoDir() . '/' . $this-> photo);  // unlink supprime le fichier du serveur, 
+            }
+        }    
+
 }

@@ -7,23 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 use AppBundle\Entity\Membre;
-use Appbundle\Form\
+use Appbundle\Form\MembreType;
 
 class MembreController extends Controller
     {
-        // vue membre pour la connexion
-
-        /** 
-         * @Route("/membre/connexion/", name="membre_connexion")
-         */   
-        public function membreConnectionAction()
-            {
-
-                $params = array();
-                return $this->render('@App/Membre/connexion.html.twig', $params);
-            } 
-
-        // vue membre pour l'inscription'
 
         /** 
          * @Route("/membre/inscription/", name="membre_inscription")

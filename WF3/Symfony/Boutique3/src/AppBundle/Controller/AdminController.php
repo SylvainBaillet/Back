@@ -65,6 +65,8 @@ class AdminController extends Controller
                 {
                     $em = $this->getDoctrine()->getManager(); // on va recuperer le manager, car persist et flush, le repository ne sait pas le faire, seul le manager sait le faire
                     $em ->persist($produit); // On enregistre dans le systeme de l'objet
+
+                    $produit->uploadPhoto(); // 
                     
                     $em ->flush(); // apres avoir enregistré, on flush, on execute la requete d'insertion
 
@@ -99,6 +101,9 @@ class AdminController extends Controller
                     {
                         //on enregistre les modifications
                         $em->persist($produit);
+
+                        $produit->uploadPhoto();
+
                         $em->flush();
                     
                         $request->getSession()->getFlashBag()->add('success', 'le produit ' . $produit->getTitre() . ' a bien été modifié');
@@ -108,7 +113,8 @@ class AdminController extends Controller
             $params = array (
                 'id' => $id,
                 'produitForm' => $form ->createView(),
-                'title'=> 'Modifier produit ' . $produit->getTitre()
+                'title'=> 'Modifier produit ' . $produit->getTitre(),
+                'photo' => $produit->getPhoto() 
             );
             return $this->render('@App/Admin/form_produit.html.twig', $params);
         } 
@@ -118,16 +124,18 @@ class AdminController extends Controller
      */    
     public function adminProduitDeleteAction($id, Request $request)
         {
-            // $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             // le manager existe deja dans la page donc je n'ai pas besoin de le rappeller dans cette fonction
 
             //recupere le produit par son id
             $produit=$em->find(Produit::class, $id);
 
+            //on supprime la photo
+            $produit->removePhoto();// notre fonction removePhoto() delarée en bas de l'entity Produit
             //on supprime le produit
             $em->remove($produit);
-            $em->flush();
 
+            $em->flush();
 
             $params = array();
             $request->getSession()->getFlashBag()->add('success', 'le produit n° :' . $id . ' à bien été supprimé.');
