@@ -4,7 +4,7 @@
 <h1>Je suis dans la page d'admin qui liste tous les produits</h1>
 
 <div class="row m-4">
-    <a href="" class="btn btn-primary">Ajouter un produit</a>
+    <a href="{{ path('admin_produit_add') }}" class="btn btn-primary">Ajouter un produit</a>
 </div>
 
 <table class="table table-bordered">
@@ -40,7 +40,7 @@
             {% endif %}
             <td>{{ pdt.prix}}</td>
             <td><a href="{{ path('produit', {'id':pdt.id} ) }}" target="_blank"><i class="fas fa-eye text-dark"></i></a></td>
-            <td><a href=""><i class="fas fa-edit text-dark"></i></a></td>
+            <td><a href="{{ path('admin_produit_update', {'id':pdt.id} ) }}"><i class="fas fa-edit text-dark"></i></a></td>
 
             {# ici j'envoie en lien le nom de la route pour la methode adminProduitDeleteAction() dans AdminController.php qui attends un id :pdt.id #}
             <td><a href="{{ path('admin_produit_delete', {'id' : pdt.id} ) }}"><i class="fas fa-trash text-dark"></i></a></td>

@@ -4,14 +4,47 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+//on fait un use de UserInterface pour le salt et la securité des mots de passe
+use Symfony\Component\Security\Core\User\UserInterface;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+
+
 /**
  * Membre
  *
  * @ORM\Table(name="membre")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MembreRepository")
  */
-class Membre
+class Membre implements UserInterface
 {
+
+    /** 
+     * un, membre peut avoir plusieurs commandes, on est dopnc dans une relation OneToMany() ci dessous
+     * 
+     * @ORM\OneToMany(targetEntity="Commande",mappedBy="membreId")
+     * 
+     */
+    private $commandes;
+    // cette proprieté va contenir un array avec toutes les commandes, un array avec toutes les commandes
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection;
+    }
+
+    public function setCommandes(ArrayCollection $commandes)
+    {
+        $this->commandes = $commandes;
+        return $this;
+    }
+
+    public function getCommandes()
+    {
+        return $this->commandes;
+    }
+
     /**
      * @var integer
      *
@@ -90,6 +123,52 @@ class Membre
      * @ORM\Column(name="statut", type="integer", nullable=false)
      */
     private $statut;
+
+    /**
+	* @ORM\Column(name="roles", type="array")
+	*
+    */
+    
+    /* 
+    ici, 
+     */
+
+	private $roles = array();
+	
+	/**
+	*
+	* @ORM\Column(name="salt", type="string", length=256, nullable=true)
+	*/
+    private $salt; 
+    
+    
+	
+	public function setRoles(array $roles){
+		$this -> roles = $roles;
+		return $this; 
+	}
+	
+	public function getRoles(){
+		$roles = $this -> roles; 
+		//$roles[] = 'ROLE_USER';
+		return $this -> roles; 
+	}
+	
+	/**
+	* Fonction obligatoire liée à l'interface UserInterface
+	*
+	*/
+	public function eraseCredentials(){}
+	
+	
+	public function setSalt($salt){
+		$this -> salt = $salt;
+		return $this;
+	}
+	
+	public function getSalt(){
+		return $this -> salt; 
+	}
 
 
 

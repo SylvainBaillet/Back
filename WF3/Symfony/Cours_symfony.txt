@@ -34,17 +34,18 @@ SYMPHONY:
 étape 8 : Doctrine
 étape 9 : les formulaires
 étape 10 : validation des données
-étape 11 : Association Mapping
+étape 11 : Association Mapping 
 étape 12 : sécurité des utilisateurs
 étape 13 : installation et boutique sur SF 4.3
 BONUS : Mise en ligne
 BONUS : Formulaire de contact
+BONUS : Panier
 
 -----------------
 
-                                                                                -----------------------------
-                                                                                intro: qu'est-ce que SYMFONY
-                                                                                -----------------------------
+                                                                      ------------------------------
+                                                                       intro: qu'est-ce que SYMFONY
+                                                                      ------------------------------
 
 Framework php créé par Sensiolabs en 2005
 
@@ -67,9 +68,9 @@ c - Symfony
             v 3.4 : 2.8 mais plus souple, avec des fonctionnalités
             v 4.4 : 3.4 Bundleless, Flex, Ecore (webpack), maker, php 7.1
 
-                                                                         --------------------------------------
-                                                                         étape 1 - Installation de Symfony 3.4           
-                                                                         --------------------------------------
+                                                                --------------------------------------
+                                                                 étape 1 - Installation de Symfony 3.4           
+                                                                --------------------------------------
 
 1 - installer Composer
 2 - installer sf3.4
@@ -116,7 +117,7 @@ en ligne de commandes: composer create-project symfony/framework-standart-editio
         - à ce stade notre application affiche la page de bienvenue sur Symfony, cela signifie que tout va bien 
 
                                                                 --------------------------------------------
-                                                                          étape 2 : les bundles
+                                                                            étape 2 : les bundles
                                                                 --------------------------------------------     
 
 1/ Le concept des bundles
@@ -157,7 +158,7 @@ A ce stade le bundle est fonctionnel, mais il y'a une petite erreur, qu'on va co
         apres avoir corriger la syntaxe, on voit apparaitre la page d'accueil 'Hello World'.                                 
 
                                                                 -----------------------------------------------------
-                                                                     étape 3 : les routes et mles controllers
+                                                                       étape 3 : les routes et mles controllers
                                                                 -----------------------------------------------------
 
 1/ création de routes
@@ -436,7 +437,7 @@ Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Tw
 
 5/ Generer les Entités en ligne de commande
 
-        A- on doit connecter notre app(notre projet symfony) à la BDD, dans le fichier suivant:
+        A- on doit connecter notre app(notre projet symfony) à la BDD, dans le fichier suivant: (attention, le fichier parameters.yml est dans le .gitignore, comme le vendor, il faut donc faire un composer update quand on recupere le symfony chez soi)
          app/Config/parameters.yml
 
                 parameters:
@@ -605,9 +606,9 @@ Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Tw
         https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/query-builder.html
 	
 	
-                                                                        ----------------------------------
-                                                                            étape 9 : Les formulaires
-                                                                        ----------------------------------
+                                                                    ----------------------------------
+                                                                        étape 9 : Les formulaires
+                                                                    ----------------------------------
 
 
 1/ Le fonctionnement des formulaires
@@ -691,13 +692,23 @@ Twig est le moteur de template de Symfony, un moteur de template(tpl, smarty, Tw
 
 6/ Validation des données
 
+        De base le formulaire est generé de maniere 'basique', Pour gerer nous meme les contraintes et la securité, cela se passe dans le fichier ProduitType.php et on utilise 'constraints' pour definir les contraintes liées au formulaire (voir le fichier ProduitType.php dans le fichier 'Form' que SF a generé)
 
+        Pour en savoir plus, tapper 'asserts symfony' sur google (les asserts = les validations)
 
 7/ Champs file
 
+        Pour la gestion de la photo il faut: 
+                1/Enregistrer le nom de la photo dans la BDD
+                2/Enregistrer la photo (data) sur le serveur.
+           (voir la fonction uploadFile dans l'entity Produit)   
+        /!\ Dans notre formulaire d'ajout produit, il n'est plus necessaire d'avoir le champs photo (TEXT) mais bien un champs file (FILE) qui va recuperer les infos de la photo uploadée        
+
+        * Pour aller plus loin dans les formulaires et Symfony:
+        https://symfony.com/doc/current/reference/forms/types.html
 
 
-a faire:  inscription
+exo a faire:  inscription
 
 1/ entity Membre
 2/ Controller 
@@ -707,4 +718,226 @@ a faire:  inscription
 7/ Route: Recuperer les infos du formulaire et enregistrer le membre.
 
 Attention: Etant donné que le champ Statut existe dans notre BDD, le formulaire va etre creer avec un champ Statut, hors ce n'est pas au membre de choisir son statut
+---------------
+
+                                                        -----------------------------------------------
+                                                          étape 10 : validation des données (Asserts)
+                                                        -----------------------------------------------
+
+        * Pour aller plus loin dans la validation des données (les Asserts)
+        https://symfony.com/doc/current/validation.html
+
+
+                                                               --------------------------------
+                                                                Etape 11 : ASSOCIATION MAPPING
+                                                               --------------------------------
+Sommaire : 
+1/ Le concept
+2/ La Documentation de Doctrine
+3/ mise en place de l'association Mapping (OneToMany) pour Membre -> Commande 
+-----------------------------
+
+1/ Avec Doctrine, on a pris l'habitude de travailler avec des objets (Entity) correspondant aux enregistrements dans la BDD (Mapping).
+
+L'association Mapping nous permet de travailler avec des objets dans des objets. Exemple : Un membre peut avoir plusieurs commandes, dans ce cas, dans un objet Membre nous avons un array composé d'objets commande. Une commande appartient à UN membre, dans ce cas dans un objet Commande nous avons un objet membre. 
+
+Grâce à ce fonctionnement il est plus nécessaire de faire des requêtes de jointure, lorsqu'on récupère un objet, on récupère tous les objets liés. 
+
+2/ 
+https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#association-mapping
+
+
+3/ mise en place de l'association Mapping (OneToMany) pour Membre -> Commande
+	
+		-> Entity Membre
+		-> Entity Commande
+
+		
+		-> Dans la vue list_commande.html.twig, on utilise {{ c.membre.prenom }} pour accéder aux infos du membre qui a passé la commande. 
+
+
+
+                                                        -----------------------------------------------
+                                                             étape 12 : sécurité des utilisateurs
+                                                        -----------------------------------------------   
+
+1/ Niveau de sécurité
+
+      -De base SF va considerer un visiteur lambda comme un anonyme. 
+
+      -Ensuite, On va definir des niveaux de securité pour les utilisateurs connectés: (chaque niveau de securité devra commencer par le mot clé:  ROLE)  ex: -ROLE USER  
+                 -ROLE ADMIN 
+                 -ROLE SUPER_ADMIN 
+                 etc...
+
+       - Symfony a un systeme de parfeu (pour definir qui a le droit d'aller ou)
+               -on definie les routes que les ROLE peuvent emprunter:
+               --> si un user anonyme --> homepage = OK 
+               --> si un user anonyme --> profil = pas OK --> redirection: connexion 
+               --> si un user connecté --> profil = OK
+               --> si un user connecté --> admin_produit -> pas OK --> page d'erreur (404) 
+
+               En fonction du visiteur et de la ressource demandée, on peut parametrer une reaction
+
+                   
+2/ Fichier de securité
+
+        dans le fichier: 
+        <code>
+        app/config/security.yml
+
+        On définie plusieurs choses : 
+	- encoders (la manière dont les password seront encodés)
+	- provider (quelle ressource va servir d'utilisateur : MembreEntity, le login: username)
+	- Hierarchie : La pyramide des droits
+	- les routes form_login et logout (voir le point suivant)
+	- Access control : qui a le droit à quoi
+
+
+	/!\ Attention le YAML est très sensible aux indentations et aux espaces. 
+
+
+3/ Direction des routes
+
+form_login: 
+		login_path: connexion (page de connexion)
+		
+		check_path: connexion_check (Page de checking de login/password, on doit juste la créée, et la mettre dans l'attribut action de notre formulaire de connexion)
+		
+		default_target_path: homepage (La page par défaut sur laquelle on est dirigé une fois connecté. Sinon le parefeu prend le dessus)
+
+	logout:
+		path: deconnexion (La route de deconnexion. Doit exister mais est vide)
+		target: homepage (page de destination, lorsqu'on se déconnecte). 
+		
+
+
+4/ Classe Membre (extends UserInterface)
+	
+	- A partir de maintenant la classe Membre doit implements l'interface UserInterface
+			
+	--> username (getter/setter)
+	--> password (getter/setter)
+	--> roles (getter/setter) /!\ roles est un array 
+	--> salt (getter/setter)
+	
+	/!\ Attention lors de l'inscription, il faut penser à définir un role_user par défaut. 
+	
+	--> public function eraseCredentials() : fonction obligatoire pour que SF prenne la main. 
+	
+	--> getRoles() et setRoles() au pluriel obligatoirement. 
+
+
+5/ Layout
+
+	Dans les vues on fait la distinction entre le niveau d'acces des utilisateur avec : 
+		
+	{{ if is_granted('IS_AUTHENTICATED_FULLY') }}  : tout le monde (sauf anonyme)
+	{{ if is_granted('ROLE_USER') }}  : tous les users
+	{{ if is_granted('ROLE_ADMIN') }}  : tous les admin
+		
+        ===> Le salage (cf salt.php) c'est l'idée de rendre un MDP quasiment inviolable en ajoutant au MDP soit une chaîne de caractère que seul le développeur connait (petit site, petite structure), ou alors une chaîne aléatoire pour chaque user... Ensuite pour la connexion, on récupère le salage, pour reconstituer le MDP complet.
+
+
+                                                               -----------------------		
+                                                                ETAPE 13 : Symfony 4		
+                                                               -----------------------
+Sommaire :
+1/ Installation
+2/ L'architecture
+3/ Lancement de l'app
+4/ Le maker
+5/ Flex
+
+
+1/ installation : 
+composer create-project symfony/website-skeleton Boutique4
+
+2/ L'architecture
+
+	- app a disparu  ----> config 
+	- src/AppBundle a disparu   ---->  BundleLess sans Bundle mais toujours dans le namespace App\
+	- src/Resources/ View  a disparu  ---> templates
+		
+	Le dossier templates prendra toutes les vues (Produit/ Admin/ Membres/ Bases) ainsi que le layout.html.twig
+	
+	web/ a disparu (app_dev.php, app.php, JS/CSS/Photo) ----> public (index.php, JS/CSS/Photo etc...)
+	
+	.env : Notre config (notamment les infos de connexion à la bdd
+	
+3/ Lancement de l'app
+
+	<cmd>
+	php bin/console server:start
+		ou alors
+	php bin/console server:run
+		
+		
+4/ Le maker : 		
+
+	- Création des Entités : 
+		php bin/console make:entity
+		
+		ou depuis la BDD : 
+		php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
+
+			
+	- Mise à jours des entités :
+		php bin/console make:Entity --regenerate
+		
+
+	- Créer les controller : 
+		php bin/console make:controller 
+		ProduitController 
+		MembreController 
+		CommandeController
+		BaseController
+		AdminController
+
+	- Créer les CRUD : 
+		- pre-requis : Copier/coller les entités
+		
+		copier le dossier	 boutique3/src/AppBundle/Entity
+		le coller dans le dossier	boutique4/src/
+	
+	
+		<cmd>
+		php bin/console make:crud
+		Membre
+		Commande
+		Produit
+		
+		
+	- Créer l'entité Membre : 
+		<cmd>
+	php bin/console make:user
+	
+			
+Bundle : 
+
+	- FOSUserBundle 
+	- easyAdmin 
+	
+
+Flex : 
+
+Symfony Flex : la nouvelle façon de développer avec Symfony
+Les versions de Symfony 3.4 et 4.0 viennent tout juste de sortir et avec elles vient une nouvelle façon de développer des applications Symfony. Dîtes adieu à la Standard Edition et bonjour aux tout nouveau symfony/skeleton, Symfony Flex et les recettes qui vont avec.
+
+Vous avez dit Flex ?
+D’un point de vue technique, Symfony Flex est juste un plugin Composer. Il se branche sur les événements Composer dès lors que vous lancez une commande qui installe, met à jour ou supprime un paquet PHP ou bundle Symfony. Son but ? Automatiser l’installation et la suppression de vos dépendances en fournissant une configuration par défaut sans avoir à aller lire la doc pour trouver quelle configuration écrire, quelles routes charger ou autre tâche rébarbative à effectuer. Et dès Symfony 4.0, Flex sera le moyen par défaut pour développer une application Symfony.
+
+Il paraît qu’un bon exemple vaut mieux qu’un long discours. Alors imaginons que vous ayez une application existante en Symfony 3.3 (parce que vous êtes un dev cool et avez effectué les migrations vers les dernières versions de Symfony au fur et à mesure 💪). Vous voulez y ajouter une API en installant api-platform. Vous allez donc effectuer les tâches suivantes :
+	
+	
+Sources : https://afsy.fr/avent/2017/08-symfony-flex-la-nouvelle-facon-de-developper-avec-symfony
+
+
+WebPack Encore : 
+https://symfony.com/doc/current/frontend.html
+	
+
+
+
+
 

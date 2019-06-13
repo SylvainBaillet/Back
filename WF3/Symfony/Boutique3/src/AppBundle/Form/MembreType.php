@@ -24,7 +24,8 @@ class MembreType extends AbstractType
         $builder
         ->add('username', TextType::class, array(
             'required' => false,
-            'constraints' => array( //pour utiliser constraints on dois faire un use plus haut /!\ use Symfony\Component\Validator\Constraints as Assert;
+            'constraints' => array(
+                 /* pour utiliser constraints on dois faire un use plus haut /!\ use Symfony\Component\Validator\Constraints as Assert */
                 new Assert\NotBlank(array(
                     'message' => 'Attention, veuillez renseigner ce champs !'
                 )),
@@ -36,18 +37,15 @@ class MembreType extends AbstractType
                 )),
             )
         ))
-        ->add('password', PasswordType::class, array(
-            'required' => false
-
-        ))
+        
         ->add('nom', TextType::class, array(
             'required' => false
-                
-                
+                   
         ))
         ->add('prenom', TextType::class, array(
             'required' => false,
-            new Assert\NotBlank(array(
+            'constraints' => array(
+                new Assert\NotBlank(array(
                     'message' => 'Attention, veuillez renseigner ce champs !'
                 )),
                 new Assert\Length(array(
@@ -56,11 +54,12 @@ class MembreType extends AbstractType
                     'max' => 20,
                     'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
                 )),
-            
+            )
         ))
         ->add('email', EmailType::class, array(
             'required' => false,
-            new Assert\NotBlank(array(
+              'constraints' => array(
+                new Assert\NotBlank(array(
                     'message' => 'Attention, veuillez renseigner ce champs !'
                 )),
                 new Assert\Length(array(
@@ -69,8 +68,7 @@ class MembreType extends AbstractType
                     'max' => 20,
                     'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
                 )),
-            
-
+            )
         ))
 
         ->add('civilite', ChoiceType::class, array(
@@ -81,7 +79,8 @@ class MembreType extends AbstractType
         ))
         ->add('ville', TextType::class, array(
             'required' => false,
-            new Assert\NotBlank(array(
+              'constraints' => array(
+                new Assert\NotBlank(array(
                     'message' => 'Attention, veuillez renseigner ce champs !'
                 )),
                 new Assert\Length(array(
@@ -90,12 +89,13 @@ class MembreType extends AbstractType
                     'max' => 20,
                     'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
                 )),
-            
+            )
         ))
         ->add('codepostal', IntegerType::class)
         ->add('adresse', TextType::class, array(
             'required' => false,
-            new Assert\NotBlank(array(
+             'constraints' => array(
+                new Assert\NotBlank(array(
                     'message' => 'Attention, veuillez renseigner ce champs !'
                 )),
                 new Assert\Length(array(
@@ -104,17 +104,32 @@ class MembreType extends AbstractType
                     'max' => 20,
                     'maxMessage' => 'Attention veuillez renseigner un texte compris entre 3 et 20 caracteres',
                 )),
-            
+            )
         ))
-        ->add('statut', IntegerType::class, array())
+        
         ->add('enregistrer', SubmitType::class);
-    }/**
+
+        if($options['statut'] == 'admin')
+                {
+                    $builder 
+                    ->add('roles');
+                }
+        else
+        $builder
+        ->add('password', PasswordType::class, array(
+            'required' => false
+        ));       
+    }
+    
+    
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Membre'
+            'data_class' => 'AppBundle\Entity\Membre',
+            'statut' => 'user'
         ));
     }
 

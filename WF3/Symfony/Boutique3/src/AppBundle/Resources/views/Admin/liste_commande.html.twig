@@ -2,4 +2,39 @@
 
 {% block content %}
 <h1>Je suis dans la page d'admin qui liste toutes les commandes</h1>
+
+<table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Montant</th>
+                <th>Date</th>
+                <th>Membre</th>
+                <th>Etat</th>
+                <th colspan="3">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in commandes %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.montant | number_format(2, ',' , ' ' )}}</td>
+                <td>{{ c.dateEnregistrement | date("d/m/y H:i:s") }}</td>
+                <td>{{ c.membreId.prenom }}{{ c.membreId.nom }} (id:  {{ c.membreId.prenom }})<br/>
+                    {{ c.membreId.adresse }}<br/>
+                    {{ c.membreId.codePostal }} {{ c.membreId.ville }}
+
+                </td>
+                <td>
+                    {% if c.etat == 0 %}<strong style="color.red">En cours de traitement</strong>
+                    {% elseif c.etat == 1 %}<strong style="color.orange">En cours de livraison</strong>
+                    {% elseif c.etat == 2 %}<strong style="color.green">Livré</strong>
+                    {% else %}<strong>Autre</strong>
+                    {% endif %}
+             
+                </td>
+            </td>    
+            {% endfor %}       
+        </tbody>
+
 {% endblock %}

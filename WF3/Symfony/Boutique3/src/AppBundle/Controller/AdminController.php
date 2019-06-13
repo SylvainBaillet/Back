@@ -149,7 +149,13 @@ class AdminController extends Controller
      */    
     public function adminMembreAction()
         {
-            $params = array();
+            $repo = $this->getDoctrine()->getRepository(Membre::class);
+            
+            $membres = $repo->findAll();
+            
+            $params = array(
+                'membres' => $membres
+            );
             return $this->render('@App/Admin/liste_membre.html.twig', $params);
         }
         
@@ -191,7 +197,12 @@ class AdminController extends Controller
      */    
     public function adminCommandeAction()
         {
-            $params = array();
+            $repo = $this->getDoctrine()->getRepository(Commande::class);
+            $commandes = $repo->findAll();
+
+            $params = array(
+                'commandes' => $commandes
+            );
             return $this->render('@App/Admin/liste_commande.html.twig', $params);
         }
         
@@ -207,10 +218,29 @@ class AdminController extends Controller
     /** 
      * @Route("/admin/commande/update/{id}/", name="admin_commande_update")
      */    
-    public function adminCommandeUpdateAction($id)
+    public function adminCommandeUpdateAction($id, Request $request)
         {
+            $em = $this->getDoctrine()->getManager();
+
+            $membre = $em->find(Mambre::class, $id);
+
+            $form = $this->createForm(MembreType::class, $membre, ['statut' => 'admin']);
+            $password = $membre->getPassword();
+            
+            $form->handleRequest($request);
+            if($form->isSubmited() && $form-> isValid()){
+
+                $em->persist($membre);
+                $membre->setPassword($password);
+                $em->flush();
+
+                $request->getSession() ->getFlashBag()->add('success', 'le profil du membre' . $id . 'a bien été mis a jour !');
+                return $this->redirectToRoute('admin_membre');
+            }
+
             $params = array(
-                'id' => $id
+                'id' => $id,
+                'membreForm', $form->createView()
                );
             return $this->render('@App/Admin/form_commande.html.twig', $params);
         }
