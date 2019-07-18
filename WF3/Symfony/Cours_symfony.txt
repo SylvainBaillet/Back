@@ -1,4 +1,4 @@
-
+﻿
 ------------
 SYMFONY
 ------------
@@ -79,14 +79,14 @@ c - Symfony
 
 -------->
 
-1- Composer est un outil de dépendance, il permet de telecharger et de mettre a jour tous les outils, (services, composants, dependances..) dont on a bluetooth_searching
+1- Composer est un outil de dépendance, il permet de telecharger et de mettre a jour tous les outils, (services, composants, dependances..) dont on a besoin
 telecharger composer: http://getcomposer.org/download/composer-setup.exe 
 installer puis suivre les étapes
 
 2- installer symfony 3.4
 On va dans le dossier Symfony, 'maj' + 'clic droit' puis ouvrir l'invite de commande (powershell, ou git bash here) ici.
 
-en ligne de commandes: composer create-project symfony/framework-standart-edition test
+en ligne de commandes: composer create-project symfony/framework-standard-edition test
 
 3- Arbrescence des dossiers et fichiers
         dossiers:

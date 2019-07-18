@@ -1,0 +1,100 @@
+body{
+    background: radial-gradient(circle, rgba(207,47,3,0.8155462868741247) 26%, rgba(241,217,54,1) 95%);
+}
+
+.container-fluid{
+    margin: 0;
+    padding: 0;
+}
+.nav{
+    background-color: rgb(44, 10, 10);
+}
+  
+.nav a{
+    margin: 0.8rem;
+    color: whitesmoke;
+}
+#container1{
+    background-color: rgb(88, 88, 88); 
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.carousel{
+    position: relative;
+    height: 400px;
+}
+.carousel img{
+    max-height: 400px;
+}
+#mainTravaux h2{
+    margin: 1rem;
+    text-align: center;
+    color: whitesmoke;
+}
+#mainTravaux hr{
+    width: 90%;
+    background-color: rgb(255, 72, 0);
+}
+.titre1{
+    text-align:center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 5rem;
+    color: aliceblue;
+    text-shadow: 2px 2px 3px black;
+    position: absolute;
+    margin-top: 6rem; 
+    z-index: 1;
+}
+#jt1{
+    margin: 1rem;
+}
+#jt1 h1, h2{
+    text-align: center;
+}
+@media screen and (min-width: 720px){
+    .card{
+    margin: 0.4%;
+    max-width: 24%;
+    display:flex;
+    }
+    .card h1{
+        text-align: center;
+    }
+    .card p{
+        text-align: center;
+    }
+    .card img{
+        margin-top: 1rem;
+    }
+}
+
+#jt2{
+    margin: 1rem;
+}
+#jt2 h1, h2{
+    text-align: center;
+}
+
+#mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgb(88, 88, 88);
+    border-radius: 5px;
+    padding: 1rem;
+}
+i{
+    color: rgb(255, 166, 0);
+    font-size: 3rem;
+    margin-left: 3.3rem;
+    margin-bottom: 1rem; 
+}
+.fa-html5{
+    margin-left: 1.2rem;
+}
+
+.page-footer{
+    background-color: rgb(44, 10, 10);
+}
+p{
+    color:whitesmoke;
+}
