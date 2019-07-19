@@ -37,7 +37,7 @@ nameSpace Model;
 
             public function selectAll()
                 {
-    // c'est comme si j'avais fait $q = $dbb->query("SELECT* FROM employes")
+    // c'est comme si j'avais fait $q = $db->query("SELECT* FROM employes")
                     $q = $this->getDb()->query("SELECT * FROM " . $this->table);// $this->getDb represente PDO donc une connexion a la base de données. $this->table represente dans notre cas la table employe que l'on a recuperé du fichier config.xml
                     $r = $q->fetchAll(\PDO::FETCH_ASSOC);
                     return $r;

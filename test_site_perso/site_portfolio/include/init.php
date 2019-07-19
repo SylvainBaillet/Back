@@ -19,4 +19,6 @@ foreach($_POST as $key => $value)
     $_GET[$key] = strip_tags(trim($value));
 }
 
+require_once("include/fonctions.php");
+
 ?>

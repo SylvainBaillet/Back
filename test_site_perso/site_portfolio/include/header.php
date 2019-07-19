@@ -10,7 +10,7 @@
 
     <!-- lien google font -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps&display=swap" rel="stylesheet"> 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,39 +20,47 @@
 <body>
 
     <div class="container-fluid">
+   
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-dark.navbar-toggler-icon" id="toggler"><i class="fas fa-bars"></i></span>
+        </button>
 
-    <!-- nav -->
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" href="<?=URL?>">Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>parcours.php">Mon parcours</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>competences.php">Compétences</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>travaux.php">Mes travaux</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>loisirs.php">Loisirs</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>contact.php">Me contacter</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">CV</a>
-        </li>  
-        <li class="nav-item">
-            <a class="nav-link" href="#">inscription</a>
-        </li>   
-        <li class="nav-item">
-            <a class="nav-link" href="#">Connexion</a>
-        </li>   
-        <li class="nav-item">
-            <a class="nav-link" href="#">Deconnexion</a>
-        </li>   
-    </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav justify-content-center mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="<?=URL?>">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>parcours.php">Mon parcours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>travaux.php">Mes travaux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>loisirs.php">Loisirs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>contact.php">Me contacter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>cv.php">CV</a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Connexion</a>
+                </li>   
+                <?php if(adminConnecte()):?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">gestion admin</a>
+                </li>   
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Deconnexion</a>
+                </li> 
+                <?php endif;?> 
+
+            </ul>
+             
+      </div>
+    </nav>
     <!-- fin nav -->
         
