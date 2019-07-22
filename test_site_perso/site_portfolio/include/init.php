@@ -1,10 +1,13 @@
 <?php
 //---------Connexion BDD
-$bdd = new PDO('mysql:host=localhost;dbname=location_bretagne','root', '', array(PDO:: ATTR_ERRMODE => PDO :: ERRMODE_WARNING, PDO :: MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+$bdd = new PDO('mysql:host=localhost;dbname=site_portfolio','root', '', array(PDO:: ATTR_ERRMODE => PDO :: ERRMODE_WARNING, PDO :: MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+
+//----- SESSION
+session_start();
 
 
 define("RACINE_SITE", $_SERVER['DOCUMENT_ROOT'] . '/Back/test_site_perso/site_portfolio/' ); //lors de l'enregistrement d'image / photos, nous aurons besoin du chemin physique pour enregistrer la photo dans le bon dossier 
-// echo RACINE_SITE; 
+
 
 
 define("URL", "http://localhost/Back/test_site_perso/site_portfolio/");/* Cette constante servira a enregistrer  l'URL d'une photo / image dans la BDD. On ne conserve jamais la photo elle même, ce serait trop lourd pour la BDD */

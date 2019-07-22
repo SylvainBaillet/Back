@@ -27,7 +27,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav justify-content-center mx-auto">
+            <ul class="nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="<?=URL?>">Accueil</a>
                 </li>
@@ -43,24 +43,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?=URL?>contact.php">Me contacter</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=URL?>cv.php">CV</a>
-                </li>  
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Connexion</a>
-                </li>   
-                <?php if(adminConnecte()):?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">gestion admin</a>
-                </li>   
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Deconnexion</a>
-                </li> 
-                <?php endif;?> 
 
+                <!-- dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    gestion admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="<?=URL?>connexion.php">Connexion</a>
+                    <a class="dropdown-item" href="#">Deconnexion</a>
+                    </div>
+                </li>
+                <!-- fin dropdown -->
             </ul>
              
       </div>
+      
     </nav>
     <!-- fin nav -->
         

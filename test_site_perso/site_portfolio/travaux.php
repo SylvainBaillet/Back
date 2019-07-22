@@ -84,6 +84,8 @@ require_once("include/header.php");
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, totam unde non culpa, quam quos voluptates rem sapiente perferendis exercitationem adipisci harum blanditiis? Fuga, nulla cupiditate. Cupiditate saepe magnam sed?</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam voluptatibus, ipsam enim, aperiam asperiores perspiciatis neque aspernatur, ducimus explicabo officia dignissimos iste porro. Quia amet quos distinctio fugiat qui veritatis.</p>
 
+    <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="img-fluid" alt="Responsive image">
+    
     <hr>
 
     <br id="ancreMusique">
