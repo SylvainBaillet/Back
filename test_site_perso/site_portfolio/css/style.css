@@ -45,17 +45,15 @@ span{
     margin-bottom: 1rem;
     padding: 1rem;
 }
-.carousel{
-    position: relative;
-    height: 400px;
-}
 .carousel img{
     max-height: 400px;
 }
 #mainTravaux h2{
     margin: 1rem;
-    text-align: center;
     color: whitesmoke;
+}    
+#mainTravaux p{
+    text-align: left;
 }
 #mainTravaux hr{
     width: 90%;

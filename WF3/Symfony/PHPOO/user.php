@@ -17,7 +17,7 @@ class User
     public function setPrenom($prenom)
         {
             if(strlen($_POST['prenom']) >= 3 && strlen($_POST['prenom']) <= 20){
-        $user->prenom = $_POST['prenom']; //l'utilisateur est en train de s'inscrire donc, formulaire, donc je passe par $-POST ou je crochete ['prenom']
+        $user->prenom = $_POST['prenom']; //l'utilisateur est en train de s'inscrire donc, formulaire, donc je passe par $_POST ou je crochete ['prenom']
         }
     public function getPrenom()
         {
@@ -30,7 +30,7 @@ $user = new User;
 // $user->prenom = 'Sylvain';
 if(!empty($_POST['prenom'])){
     if(strlen($_POST['prenom']) >= 3 && strlen($_POST['prenom']) <= 20){
-        $user->prenom = $_POST['prenom']; //l'utilisateur est en train de s'inscrire donc, formulaire, donc je passe par $-POST ou je crochete ['prenom']
+        $user->prenom = $_POST['prenom']; //l'utilisateur est en train de s'inscrire donc, formulaire, donc je passe par $_POST ou je crochete ['prenom']
     }
 }
 echo 'prenom :' . $user->prenom;
