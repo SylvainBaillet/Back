@@ -28,7 +28,7 @@ echo "<pre>"; var_dump($objet2);  echo"</pre>";/* objet2 a aussi la référence 
 
 
 
-// ici l'osqu'on a changé la valeur de la proprieté numero, cela a impacté sur les 2 variables objet1 et objet2, c'est normal puisque c'est le meme objet.
+// ici l'orsqu'on a changé la valeur de la proprieté numero, cela a impacté sur les 2 variables objet1 et objet2, c'est normal puisque c'est le meme objet.
 echo $objet1->numero . "<hr>";
 echo $objet2->numero . "<hr>";
 $objet2->numero = 22;

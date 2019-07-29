@@ -52,7 +52,11 @@ require_once("include/header.php");
     <section class="container" id="container1">
 
         <div class="jumbotron" id="jt1">
+            
+            <marquee behavior="scroll" direction="left" scrollamount="5">
             <h1 class="display-4">Bienvenue sur mon portfolio!</h1>
+            </marquee>
+            
                 <p class="lead">Ici , Je vous parle de mon parcours, de mes compétences et travaux, de mes loisirs. Bonne navigation à tous !</p>
                 <hr class="my-4">
                 <h2>Mes différents domaines de compétences</h2>
@@ -119,10 +123,10 @@ require_once("include/header.php");
             
             </div>
             <!-- fin row 2 -->
-  
+            
     </div>
     <!-- fin div container1 -->
-
+    
 <?php
 require_once("include/footer.php");
 ?>

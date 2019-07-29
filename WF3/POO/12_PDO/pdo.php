@@ -41,7 +41,7 @@ echo "<hr><h2 class='display-4 text-center alert alert-success'>exemple n°3  SE
 $resultat = $pdo->query("SELECT * FROM employes", PDO::FETCH_ASSOC);// on demande d'indexer avec le nom des champs quand c'est toujours au stade objet
 // echo '<pre>'; var_dump($resultat); echo'</pre>';
 
-//EXO nous avns associé l'objet' PDO::FETCH_ASSOC a la requete de selection, nous n'avons donc plus a faire de fetch, nous travaillons directement avec l'objet, afficher toutes les données de chaque employé sous forme de tableau HTML
+//EXO nous avons associé l'objet' PDO::FETCH_ASSOC a la requete de selection, nous n'avons donc plus a faire de fetch, nous travaillons directement avec l'objet, afficher toutes les données de chaque employé sous forme de tableau HTML
 echo "<table class='table table-bordered text-center'><tr>";
 for($i = 0; $i < $resultat->columnCount(); $i++)
   {
@@ -68,7 +68,7 @@ echo "Nombre de reultat affectées par l'insert : $resultat <hr>";
 //--------------------------------------
 echo "<hr><h2 class='display-4 text-center alert alert-success'>exemple n°5  PREPARE + '?' + FETCH </h2><hr> ";  
 
-$resultat = $pdo->prepare("SELECT * FROM employes WHERE nom = ? AND prenom = ?"); // On va dans un premier temps "preparer la requete sans la partie variable, que l'on representera avec un marqueur sos forme de point d'interrogation, ce sont des marqueurs anonymes
+$resultat = $pdo->prepare("SELECT * FROM employes WHERE nom = ? AND prenom = ?"); // On va dans un premier temps "preparer la requete sans la partie variable, que l'on representera avec un marqueur sous forme de point d'interrogation, ce sont des marqueurs anonymes
 $resultat->execute(array("Gallet", "Clement")); //Gallet va remplacer le point d'interrogation juste au dessus
 $donnees = $resultat->fetch(PDO::FETCH_ASSOC);
 echo implode($donnees, ' - '); // implode sert a extraire les valeurs d'un tableau ARRAY dans des chaines de caracteres , avec un separateur en deuxieme argument ' - '

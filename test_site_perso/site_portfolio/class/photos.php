@@ -5,7 +5,7 @@ class Photo
     private $nom_photo;
     private $photo;
     private $file;
-    public function setNomphoto()
+    public function setNomphoto($nom_photo)
         {
             if(iconv_strlen($nom_photo)>2 && iconv_strlen($nom_photo) < 61)
                 {

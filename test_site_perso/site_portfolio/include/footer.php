@@ -1,7 +1,7 @@
     </section>
-
+        
     <!-- Footer -->
-        <footer class="page-footer font-small indigo">
+        <footer class="page-footer font-small indigo fixed-bottom">
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Copyright:
@@ -11,7 +11,7 @@
 
         </footer>
     <!-- fin Footer -->
-
+        
     </div>
     <!-- fin container-fluid -->
 

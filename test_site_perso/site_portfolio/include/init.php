@@ -23,5 +23,4 @@ foreach($_POST as $key => $value)
 }
 
 require_once("include/fonctions.php");
-
 ?>

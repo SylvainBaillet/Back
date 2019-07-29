@@ -49,7 +49,7 @@ class Formulaire
                 }
             else
                 {
-                    $this->error = "veuillez rentrer un nom entre 2 et 20 caractères";
+                    $this->error = "veuillez rentrer un message entre 2 et 255 caractères";
                     return $this->error;
                 }    
         }

@@ -7,7 +7,7 @@ nameSpace Model;
         {
            Private $db;
            public $table;
-           public function getDb() //methode permettant d'instancier la class PDO et de creer  un objet PDO
+           public function getDb() //methode permettant d'instancier la class PDO et de creer un objet PDO
             {
                 if(!$this->db) // si private $db n'est pas remplie, si il n'y a pas de connection à la bdd,alors on va la construire.
                     {
