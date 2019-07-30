@@ -22,7 +22,7 @@ body{
     color: whitesmoke;
 }
 .nav a:hover{
-    color: rgb(255, 217, 134);
+    color: rgb(255, 165, 80);
     text-shadow: 0px -1px 3px whitesmoke;
     transition: 0.3s;
 }
@@ -37,6 +37,10 @@ body{
     color:whitesmoke;
     padding:0;
     margin: 0;
+}
+#buttonBas{
+    margin-bottom: 3rem;
+    color: whitesmoke;
 }
 span{
     color: whitesmoke;
@@ -69,7 +73,7 @@ span{
 .titre1
     {
     text-align:center;
-    font-family: 'Macondo Swash Caps', cursive;
+    font-family: 'Shadows Into Light', cursive;
     font-size: 2rem;
     margin-left: 1rem;
     color: aliceblue;
@@ -81,18 +85,14 @@ span{
 @media screen and (min-width: 960px){
 .titre1{
     text-align:center;
-    font-family: 'Macondo Swash Caps', cursive;
+    font-family: 'Shadows Into Light', cursive;
     font-size: 5rem;
     color: aliceblue;
     text-shadow: 2px 2px 3px black;
     position: absolute;
     margin-top: 5%; 
-    margin-left:30rem;
+    margin-left:38rem;
     z-index: 1;
-}
-}
-#jt1{
-    
 }
 #jt1 h1, h2{
     text-align: center;
@@ -109,14 +109,17 @@ span{
         text-align: center;
     }
     .card p{
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 1.5rem;
         text-align: center;
     }
     .card img{
         margin-top: 1rem;
     }
 }
-.card-body p{
+.card p{
     color: black;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 #jt2{
@@ -127,13 +130,27 @@ span{
     text-align: center;
     color: black;
 }
+#jt2 p{
+    color: black;
+}
 
-#mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux{
+@media screen and (min-width: 320px){
+    #container1, #mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux, #mainContact{
     margin-top: 1rem;
     margin-bottom: 2rem;
-    background-color: rgb(88, 88, 88);
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 5px;
     padding: 1rem;
+    }
+}
+
+#container1, #mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux, #mainContact{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 1rem;
+    color: whitesmoke;
 }
 i{
     color: rgb(255, 166, 0);
@@ -144,15 +161,104 @@ i{
 .fa-html5{
     margin-left: 1.2rem;
 }
-
+.btn-primary{
+    margin-left: 1rem;
+    
+}
 .page-footer{
     
     background-color: rgb(44, 10, 10);
     
+}
+@media screen and (min-width: 960px){
+    p{
+        color:whitesmoke;
+    }
 }
 p{
     color:whitesmoke;
 }
 form{
     margin: 1rem;
+}
+
+
+
+
+
+
+/* javascript skillbars */
+
+
+.skillbar {
+	position:relative;
+	display:block;
+	margin-bottom:15px;
+	width:100%;
+	background:#eee;
+	height:35px;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-webkit-transition:0.4s linear;
+	-moz-transition:0.4s linear;
+	-ms-transition:0.4s linear;
+	-o-transition:0.4s linear;
+	transition:0.4s linear;
+	-webkit-transition-property:width, background-color;
+	-moz-transition-property:width, background-color;
+	-ms-transition-property:width, background-color;
+	-o-transition-property:width, background-color;
+	transition-property:width, background-color;
+}
+
+.skillbar-title {
+	position:absolute;
+	top:0;
+	left:0;
+width:110px;
+	font-weight:bold;
+	font-size:13px;
+	color:#ffffff;
+	background:#6adcfa;
+	-webkit-border-top-left-radius:3px;
+	-webkit-border-bottom-left-radius:4px;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-bottomleft:3px;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+.skillbar-title span {
+	display:block;
+	background:rgba(0, 0, 0, 0.1);
+	padding:0 20px;
+	height:35px;
+	line-height:35px;
+	-webkit-border-top-left-radius:3px;
+	-webkit-border-bottom-left-radius:3px;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-bottomleft:3px;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+.skillbar-bar {
+	height:35px;
+	width:0px;
+	background:#6adcfa;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+.skill-bar-percent {
+	position:absolute;
+	right:10px;
+	top:0;
+	font-size:11px;
+	height:35px;
+	line-height:35px;
+	color:#ffffff;
+	color:rgba(0, 0, 0, 0.4);
 }

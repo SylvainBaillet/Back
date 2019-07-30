@@ -1,9 +1,12 @@
 <?php
 
-//connexion a la base de données site_portfolio
-$pdo = new PDO('mysql:host=localhost;dbname=site_portfolio','root', '', array(PDO:: ATTR_ERRMODE => PDO :: ERRMODE_WARNING));
-// echo '<pre>'; print_r($pdo); echo'</pre>';
+if(!adminConnecte())
+{
+    header("location:" . URL . "connexion.php");
+}
 
-
-?>
-
+// insertion produit
+if($_POST)
+{
+    $img_insert = $bdd->prepare("INSERT INTO produit (reference, categorie, titre, description, couleur, taille, public, photo, prix, stock ) VALUES (:reference, :categorie, :titre, :description, :couleur, :taille, :public, :photo, :prix, :stock)");
+}

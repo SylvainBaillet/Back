@@ -3,7 +3,7 @@ require_once("include/init.php");
 require_once("include/header.php");
 ?>
 
-    <h1 class="display-2 offset-md-4 titre1">Bienvenue sur mon Portfolio</h1>
+    <h1 class="display-2 offset-md-4 titre1">Sylvain Baillet - Portfolio</h1>
     
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -114,10 +114,8 @@ require_once("include/header.php");
 
             <div class="row">
                 <div class="jumbotron" id="jt2">
-                    <h1 class="display-4">Hello, world!</h1>
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    <hr class="my-4">
-                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <h2 class="display-4">Présentation</h2>
+                    <p class="lead">En formation intégrateur développeur web depuis décembre 2018, je vous présente ici mon parcours, mes projets et créations, mes domaines de compétences et mes passions. N'hésitez pas à naviguer dans les onglets où vous en découvrirez plus sur moi. bonne navigation à tous!</p>
                 </div>
                 <!-- fin jumbotron jt2 -->
             

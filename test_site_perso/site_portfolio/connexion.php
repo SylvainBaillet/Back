@@ -1,7 +1,7 @@
 <?php
 require_once("include/init.php");
 require_once("include/header.php");
-require_once("Class/membre.php");
+require_once("include/classes.php");
 
 extract($_POST);
 
@@ -19,26 +19,25 @@ if($_POST)
         if(empty($errorMembre)){
             foreach($_POST as $key => $value){
                             $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
-
-        
+            }
         }
+        
         // je créé un nouvel objet de ma classe Membre
         $contact = new Membre();
 
         // j'utilise la methode membreAction() de ma class Membre.php
         $contact->membreAction($pseudo, $mdp);
 
-
         unset($pseudo);
         unset($mdp);
 
         $successMembre .='<div class="alert alert-success">Vous êtes connecté</div>';
-
+}
 
 ?>
 
 <div class="container">
-    <form class="col-md-8 mx-auto">
+    <form class="col-md-8 mx-auto" method="post">
     <div class="form-group">
         <label for="exampleInputEmail1">Pseudo</label>
         <input type="email" name="pseudo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="pseudo">
@@ -51,3 +50,6 @@ if($_POST)
     </form>
 </div> 
 
+<?php
+require_once("footer.php");
+?>
