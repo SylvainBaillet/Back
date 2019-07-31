@@ -78,7 +78,7 @@ require_once("include/header.php");
                         <!-- card 2 -->
                         <div class="card col-md-3 order-md-4" id="card2" style="width: 18rem;">
                             <a href="travaux.php#ancreAudiovisuel">
-                            <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top" alt="...">
+                            <img src="images/echo.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Audiovisuel</p>
                             </div>  
@@ -88,7 +88,7 @@ require_once("include/header.php");
                         <!-- card 3 -->
                         <div class="card col-md-3 order-md-4" id="card3" style="width: 18rem;">
                             <a href="travaux.php#ancrePhoto">
-                            <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top" alt="...">
+                            <img src="images/56985491_2311448012246567_5611965360291971072_n.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Photographie</p>
                             </div>    
@@ -98,7 +98,7 @@ require_once("include/header.php");
                         <!-- card 4 -->
                         <div class="card col-md-3 order-md-4" id="card4" style="width: 18rem;">
                             <a href="travaux.php#ancreMusique">
-                            <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top" alt="...">
+                            <img src="images/bandmusic.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Musique</p>
                             </div>  

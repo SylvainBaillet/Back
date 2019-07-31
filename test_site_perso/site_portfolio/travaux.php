@@ -89,7 +89,8 @@ require_once("include/header.php");
 
     <h2 >Musique</h2>
     <p>Depuis mon adoléscence, je suis passionné par la musique. J'ai principalement pratiqué la guitare et participé à plusieurs projets de groupes, plus particulièrement dans le métal et la fusion mais également dans la musique éléctronique.</p>
-    <p>En parrallèle je me suis formé à la MAO, et j'aime composer des musiques orchestrales et mélanger les genres, symphoniques, éléctro, musiques du monde, rap, jazz etc...</p>
+    <p>En parrallèle je me suis formé à la MAO et j'aime composer des musiques orchestrales et mélanger les genres, symphoniques, éléctro, musiques du monde, rap, jazz etc...</p>
+    <p>C'est cette passion pour la musique qui m'a amené naturellement vers la prise de son audiovisuelle et qui m'a beaucoup aidé pour faire du bruitage et du sound design.</p>
         
 </div>
 
