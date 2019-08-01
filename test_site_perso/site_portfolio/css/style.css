@@ -8,7 +8,36 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+@media screen and (min-width: 960px){
+    #sidebar{
+    padding: 0;
+    width: 60px;
+    background-color: rgba(255, 233, 162, 0.7);
+    box-shadow: 3px 3px 3px black;
+    position: fixed;
+    top: 20rem;
+    left:0; 
+}
+}
+#sidebar{
+    padding: 0.7rem;
+    background-color: rgba(255, 233, 162, 0.7);
+    box-shadow: 3px 3px 3px black; 
+}
+@media screen and (min-width: 960px){
+    #sidebar .fab{
+    margin: 0.5rem;
+    padding: 0;
+    position: absolute fixed;
+}
+}
+#sidebar .fab{
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    margin: 0.5rem;
+    padding: 0;
+    position: absolute fixed;
+}    
 .container-fluid{
     margin: 0;
     padding: 0;
@@ -16,7 +45,6 @@ body{
 .nav{
     background-color: rgb(44, 10, 10);
 }
-  
 .nav a{
     margin: 0.8rem;
     color: whitesmoke;

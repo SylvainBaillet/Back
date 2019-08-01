@@ -56,10 +56,14 @@
                     </div>
                 </li>
                 <!-- fin dropdown -->
-            </ul>
-             
+            </ul>    
       </div>
-      
+
     </nav>
     <!-- fin nav -->
+
+    <aside id="sidebar">
+        <a href="https://www.linkedin.com/in/sylvain-baillet-a649b4179/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/SylvainBaillet"><i class="fab fa-github"></i></a>
+    </aside>
         
