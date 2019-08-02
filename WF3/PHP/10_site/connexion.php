@@ -18,7 +18,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'validate')
 {
     $validate .= '<div class="col-md-4 offset-md-4 alert alert-success text-center text-dark">Vous êtes inscrits sur le site! Vous pouvez des à présent vous connecter</div> ';
     
-
 }
 
 /* 
@@ -91,13 +90,6 @@ require_once('include/header.php');
   </div>
   <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
-
-
-
-
-
-
-
 
 
 <?php

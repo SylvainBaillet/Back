@@ -111,7 +111,7 @@ $produit = $data->fetchAll(PDO::FETCH_ASSOC);
 
 
 <hr><h1 class="display-4 text-center">Liste des produits</h1><hr>
-<table class="table table-bordered text-center tab1">
+<table class="table table-bordered text-center tab1"><tr>
 <?php foreach($produit[0] as $key => $value): ?>
       <th><?= strtoupper($key) ?></th> 
 <?php endforeach; ?> 
@@ -135,7 +135,7 @@ $produit = $data->fetchAll(PDO::FETCH_ASSOC);
     </tr>
 <?php endforeach; ?>
 </table>
-<?php endif;?>
+
 <!-- FIN if(isset) -->
 
 <?php

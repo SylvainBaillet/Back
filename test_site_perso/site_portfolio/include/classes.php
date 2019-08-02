@@ -33,5 +33,9 @@ class Membre
     public function getMdp(){
         return $this->mdp;
     }
+
+    $req = $bdd->prepare('INSERT INTO membre (pseudo, mdp) VALUES (:pseudo, :mdp)');
+
+
 }
 

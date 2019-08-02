@@ -1,10 +1,37 @@
 <?php
 require_once("include/init.php");
 require_once("include/header.php");
-require_once("include/classes.php");
 
-$connexion = new Membre;
+extract($_POST);
 
+if(adminConnecte()) /* Si l'internaute est connecté,; il n'a rien a faire dans la page connexion, on le redirige vers la page gestionAdmin.php */
+{
+    header("location: gestionAdmin.php");
+}
+
+/* Si l'indice 'action' est défini dans l'URL et qu'il a comme valeur 'deconnexion, cela  veut deire que l'on a cliqué sur me lien 'déconnexion',  du coup on supprime le fichier session. */
+if(isset($_GET['action']) && $_GET['action'] == "deconnexion")
+  {
+      session_destroy(); 
+  }
+
+// if(isset($_GET['action']) && $_GET['action'] == 'validate')
+// {
+//     $validate .= '<div class="col-md-4 offset-md-4 alert alert-success text-center text-dark">Vous êtes inscrits sur le site! Vous pouvez des à présent vous connecter</div> ';
+// }
+
+if($_POST)
+    {
+        $verifMembre = $bdd->prepare("SELECT * FROM membres WHERE pseudo = :pseudo AND mdp = :mdp");
+        $verifMembre->bindvalue(':pseudo', $pseudo, PDO::PARAM_STR);
+        $verifMembre->bindvalue(':mdp', $mdp, PDO::PARAM_STR);
+        $verifMembre->execute();
+
+        if($verifMembre->rowCount() > 0)
+            {
+                $membres = $verifMembre->fetch(PDO::FETCH_ASSOC);
+            }
+    }
 ?>
 
 <div class="container">

@@ -16,7 +16,7 @@
     <!-- fin container-fluid -->
 
     <!-- bouton ancre -->
-    <section>
+    <section id="navbar1">
     <a href="#navbar1"><button type="button"><i class="fas fa-arrow-alt-circle-up btn-ancre" aria-hidden="true"></i></button></a>
     </section>
     <!-- Optional JavaScript -->
