@@ -29,6 +29,33 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav mx-auto">
+
+
+            <?php if(adminConnecte()):?><!-- On definie les éléments de la nav auquel l'utilisateur connecté aura acces en rappelant la fonction internauteEstConnecté() dans une condition if, else (on entoure les (li) pris en compte)-->
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="<?=URL?>">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>parcours.php">Mon parcours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>travaux.php">Mes travaux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>loisirs.php">Loisirs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>contact.php">Me contacter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>admin/gestionAdmin.php">Gestion Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>connexion.php?action=deconnexion">Deconnexion</a>
+                </li>
+
+            <?php else:?>
                 <li class="nav-item">
                     <a class="nav-link active" href="<?=URL?>">Accueil</a>
                 </li>
@@ -45,17 +72,8 @@
                     <a class="nav-link" href="<?=URL?>contact.php">Me contacter</a>
                 </li>
 
-                <!-- dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    gestion admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?=URL?>connexion.php">Connexion</a>
-                    <a class="dropdown-item" href="#">Deconnexion</a>
-                    </div>
-                </li>
-                <!-- fin dropdown -->
+            <?php endif;?>
+
             </ul>    
       </div>
 

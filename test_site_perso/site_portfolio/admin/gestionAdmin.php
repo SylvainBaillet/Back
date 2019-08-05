@@ -3,8 +3,14 @@ require_once('../include/init.php');
 extract($_POST);
 extract($_GET);
 
-// 
-$validate = "";
+// variable d'affichage vide
+$contenu = "";
+
+if(isset($_GET['action']) && $_GET['action'] == "deconnexion")
+  {
+      session_destroy(); 
+      header("location: index.php");
+  }
 
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
@@ -54,32 +60,25 @@ require_once('../include/header.php');
 <!-- affichage photos -->
 <?php
 $data = $bdd->query("SELECT * FROM photo");
-$affichPhoto = $data->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!-- affichage admin photos -->
 <h1 class="display-4 text-center">Affichage photo</h1>
 <table class="table table-bordered text-center tab1">
-<tr>
-<?php foreach($affichPhoto as $key => $value): ?>
-        <th><?= strtoupper($key) ?></th>
-<?php endforeach; ?> 
-        <th>SUPPRIMER</th>       
-        </tr>
-<?php foreach($data as $key => $tab): ?>
-  <tr>
-    <?php foreach($tab as $key2 => $values): ?>
 
-        <?php if($key2 == 'photo'): ?>
-            <td><img src="../images/<?= $values ?>" alt="<?= $tab['titre'] ?>" class="card-img-top" ></td>
-        <?php else: ?>
-            <td><?= $value ?></td>
-<?php endif; ?>  
-<?php endforeach; ?>
-    <td><a href="?action=suppression&id_photo=<?= $tab['id_photo']?>" class="text-danger" onclick="return(confirm('Etes vous sur de vouloir supprimer?'))"><i class="fas fa-trash-alt text-dark"></i></a></td>
-    </tr>
-<?php endforeach; ?>
+<?php while($affichage = $data->fetch(PDO::FETCH_ASSOC)):?>
+
+    <?php $contenu .= '<tr>'; ?>
+    <?php $contenu .= '<td class="text-center">' . $affichage['nom_photo'] . '</td>';?>
+    <?php $contenu .= '</tr>';?>
+
+    <?php $contenu .= '<tr>'; ?>
+    <?php $contenu .= '<td class="text-center">' . $affichage['photo'] . '</td>';?>
+    <?php $contenu .= '</tr>';?>
+
+    <?php endwhile; ?>
 </table>  
+
 
 <button class="btn btn-secondary color-white col-md-4 offset-md-4"><a href="<?=URL?>" action="">Retour à l'accueil</a></button> 
 

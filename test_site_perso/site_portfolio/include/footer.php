@@ -4,7 +4,7 @@
         <footer class="page-footer font-small indigo fixed-bottom">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <div class="footer-copyright text-center py-3">© 2019 Copyright <a href="connexion.php?action=validate">:</a>
             <a href="https://mdbootstrap.com/education/bootstrap/"> Sylvain Baillet</a>
         </div>
         <!-- Copyright -->

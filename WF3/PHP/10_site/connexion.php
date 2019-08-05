@@ -54,7 +54,7 @@ if($_POST)
                     $_SESSION['membre'][$key] = $value;// chaque boucle foreach, on enregistre les données de l'internaute dans son fichier session
                 }
             }
-            // echo '<pre>'; print_r($_SESSION);echo '</pre>';
+            echo '<pre>'; print_r($_SESSION);echo '</pre>';
             header("location: profil.php"); /* Apres l'enregistrement des données de l'internaute dans son fichier session, on le redirige vers sa page profil */
         }
         else /* on entre dans le ELSE dans le cas ou l'internaute n'a pas saisi le bon mote de passe */
@@ -88,7 +88,7 @@ require_once('include/header.php');
     <label for="exampleInputPassword1">Mot de passe</label>
     <input type="text" class="form-control col-md-12" id="exampleInputPassword1" name="mdp" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-primary">Envoyer</button>
+  <button type="submit" action="validate" class="btn btn-primary">Envoyer</button>
 </form>
 
 
