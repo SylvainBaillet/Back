@@ -1,14 +1,16 @@
 <?php
 require_once("include/init.php");
-require_once("include/header.php");
 
+$data = $bdd->query("SELECT * FROM photo");
+
+require_once("include/header.php");
 ?>
 
 <div class="container" id="mainTravaux">
 
     <br id="ancreWeb">
 
-    <h2 >Web</h2>
+    <h2>Web</h2>
 
     <p>En décembre 2018, j'intègre une formation de 10 mois intégrateur développeur web à Vitry (Lepoles).</p>
     <p>J'y apprends les différents langages de programmation web : HTML, CSS, JavaScript, PHP, SQL ainsi que les bibliothèques et frameworks : JQuery, Bootstrap, Symfony et enfin le CMS Wordpress.</p>
@@ -81,7 +83,12 @@ require_once("include/header.php");
     <p>J'aime avoir cette carte qui me permet d'apporter ma propre touche et mes propres clichés sur mes réalisations.</p>
     <p>quelques exemples de mes photos :</p>
 
-    <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="img-fluid" alt="Responsive image">
+    <?php while($affichPhoto = $data->fetch(PDO::FETCH_ASSOC)):?>
+
+    <img src="<?=$affichPhoto['photo']?>" class="imgTravaux col-md-3 petite">
+    <?php endwhile; ?>
+    <div class="grande">
+    </div>
     
     <hr>
 
