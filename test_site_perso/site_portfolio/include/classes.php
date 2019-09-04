@@ -1,41 +1,58 @@
 <?php
 
 
-class Membre
+// class de mon formulaire de contact
+
+class Contact 
 {
+    private $nom;
+    private $email;
+    private $message;
+    private $errors;
 
-    private $pseudo;
-    private $mdp;
-    private $errorLog;
-
-    public function setPseudo($pseudo){
-        if(iconv_strlen($pseudo) > 2 && iconv_strlen($pseudo)< 21){
+    public function setNom($nom){
+        if(iconv_strlen($nom) > 2 && iconv_strlen($nom) < 41){
             $this->pseudo = $pseudo;
-            }
-        else{
-            $this->errorLog = "entrer un pseudo compris entre 2 et 20 caractères";
-            return $this->errorLog;
-            }    
         }
+        else{
+            $this->errors = "entrez un nom compris entre 2 et 30 caractères";
+        }
+    }
+    public function getNom(){
+        return $this->nom;
+    }
+
+    public function setEmail($email){
+        if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $this->email = $email;
+        }
+        else{
+            $this->errors = "entrez un email valide";
+        }
+    }
+    public function getEmail(){
+        return $this->email;
+    }
+
+    public function setMessage($message){
+        if(iconv_strlen($message) > 2 && iconv_strlen($message) < 256){
+            $this->message = $message;
+        }
+        else{
+            $this->errors = "entrez un message compris entre 2 et 255 caractères";
+        }
+    }
+    public function getMessage(){
+        return $this->message;
+    }
     
-    public function getPseudo(){
-        return $this->pseudo;
+    public function insertAction(){
+        $insert= $this->$bdd->prepare("INSERT INTO contact ('nom', 'email', 'message') VALUES (':nom', ':email', ':message')");
+        $insert->bindValue(":nom", $nom, PDO::PARAM_STR);
+        $insert->bindValue(":email", $email, PDO::PARAM_STR);
+        $insert->bindValue(":message", $message, PDO::PARAM_STR);
+        $insert->execute();
+
     }
-
-    public function setMdp($mdp){
-        if(password_verify($mdp) && $mdp['statut'] == 1){
-            $this->mdp = $mdp;
-        }
-        else{
-            $this->errorLog = "le mot de passe n'est pas valide";
-        }
-    }
-    public function getMdp(){
-        return $this->mdp;
-    }
-
-    $req = $bdd->prepare('INSERT INTO membre (pseudo, mdp) VALUES (:pseudo, :mdp)');
-
-
 }
 

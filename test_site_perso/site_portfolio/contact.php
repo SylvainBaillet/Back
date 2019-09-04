@@ -1,142 +1,82 @@
 <?php
 require_once("include/init.php");
 require_once("include/header.php");
+require_once("include/classes.php");
 
-class Formulaire 
-{
-    private $nom;
-    private $email;
-    private $message;
-    private $error;
-    public function setNom()
-        {
-            if(iconv_strlen($nom)>2 && iconv_strlen($nom) < 21)
-                {
-                    $this->nom = $nom;
-                }
-            else
-                {
-                    $this->error = "veuillez rentrer un nom entre 2 et 20 caractères";
-                    return $this->error;
-                }    
-        }
-    public function getNom()
-        {
-            return $this->nom;
-        }
-    public function setEmail()
-        {
-            if($_POST['email'] OR filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
-                {
-                    $this->email = $email;
-                }
-            else
-                {
-                    $errors['email'] = "L'email entré n'est pas valide";
-                    return $this->error;
-                }
-                
-        }   
-        
-    public function getEmail()
-        {
-            return $this->email;
-        }    
+// extract($_POST);
+// if(isset($_POST['submit']))/* on verifie si on a bien cliqué sur le bouton 'submit' qui a pour attribut name 'submit', si nous avions plusieurs formulaires sur la meme page, la condition permet de differencier sur quel bouton le formulaire a été validé */
+// {
+//     //1er argument:
+//     $destinataire = "sylvain.baillet@lepoles.com";
+//     //2 eme argument
+//     $nom = $_POST['nom'];
 
-    public function setMessage()
-        {
-            if(iconv_strlen($message)>2 && iconv_strlen($message) < 256)
-                {
-                    $this->message = $message;
-                }
-            else
-                {
-                    $this->error = "veuillez rentrer un message entre 2 et 255 caractères";
-                    return $this->error;
-                }    
-        }
-    public function getMessage()
-        {
-            return $this->message;
-        }    
-    // error 
-    public function getError()
-        {
-            return $this->error;
-        }
+//     $email = $_POST['email'];
+//     // 3eme argument: 
+//     $message = $_POST['message'];
+//     // 4eme argument: obligatoire (MIME-version 1.0 est un protocole d'envoi de mail stadardisé)
+//     $entetes = "MIME-Version 1.0 \n"; /* est un standard internet qui étentd le format de données des courriels pour supporter des textes en differents codages des caracteres autres que l'ASCII , des contenus non textuels, des contenus multiples, et des informations d'en-tete en d'autres codages que l'ASCII.*/
 
-}     
+//     // entete expediteur: toujours "from" et non "de" par exemple
+//     $entetes .= "from: moi@exemple.com\n";
+
+//     //priorité urgente
+//     $entetes .= "X-priority: 1\n";
+
+//     //type de contenu HTML // avec cette ligne, je peux coder en html dans le message
+//     $entetes .= "content-type: text/html; charset=utf-8\n";
+
+//     mail($destinataire, $nom, $email, $message, $entetes); // fonction predefinie permettant l'envoi du mail / toujours  4 arguments: destinataire/sujet/message/expediteur. L'ordre est crucial sinon le test ne fonctionne pas.
+// }
+
+$contact = new Contact;
+
+if(isset($_POST)){
+    $contact->setNom = $_POST['nom'];
+    $contact->setEmail = ($_POST['email']);
+    $contact->setMessage = ($_POST['message']);
+    $contact->insertAction();
+}
+
+
 ?>
 
 <div class="container" id="mainContact">
     <!--Section: Contact v.2-->
-<section class="mb-4">
 
-    <!--Section heading-->
+    <!--Section heading--> <div class="col-md-5 mx_auto"><?php ?></div>
     <h2 class="h1-responsive font-weight-bold text-center my-4">Pour me contacter</h2>
 
     <div class="row">
 
-        <!--Grid column-->
-        <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
 
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">nom</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
-                            <label for="email" class="">email</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Votre message</label>
-                        </div>
-
-                    </div>
-                </div>
-                <!--Grid row-->
-
-            </form>
-
-            <div class="text-center text-md-left">
-                <a class="btn btn-primary bg-dark text text-light" onclick="document.getElementById('contact-form').submit();">Envoyer</a>
+        <div class="col-md-9">
+            <form class="col-md-6 offset-md-1" method="post" action="">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control col-md-12" id="nom" name="nom" placeholder="nom">
+            </div> 
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control col-md-12" id="email" aria-describedby="emailHelp" name="email" placeholder="email">
             </div>
-            <div class="status"></div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Votre message"></textarea>
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+            
+            
         </div>
         <!--Grid column-->
 
         <!--Grid column-->
         <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
-                
+            <ul class="list-unstyled">
                 <li><i class="fas fa-phone mt-4 fa-2x"></i>
                     <p>06 51 29 95 59</p>
                 </li>
-
                 <li><i class="fas fa-envelope mt-4 fa-2x"></i>
                     <p>sylvain.baillet@lepoles.com</p>
                 </li>
@@ -145,9 +85,8 @@ class Formulaire
         <!--Grid column-->
 
     </div>
+    <!-- fin div row -->
 
-</section>
-<!--Section: Contact v.2-->
 
 
 </div>

@@ -1,7 +1,7 @@
     </section>
         
     <!-- Footer -->
-        <footer class="page-footer font-small indigo fixed-bottom">
+        <footer class="page-footer font-small indigo">
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Copyright <a href="connexion.php?action=validate">:</a>
@@ -16,10 +16,10 @@
     <!-- fin container-fluid -->
 
     <!-- bouton ancre -->
-    <section id="navbar1">
+    <section id="ancre">
     <a href="#navbar1"><button type="button"><i class="fas fa-arrow-alt-circle-up btn-ancre" aria-hidden="true"></i></button></a>
     </section>
-    <!-- Optional JavaScript -->
+    <!-- liens jQuery et JavaScript -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/site_portfolio.js"></script>
     

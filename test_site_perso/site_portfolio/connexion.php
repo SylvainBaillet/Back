@@ -5,7 +5,7 @@ require_once("include/header.php");
 extract($_POST);
 
 
-/* Si l'indice 'action' est défini dans l'URL et qu'il a comme valeur 'deconnexion, cela  veut dire que l'on a cliqué sur me lien 'déconnexion',  du coup on supprime le fichier session. */
+/* Si l'indice 'action' est défini dans l'URL et qu'il a comme valeur 'deconnexion', cela  veut dire que l'on a cliqué sur le lien 'déconnexion', alors on supprime le fichier session. */
 if(isset($_GET['action']) && $_GET['action'] == "deconnexion")
     {
         session_destroy(); 

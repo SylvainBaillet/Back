@@ -51,9 +51,8 @@ if($_POST)
 
         copy($_FILES['photo']['tmp_name'], $photo_dossier);/* la fonction predefinie copy() permet de copier la photo dans le dossier photo: arguments: nom temporaire de la photo, chemin de destination */
     }
-
-    //Exo: réaliser la requete d'insertion permettant d'inserer un produit dans la table produit (requete preparée).
-
+    
+    // requete d'insertion 
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
         $data_insert = $bdd->prepare("INSERT INTO produit (reference, categorie, titre, description, couleur, taille, public, photo, prix, stock ) VALUES (:reference, :categorie, :titre, :description, :couleur, :taille, :public, :photo, :prix, :stock)");
@@ -61,9 +60,10 @@ if($_POST)
         $_GET['action'] = 'affichage';// $_GET 'action' = 'affichage' permet d'etre redirigé vers la page 'affichage'
 
         //affichage du message a l'ajout, avec le numero de reference
-        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit n° : <strong>$reference</strong> à bien été modifrié </div>";
+        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit n° : <strong>$reference</strong> à bien été modifié </div>";
 
     }
+    // requete de modification
     else
     {
 
@@ -161,7 +161,6 @@ $photo = (isset($produit_actuel['photo'])) ? $produit_actuel['photo']: '';
 $prix = (isset($produit_actuel['prix'])) ? $produit_actuel['prix']: '';
 $stock = (isset($produit_actuel['stock'])) ? $produit_actuel['stock']: '';
 
-
 ?>
 
 
@@ -221,11 +220,11 @@ $stock = (isset($produit_actuel['stock'])) ? $produit_actuel['stock']: '';
   <input type="hidden" id=photo_actuelle name="photo_actuelle" value="<?=$photo?>">
   <!--  -->
   <div class="form-group">
-    <label for="Prenom">Prix</label>
+    <label for="Prix">Prix</label>
     <input type="text" class="form-control col-md-12" id="prix" name="prix" placeholder="Prix" value="<?=$prix?>">
   </div>
   <div class="form-group">
-    <label for="Prenom">Stock</label>
+    <label for="Stock">Stock</label>
     <input type="text" class="form-control col-md-12" id="stock" name="stock" placeholder="stock" value="<?=$stock?>">
   </div>
   

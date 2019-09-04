@@ -1,5 +1,4 @@
 // MDB Lightbox Init
-console.log('text');
 $(function () {
 
     $(".petite").click(function () {
@@ -14,3 +13,19 @@ $(function () {
     });
 
 });
+
+$(document).ready(function () {
+
+    $("#ancre").hide();
+
+    // faire apparaitre #text1
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('#ancre').fadeIn(300);
+            } else {
+                $('#ancre').fadeOut(300);
+            }
+        });
+        });
+    });
