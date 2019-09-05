@@ -52,6 +52,9 @@
                     <a class="nav-link" href="<?=URL?>admin/gestionAdmin.php">Gestion Admin</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>admin/gestionContact.php">Gestion Contacts</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=URL?>connexion.php?action=deconnexion">Deconnexion</a>
                 </li>
 

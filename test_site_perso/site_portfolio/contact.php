@@ -29,15 +29,22 @@ require_once("include/classes.php");
 //     mail($destinataire, $nom, $email, $message, $entetes); // fonction predefinie permettant l'envoi du mail / toujours  4 arguments: destinataire/sujet/message/expediteur. L'ordre est crucial sinon le test ne fonctionne pas.
 // }
 
-$contact = new Contact;
+// instanciation de ma class Contact
+     $contact = new Contact;
 
 if(isset($_POST)){
-    $contact->setNom = $_POST['nom'];
-    $contact->setEmail = ($_POST['email']);
-    $contact->setMessage = ($_POST['message']);
-    $contact->insertAction();
-}
+    if(!empty($errors))
+    {
+        echo $errors;
+    }   
 
+else
+{
+    $contact->insertAction();
+
+    $contact->sendMailAction();
+}
+}
 
 ?>
 
@@ -49,7 +56,7 @@ if(isset($_POST)){
 
     <div class="row">
 
-
+        <div class="col-md-6 mx-auto"> </div>
         <div class="col-md-9">
             <form class="col-md-6 offset-md-1" method="post" action="">
             <div class="form-group">
@@ -64,7 +71,7 @@ if(isset($_POST)){
                 <label for="message">Message</label>
                 <textarea class="form-control" id="message" name="message" rows="3" placeholder="Votre message"></textarea>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
             
             
@@ -86,8 +93,6 @@ if(isset($_POST)){
 
     </div>
     <!-- fin div row -->
-
-
 
 </div>
 

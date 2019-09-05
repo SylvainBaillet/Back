@@ -8,7 +8,9 @@ require_once("include/header.php");
 
 <div class="container" id="mainTravaux">
 
-    <br id="ancreWeb">
+
+    <!-- section Web -->
+    <section id="ancreWeb">
 
     <h2>Web</h2>
 
@@ -60,22 +62,46 @@ require_once("include/header.php");
         </div>
         
     </div>
-
+    
     <br>
     <p>Mes expériences web :</p>
+
+    <!-- card affichage experience web -->
+    <div class="row">
+        <div class="card col-md-3" href="http://cinemalalucarne.mjccreteil.com/" style="width: 18rem;">
+        <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top " alt="...">
+        <div class="card-body">
+        <h5 class="card-title text text-dark">Cinéma la Lucarne</h5>
+        <p class="card-text">Lors de mon 1er stage, j'ai pu créer un site en wordpress pour le cinéma de quartier la Lucarne à Créteil.</p>
+        </div>
+    </div>
+    <!-- fin card -->
+
+    </div>
+    
+    </section>
+    <!-- fin section Web -->
+
         <hr>
 
-    <br id="ancreAudiovisuel">
+    <!-- section Audiovisuel -->
+    <section id="ancreAudiovisuel">
+    <br>
 
     <h2 >Audiovisuel</h2>
     <p>En 2006, j'ai entammé des études en audiovisuel à Nantes (Cinécreatis) en dominante montage image et son. J'obtiens en 2008 une qualification de niveau 3 en tant que technicien audiovisuel.</p>
     <p>Pendant 2 ans, j'ai appris les techniques de prises de sons, de prises de vues, de signal vidéo, ainsi que le montage son et vidéo.</p>
     <p>Ma passion première étant la musique, je me suis tourné naturellement vers la prise de son et le mixage sur des tournages de courts métrages et documentaires. J'ai participé depuis à différents projets de courts métrages et de clips promotionnels, principalement en tant que preneur de son et mixeur, mais également monteur vidéo.</p>
     <p>Au fur et à mesure de mes expériences, je me suis auto-formé sur les techniques de compositing, notamment sur After Effects et au traitement de l'image et de la photo sur Photoshop.</p>
+
+    </section>
+    <!-- fin section Audiovisuel -->
     
         <hr>
 
-    <br id="ancrePhoto">    
+    <!-- section Photo -->
+    <section id="ancrePhoto">
+    <br>    
 
     <h2 id="ancrePhoto">Photographie</h2>
     <p>Récemment je me suis passionné pour la photographie. Et le traitement numérique.</p>
@@ -90,17 +116,26 @@ require_once("include/header.php");
     <div class="grande">
     </div>
     
+    </section>
+    <!-- fin section Photo -->
+
     <hr>
 
-    <br id="ancreMusique">
+    <!-- section Musique -->
+    <section id="ancreMusique">
+    <br>
 
     <h2 >Musique</h2>
     <p>Depuis mon adoléscence, je suis passionné par la musique. J'ai principalement pratiqué la guitare et participé à plusieurs projets de groupes, plus particulièrement dans le métal et la fusion mais également dans la musique éléctronique.</p>
     <p>En parrallèle je me suis formé à la MAO et j'aime composer des musiques orchestrales et mélanger les genres, symphoniques, éléctro, musiques du monde, rap, jazz etc...</p>
     <p>C'est cette passion pour la musique qui m'a amené naturellement vers la prise de son audiovisuelle et qui m'a beaucoup aidé pour faire du bruitage et du sound design.</p>
-        
-</div>
 
+    </section>   
+     <!-- fin section Musique -->
+</div>
+<!-- fin container mainTravaux-->
+
+<!-- include footer -->
 <?php
 require_once("include/footer.php");
 ?>
