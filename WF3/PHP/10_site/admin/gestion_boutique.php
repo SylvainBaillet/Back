@@ -233,6 +233,9 @@ $stock = (isset($produit_actuel['stock'])) ? $produit_actuel['stock']: '';
 <?php endif;?>
 
 <?php
+$mdp = 'soleil';
+$mdp = password_hash($mdp, PASSWORD_DEFAULT);
+
 require_once('../include/footer.php');
 ?>
 

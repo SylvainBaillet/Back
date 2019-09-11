@@ -29,10 +29,18 @@ if($_POST)
         $membre = $verifMembre->fetch(PDO::FETCH_ASSOC);// on recupere les données de l'internaute en BDD, qui a saisi le con pseudo et le bon email. on va pouvoir comparer les mots de passe
 
 
-        // if(password_verify($mdp, $membres['mdp'])) /* dans le cas ou nous avons un mdp avec une clé de hashage, il faut comparer la clé de hashage avec une chaine de caractere avec (password_verify)*/
+        // if(password_verify($mdp, $membre['mdp'])) /* dans le cas ou nous avons un mdp avec une clé de hashage, il faut comparer la clé de hashage avec une chaine de caractere avec (password_verify)*/
+        // $mdp = $_POST['mdp'];
+        $mdpm = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+        $verif_mdp = 'sylvain94'; 
+        if(password_verify($verif_mdp, $mdpm)) {
+            echo '<br>OK';
+            } else {
+            echo '<br>NOK';
+}
 
         /* On entre dans le IF seulement dans le cas ou l'internaute à saisi le bon email/pseudo ou le bon mot de passe */
-        if($membre['mdp'] == $mdp)/* Si le mot de passe de la bdd est égale au mot de passe que l'internaute a saisi dans le formulaire, on entre dans le IF */
+        if(password_verify($membre['mdp'],$mdpm))/* Si le mot de passe de la bdd est égale au mot de passe que l'internaute a saisi dans le formulaire, on entre dans le IF */
         {
             // echo 'mot de passe valide';
             foreach($membre as $key => $value)

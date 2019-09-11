@@ -16,7 +16,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 
         // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>La photo : <strong>$id_photo</strong> à bien été supprimé </div>";
+        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>La photo : <strong>$id_photo</strong> à bien été supprimée </div>";
 }
 
 // insertion photo
@@ -129,6 +129,7 @@ if(isset($_GET['id_photo']))
   $nom_photo = (isset($photo_actuelle['nom_photo'])) ? $photo_actuelle['nom_photo']: '';
   $photo = (isset($photo_actuelle['photo'])) ? $photo_actuelle['photo']: '';
 }
+
 ?>
 
 <!-- formulaire  d'insertion photo-->
@@ -136,7 +137,7 @@ if(isset($_GET['id_photo']))
 <form id="formulaire" class="col-md-6 offset-md-3" method="post" action="" enctype="multipart/form-data" ><!-- enctype: obligatoire en PHP pour recolter les informations d'un fichier uploadé -->
     <div class="form-group">
         <label for="nom_photo">Nom de la photo</label>
-        <input type="text" class="form-control col-md-12" id="nom_photo" name="nom_photo" placeholder="nom_photo" value="<?=$nom_photo?>">
+        <input type="text" class="form-control col-md-12" id="nom_photo" name="nom_photo" placeholder="nom_photo" value="<?=$nom_photo?>"> 
     </div> 
     <div class="form-group">
         <label for="photo">Photo</label>

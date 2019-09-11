@@ -4,17 +4,15 @@ require_once("include/header.php");
 ?>
 
     <h1 class="display-2 offset-md-4 titre1">Sylvain Baillet - Portfolio</h1>
-    
+<?php  
+$mdp = 'sylvain94';
+$mdp = password_hash($mdp, PASSWORD_DEFAULT);
+echo $mdp;
+
+?>
+    <!-- Carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-        </ol>
+       
         <div class="carousel-inner">
             <div class="carousel-item active">
             <img src="images/slid1.jpg" class="d-block w-100" alt="...">
@@ -57,16 +55,16 @@ require_once("include/header.php");
             <h1 class="display-4">Bienvenue sur mon portfolio!</h1>
             </marquee>
             
-                <p class="lead">Ici , Je vous parle de mon parcours, de mes compétences et travaux, de mes loisirs. Bonne navigation à tous !</p>
+                <p class="lead">Ici Je vous parle de mon parcours, de mes compétences et travaux, de mes loisirs. Bonne navigation à tous !</p>
                 <hr class="my-4">
                 <h2>Mes différents domaines de compétences</h2>
                 
+            <!-- cards Accueil -->
             <div id="cards">
-
                 <div class="row">
 
                         <!-- card 1 -->
-                        <div class="card col-md-3" id="card1" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3" id="card1" style="width: 18rem;">
                             <a href="travaux.php#ancreWeb">
                             <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -76,7 +74,7 @@ require_once("include/header.php");
                         </div>  
                         
                         <!-- card 2 -->
-                        <div class="card col-md-3 order-md-4" id="card2" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 order-md-4" id="card2" style="width: 18rem;">
                             <a href="travaux.php#ancreAudiovisuel">
                             <img src="images/echo.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -86,7 +84,7 @@ require_once("include/header.php");
                         </div>
 
                         <!-- card 3 -->
-                        <div class="card col-md-3 order-md-4" id="card3" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 order-md-4" id="card3" style="width: 18rem;">
                             <a href="travaux.php#ancrePhoto">
                             <img src="images/56985491_2311448012246567_5611965360291971072_n.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -96,7 +94,7 @@ require_once("include/header.php");
                         </div>
 
                         <!-- card 4 -->
-                        <div class="card col-md-3 order-md-4" id="card4" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 order-md-4" id="card4" style="width: 18rem;">
                             <a href="travaux.php#ancreMusique">
                             <img src="images/bandmusic.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -115,7 +113,7 @@ require_once("include/header.php");
             <div class="row">
                 <div class="jumbotron" id="jt2">
                     <h2 class="display-4">Présentation</h2>
-                    <p class="lead">En formation intégrateur développeur web depuis décembre 2018, je vous présente ici mon parcours, mes projets et créations, mes domaines de compétences et mes passions. N'hésitez pas à naviguer dans les onglets où vous en découvrirez plus sur moi. bonne navigation à tous!</p>
+                    <p class="lead">En formation intégrateur développeur web depuis décembre 2018, je vous présente mon parcours, mes projets et créations, mes domaines de compétences et mes passions. N'hésitez pas à naviguer dans les onglets où vous en découvrirez plus sur moi. bonne navigation à tous!</p>
                 </div>
                 <!-- fin jumbotron jt2 -->
             

@@ -14,9 +14,9 @@ require_once("include/header.php");
 
     <h2>Web</h2>
 
-    <p>En décembre 2018, j'intègre une formation de 10 mois intégrateur développeur web à Vitry (Lepoles).</p>
+    <p>En décembre 2018 j'intègre une formation de 10 mois intégrateur développeur web à Vitry (Lepoles).</p>
     <p>J'y apprends les différents langages de programmation web : HTML, CSS, JavaScript, PHP, SQL ainsi que les bibliothèques et frameworks : JQuery, Bootstrap, Symfony et enfin le CMS Wordpress.</p>
-    <p>Junior dans ce domaine et grand débutant avant cette formation, j'y ai appris énormément et j'ai pu mettre mes connaissances en pratique lors de nos évaluations ainsi que lors de mon premier stage en entreprise ou j'ai réalisé et mis en ligne le site du cinéma la Lucarne en wordpress. Cette expérience à été très enrichissante, et beaucoup plus complexe qu'il n'y parrait quant à la maitrise de Wordpress et à son déploiement.</p>
+    <p>Junior dans ce domaine et grand débutant avant cette formation, j'y ai appris énormément et j'ai pu mettre mes connaissances en pratique lors de nos évaluations ainsi que lors de mon premier stage en entreprise ou j'ai réalisé et mis en ligne le site du cinéma la Lucarne en wordpress. Cette expérience à été très enrichissante, et beaucoup plus complexe qu'il n'y parait quant à la maitrise de Wordpress et à son déploiement.</p>
     
     <div class="row">   
         <div class="col-md-2">
@@ -68,13 +68,33 @@ require_once("include/header.php");
 
     <!-- card affichage experience web -->
     <div class="row">
-        <div class="card col-md-3" href="http://cinemalalucarne.mjccreteil.com/" style="width: 18rem;">
+        <div id="cardWeb" class="card col-md-3" href="http://cinemalalucarne.mjccreteil.com/" style="width: 18rem;">
         <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top " alt="...">
         <div class="card-body">
         <h5 class="card-title text text-dark">Cinéma la Lucarne</h5>
-        <p class="card-text">Lors de mon 1er stage, j'ai pu créer un site en wordpress pour le cinéma de quartier la Lucarne à Créteil.</p>
         </div>
     </div>
+
+         <div id="cardWeb" class="card col-md-4" href="" style="width: 18rem;">
+        <img src="images/Screenshot_2019-09-09 Images.png" class="card-img-top petite" alt="site web">
+        <div class="card-body">
+        <h5 class="card-title text text-dark">Mon 1er site web</h5>
+        </div>
+    </div>	
+		
+		<div id="cardWeb" class="card col-md-4" href="" style="width: 18rem;">
+        <img src="images/Screenshot_2019-09-09 Ce Soir.png" class="card-img-top petite" alt="site web">
+        <div class="card-body">
+        <h5 class="card-title text text-dark">Travail d'école 1</h5>
+        </div>
+    </div>	
+		
+		<div id="cardWeb" class="card col-md-4" href="" style="width: 18rem;">
+        <img src="images/Screenshot_2019-09-09 TP6_jurassic_maquette png (Image PNG, 1903 × 4196 pixels).jpg" class="card-img-top petite" alt="site web">
+        <div class="card-body">
+        <h5 class="card-title text text-dark">Travail d'école 2</h5>
+        </div>
+    </div>	
     <!-- fin card -->
 
     </div>
@@ -126,7 +146,7 @@ require_once("include/header.php");
     <br>
 
     <h2 >Musique</h2>
-    <p>Depuis mon adoléscence, je suis passionné par la musique. J'ai principalement pratiqué la guitare et participé à plusieurs projets de groupes, plus particulièrement dans le métal et la fusion mais également dans la musique éléctronique.</p>
+    <p>Depuis mon adoléscence je suis passionné par la musique. J'ai principalement pratiqué la guitare et participé à plusieurs projets de groupes, plus particulièrement dans le métal et la fusion mais également dans la musique éléctronique.</p>
     <p>En parrallèle je me suis formé à la MAO et j'aime composer des musiques orchestrales et mélanger les genres, symphoniques, éléctro, musiques du monde, rap, jazz etc...</p>
     <p>C'est cette passion pour la musique qui m'a amené naturellement vers la prise de son audiovisuelle et qui m'a beaucoup aidé pour faire du bruitage et du sound design.</p>
 

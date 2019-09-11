@@ -9,20 +9,24 @@ body{
     background-attachment:fixed;
 }
 
+
+/* container -fluid */
 .container-fluid{
     margin: 0;
     padding: 0;
 }
+
+/* nav */
 .nav{
     background-color: rgb(44, 44, 44);
 }
 .nav a{
     margin: 0.8rem;
-    color: whitesmoke;
+    color: aliceblue;
 }
 .nav a:hover{
     color: rgb(255, 195, 139);
-    text-shadow: 0px -1px 3px whitesmoke;
+    text-shadow: 0px -1px 3px aliceblue;
     transition: 0.3s;
 }
 
@@ -32,17 +36,18 @@ body{
 .dropdown-menu.show{
     background-color: rgb(44, 44, 44);
 }
+
+/* container */
 .fas{
-    color:whitesmoke;
+    color:aliceblue;
     padding:0;
     margin: 0;
 }
 
 span{
-    color: whitesmoke;
+    color: aliceblue;
 }
 #container1{
-    background-color: rgb(88, 88, 88);
     border-radius: 5px;
     margin-top: 1rem; 
     margin-bottom: 1rem;
@@ -57,14 +62,13 @@ span{
 }
 #mainTravaux h2{
     margin: 1rem;
-    color: whitesmoke;
 }    
 #mainTravaux p{
     text-align: left;
 }
 #mainTravaux hr{
     width: 90%;
-    background-color: rgb(255, 72, 0);
+    background-color: rgb(252, 81, 81);
 }
 .titre1
     {
@@ -90,6 +94,9 @@ span{
     margin-left:38rem;
     z-index: 1;
 }
+}
+
+/* jumbotron */
 #jt1{
     background-color: rgba(255, 233, 162, 0.7);
 }
@@ -101,6 +108,22 @@ span{
     color: black;
 }
 
+#jt2{
+    margin: 1rem;
+    margin-bottom: 3rem;
+    background-color:  rgba(255, 233, 162, 0.7);
+}
+@media screen and (min-width: 960px){
+    #jt2 h1, h2, p{
+    text-align: center;
+    color:black;
+}
+}
+#jt2 h1, h2, p{
+    text-align: center;
+    color:black;
+}
+
 @media screen and (min-width: 960px){
     .card{
     margin: 0.4%;
@@ -110,7 +133,8 @@ span{
     .card h1{
         text-align: center;
     }
-    .card p{
+    
+    #cardAccueil p{
         font-family: 'Shadows Into Light', cursive;
         font-size: 1.5rem;
         text-align: center;
@@ -120,32 +144,8 @@ span{
     }
 }
 .card p{
-    color: black;
+    color: black !important;
     font-family: 'Shadows Into Light', cursive;
-}
-
-#jt2{
-    margin: 1rem;
-    margin-bottom: 3rem;
-    background-color:  rgba(255, 233, 162, 0.7);
-}
-#jt2 h1, h2, p{
-    text-align: center;
-    color: black;
-}
-#jt2 p{
-    color: black;
-}
-
-@media screen and (mix-width: 960px){
-    #container1, #mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux, #mainContact{
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 1rem;
-    color: whitesmoke;
-    }
 }
 
 #container1, #mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux, #mainContact{
@@ -154,8 +154,53 @@ span{
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding: 1rem;
-    color: whitesmoke;
+    color: aliceblue ;
 }
+@media screen and (min-width: 960px){
+    #container1, #mainCompetences, #mainLoisirs, #mainParcours, #mainTravaux, #mainContact{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 1rem;
+    color: aliceblue;
+    }
+}
+
+#mainCompetences p, h2{
+   color:aliceblue !important;
+}
+#mainLoisirs p, h2{
+    color:aliceblue !important;
+}
+
+#mainParcours p, h2{
+    color:aliceblue !important;
+}
+
+#mainTravaux p, h2{
+    color:aliceblue !important;
+}
+
+#mainContact p, h2{
+    color:aliceblue !important;
+}
+
+
+
+/* images dans travaux */
+@media screen and (min-width: 960px){
+    .imgTravaux{
+    width: 24%; 
+    padding: 4px;
+    margin-left: 6px;
+}
+}
+.imgTravaux{
+    padding: 2px;
+}
+
+/* i fontawesome */
 i{
     color: rgb(255, 166, 0);
     font-size: 3rem;
@@ -170,6 +215,7 @@ i{
     
 }
 
+/* footer */
 .page-footer{
     background-color: rgba(0, 0, 0, 0.6);  
     margin: 0;
@@ -186,14 +232,7 @@ i{
 }
 }
 
-@media screen and (max-width: 960px){
-    p{
-        color:whitesmoke;
-    }
-}
-p{
-    color:whitesmoke;
-}
+
 form{
     margin: 1rem;
 }
@@ -214,21 +253,11 @@ form{
     color: slategrey;
 }
 footer a{
-    color: whitesmoke;
+    color: aliceblue;
 }
 
 
-/* images dans travaux */
-@media screen and (min-width: 960px){
-    .imgTravaux{
-    width: 24%; 
-    padding: 4px;
-    margin-left: 6px;
-}
-}
-.imgTravaux{
-    padding: 2px;
-}
+
 
 /* jquery lightbox */
 .petite, .grande {
