@@ -28,3 +28,4 @@ foreach($_GET as $key => $value)
 
 require_once("fonctions.php");
 ?>
+

@@ -97,7 +97,7 @@ class Contact
         {
             //1er argument:
             $destinataire = "sylvain.baillet@lepoles.com";
-
+  
             //2 eme argument
             $nom = $_POST['nom'];
 

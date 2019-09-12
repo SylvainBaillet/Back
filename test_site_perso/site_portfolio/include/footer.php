@@ -5,7 +5,7 @@
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Copyright <a href="connexion.php?action=validate">:</a>
-            <a href="#"> Sylvain Baillet</a>
+            <a href="<?= URL ?>"> Sylvain Baillet</a>
         </div>
         <!-- Copyright -->
 

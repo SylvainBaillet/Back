@@ -48,11 +48,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?=URL?>contact.php">Me contacter</a>
                 </li>
-                <li class="nav-item">
+                <!-- dropdown menu admin-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="nav-link" href="<?=URL?>admin/gestionAdmin.php">Gestion Admin</a>
-                </li>
-                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>admin/gestionCardWeb.php">Gestion Cards Web</a>
                     <a class="nav-link" href="<?=URL?>admin/gestionContact.php">Gestion Contacts</a>
+                </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=URL?>connexion.php?action=deconnexion">Deconnexion</a>

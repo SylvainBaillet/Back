@@ -5,9 +5,9 @@ require_once("include/header.php");
 
     <h1 class="display-2 offset-md-4 titre1">Sylvain Baillet - Portfolio</h1>
 <?php  
-$mdp = 'sylvain94';
-$mdp = password_hash($mdp, PASSWORD_DEFAULT);
-echo $mdp;
+// $mdp = 'sylvain94';
+// $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+// echo $mdp;
 
 ?>
     <!-- Carousel -->

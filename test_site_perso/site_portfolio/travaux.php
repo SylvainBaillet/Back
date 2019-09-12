@@ -1,8 +1,9 @@
 <?php
+
+extract($_POST);
+extract($_GET);
+
 require_once("include/init.php");
-
-$data = $bdd->query("SELECT * FROM photo");
-
 require_once("include/header.php");
 ?>
 
@@ -67,37 +68,19 @@ require_once("include/header.php");
     <p>Mes expériences web :</p>
 
     <!-- card affichage experience web -->
-    <div class="row">
-        <div id="cardWeb" class="card col-md-3" href="http://cinemalalucarne.mjccreteil.com/" style="width: 18rem;">
-        <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top " alt="...">
-        <div class="card-body">
-        <h5 class="card-title text text-dark">Cinéma la Lucarne</h5>
+    
+    <?php $datacard = $bdd->query("SELECT * FROM cardweb");?>
+    
+    <?php while($affichCard = $datacard->fetch(PDO::FETCH_ASSOC)):?>
+    <div class="card col-md-3" style="width: 18rem;">
+            <img  class="card-img-top" src="<?= $affichCard['photoweb'] ?>" alt="<?= $affichCard['photoweb'] ?>" class="img-thumbnail col-md-3">
+            <div class="card-body">
+                <h3 class="card-text text-dark"><?= $affichCard['titre'] ?></h3>
+            </div>
         </div>
-    </div>
-
-         <div id="cardWeb" class="card col-md-4" href="" style="width: 18rem;">
-        <img src="images/Screenshot_2019-09-09 Images.png" class="card-img-top petite" alt="site web">
-        <div class="card-body">
-        <h5 class="card-title text text-dark">Mon 1er site web</h5>
-        </div>
-    </div>	
-		
-		<div id="cardWeb" class="card col-md-4" href="" style="width: 18rem;">
-        <img src="images/Screenshot_2019-09-09 Ce Soir.png" class="card-img-top petite" alt="site web">
-        <div class="card-body">
-        <h5 class="card-title text text-dark">Travail d'école 1</h5>
-        </div>
-    </div>	
-		
-		<div id="cardWeb" class="card col-md-4" href="" style="width: 18rem;">
-        <img src="images/Screenshot_2019-09-09 TP6_jurassic_maquette png (Image PNG, 1903 × 4196 pixels).jpg" class="card-img-top petite" alt="site web">
-        <div class="card-body">
-        <h5 class="card-title text text-dark">Travail d'école 2</h5>
-        </div>
-    </div>	
+        <?php endwhile; ?>
+    
     <!-- fin card -->
-
-    </div>
     
     </section>
     <!-- fin section Web -->
@@ -128,6 +111,8 @@ require_once("include/header.php");
     <p>c'est une dicipline qui m'apporte beaucoup, tant pour le plaisir simple de faire de la photo que dans les projets professionnels, le web et l'audiovisuel.</p>
     <p>J'aime avoir cette carte qui me permet d'apporter ma propre touche et mes propres clichés sur mes réalisations.</p>
     <p>quelques exemples de mes photos :</p>
+
+    <?php $data = $bdd->query("SELECT * FROM photo");?>
 
     <?php while($affichPhoto = $data->fetch(PDO::FETCH_ASSOC)):?>
 
