@@ -64,41 +64,41 @@ require_once("include/header.php");
                 <div class="row">
 
                         <!-- card 1 -->
-                        <div id="cardAccueil" class="card col-md-3" id="card1" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 mx-auto" id="card1" style="width: 18rem;">
                             <a href="travaux.php#ancreWeb">
-                            <img src="images/Screenshot_2019-07-17 cinema la lucarne créteil – Un site utilisant WordPress.jpg" class="card-img-top" alt="...">
+                            <img src="images/Screenshot_2019-07-17cinemalalucarnecréteil – Un site utilisant WordPress.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text">intégration & développement web</p>
+                                <h2 class="card-text">intégration & développement web</h2>
                             </div>
                             </a>  
                         </div>  
                         
                         <!-- card 2 -->
-                        <div id="cardAccueil" class="card col-md-3 order-md-4" id="card2" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 order-md-4 mx-auto" id="card2" style="width: 18rem;">
                             <a href="travaux.php#ancreAudiovisuel">
                             <img src="images/echo.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text">Audiovisuel</p>
+                                <h2 class="card-text">Audiovisuel</h2>
                             </div>  
                             </a>      
                         </div>
 
                         <!-- card 3 -->
-                        <div id="cardAccueil" class="card col-md-3 order-md-4" id="card3" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 order-md-4 mx-auto" id="card3" style="width: 18rem;">
                             <a href="travaux.php#ancrePhoto">
                             <img src="images/56985491_2311448012246567_5611965360291971072_n.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text">Photographie</p>
+                                <h2 class="card-text">Photographie</h2>
                             </div>    
                             </a>   
                         </div>
 
                         <!-- card 4 -->
-                        <div id="cardAccueil" class="card col-md-3 order-md-4" id="card4" style="width: 18rem;">
+                        <div id="cardAccueil" class="card col-md-3 order-md-4 mx-auto" id="card4" style="width: 18rem;">
                             <a href="travaux.php#ancreMusique">
                             <img src="images/bandmusic.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text">Musique</p>
+                                <h2 class="card-text">Musique</h2>
                             </div>  
                             </a>     
                         </div>

@@ -48,8 +48,8 @@ if($_POST)
 
     <div class="row">
 
-        <div class="col-md-9">
-            <form class="col-md-6 offset-md-1" method="post" action="">
+        <div class="col-md-8">
+            <form class="col-md-10 mx-auto" method="post" action="">
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" class="form-control col-md-12" id="nom" name="nom" placeholder="nom">
@@ -70,7 +70,7 @@ if($_POST)
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-md-3 text-center">
+        <div class="col-md-4 text-center">
             <ul class="list-unstyled">
                 <li><i class="fas fa-phone mt-4 fa-2x"></i>
                     <p>06 51 29 95 59</p>

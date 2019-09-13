@@ -9,44 +9,7 @@ class Contact
     private $email;
     private $message;
     
-    // public function setNom($nom){
-    //     if(iconv_strlen($nom) > 2 && iconv_strlen($nom) < 41){
-    //         $this->pseudo = $pseudo;
-    //     }
-    //     else{
-    //         $this->errors = "entrez un nom compris entre 2 et 40 caractères";
-    //         return $this->errors;
-    //     }
-    // }
-    // public function getNom(){
-    //     return $this->nom;
-    // }
-
-    // public function setEmail($email){
-    //     if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
-    //         $this->email = $email;
-    //     }
-    //     else{
-    //         $this->errors = "entrez un email valide";
-    //         return $this->errors;
-    //     }
-    // }
-    // public function getEmail(){
-    //     return $this->email;
-    // }
-
-    // public function setMessage($message){
-    //     if(iconv_strlen($message) > 2 && iconv_strlen($message) < 256){
-    //         $this->message = $message;
-    //     }
-    //     else{
-    //         $this->errors = "entrez un message compris entre 2 et 255 caractères";
-    //         return $this->errors;
-    //     }
-    // }
-    // public function getMessage(){
-    //     return $this->message;
-    // }
+    
 
     public function contactAction($nom, $email, $message)
 
@@ -71,26 +34,6 @@ class Contact
 
     }
     
-    // public function insertAction(){
-
-    //     if(isset($errors))
-    //     {
-    //         echo $errors;
-    //     }
-    //     else
-    //     {
-    //         $bdd = new PDO('mysql:host=localhost;dbname=site_portfolio','root', '', array(PDO:: ATTR_ERRMODE => PDO :: ERRMODE_WARNING, PDO :: MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-
-    //     $insert= $bdd->prepare("INSERT INTO contact (nom, email, message) VALUES (:nom, :email, :message)");
-    //     foreach($_POST as $key => $value){
-    //             $insert->bindValue(":$key", $value, PDO::PARAM_STR);
-    //             $insert->execute();
-    //     }
-    //     echo '<pre>'; var_dump($_POST);echo '</pre>';
-    //     }
-        
-            
-    // }
 
     public function sendMailAction(){
         if(isset($_POST))/* on verifie si on a bien cliqué sur le bouton 'submit' qui a pour attribut name 'submit', si nous avions plusieurs formulaires sur la meme page, la condition permet de differencier sur quel bouton le formulaire a été validé */
