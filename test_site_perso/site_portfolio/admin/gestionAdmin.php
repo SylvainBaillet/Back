@@ -3,6 +3,9 @@ require_once('../include/init.php');
 extract($_POST);
 extract($_GET);
 
+if(!isset($_SESSION['membre']) && ($_SESSION['statut'] != 1)){
+    header("location: ../index.php");
+}
 // requete de suppression photo  
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {

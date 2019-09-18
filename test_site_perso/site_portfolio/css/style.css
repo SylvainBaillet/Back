@@ -294,17 +294,17 @@ footer a{
     position: fixed;
     top: 2rem;
     left: 2rem;
-    width: 90vw;
-    height: 90vh;
+    width: 94vw;
+    height: 94vh;
     display: none;
     align-items: center;
     justify-content: center;
 }
 
 .grande img {
-    width: 90%;
-    border: 4px white solid;
-    border-radius: 5px;
+    width: 92%;
+    border: 2px black;
+    border-radius: 2px;
 }
 
 

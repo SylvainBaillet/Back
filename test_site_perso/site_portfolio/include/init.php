@@ -4,6 +4,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=site_portfolio','root', '', array(PD
 
 //----- SESSION
 session_start();
+var_dump($_SESSION);
 
 
 

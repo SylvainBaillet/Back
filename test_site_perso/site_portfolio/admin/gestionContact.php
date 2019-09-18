@@ -3,6 +3,10 @@ require_once('../include/init.php');
 extract($_POST);
 extract($_GET);
 
+if(empty($_SESSION)){
+    header("location: ../index.php");
+}
+
 // requete de suppression photo  
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {

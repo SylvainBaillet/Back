@@ -19,6 +19,9 @@
     <section id="ancre">
     <a href="#navbar1"><button type="button"><i class="fas fa-arrow-alt-circle-up btn-ancre" aria-hidden="true"></i></button></a>
     </section>
+    <div class="grande">
+                </div>
+
     <!-- liens jQuery et JavaScript -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/site_portfolio.js"></script>
